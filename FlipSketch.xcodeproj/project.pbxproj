@@ -1,0 +1,500 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		144A67C81620C08A003E694E /* Transformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A67C71620C08A003E694E /* Transformation.m */; };
+		144A67CC1620C167003E694E /* Oval.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A67CB1620C167003E694E /* Oval.m */; };
+		144A67CF1620C20C003E694E /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A67CE1620C20C003E694E /* Line.m */; };
+		144A67D21620C21D003E694E /* Brush.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A67D11620C21D003E694E /* Brush.m */; };
+		144A67D51620C24E003E694E /* ShapePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A67D41620C24E003E694E /* ShapePoint.m */; };
+		147A9D491620B5B000CB02BE /* Rectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 147A9D481620B5B000CB02BE /* Rectangle.m */; };
+		14A7A3641620B18600C86ED6 /* Shape.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A7A3631620B18600C86ED6 /* Shape.m */; };
+		AA459FE51628703B00ADC992 /* FlipSketchIO.m in Sources */ = {isa = PBXBuildFile; fileRef = AA459FE41628703B00ADC992 /* FlipSketchIO.m */; };
+		AA459FEC162874F600ADC992 /* FlipSketchPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA459FEB162874F600ADC992 /* FlipSketchPreviewView.m */; };
+		AA459FEF16289BF700ADC992 /* SketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA459FEE16289BF700ADC992 /* SketchViewController.m */; };
+		AA459FF216289FB900ADC992 /* SketchView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA459FF116289FB900ADC992 /* SketchView.m */; };
+		AA459FF51628A1D100ADC992 /* TimeLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA459FF41628A1D100ADC992 /* TimeLineView.m */; };
+		AA459FF91628AA4500ADC992 /* ShapeSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA459FF81628AA4500ADC992 /* ShapeSelectViewController.m */; };
+		AA459FFE1628ABF900ADC992 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = AA459FFC1628ABF900ADC992 /* plus.png */; };
+		AA459FFF1628ABF900ADC992 /* Rectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = AA459FFD1628ABF900ADC992 /* Rectangle.png */; };
+		AA45A0021628AD6800ADC992 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AA45A0011628AD6800ADC992 /* Utilities.m */; };
+		AA45A0041628B49400ADC992 /* Oval.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA45A0031628B49400ADC992 /* Oval.jpg */; };
+		AA45A0061628B6F500ADC992 /* Line.png in Resources */ = {isa = PBXBuildFile; fileRef = AA45A0051628B6F500ADC992 /* Line.png */; };
+		AA45A0081628B85A00ADC992 /* brush.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA45A0071628B85A00ADC992 /* brush.jpg */; };
+		AA45A00D1628BB8600ADC992 /* ColorChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA45A00C1628BB8600ADC992 /* ColorChooserViewController.m */; };
+		AA45A0101628BB9B00ADC992 /* ColorChooserView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA45A00F1628BB9B00ADC992 /* ColorChooserView.m */; };
+		AA6804F6161B95AB005C0D86 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6804F5161B95AB005C0D86 /* UIKit.framework */; };
+		AA6804F8161B95AB005C0D86 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6804F7161B95AB005C0D86 /* Foundation.framework */; };
+		AA6804FA161B95AB005C0D86 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6804F9161B95AB005C0D86 /* CoreGraphics.framework */; };
+		AA680500161B95AB005C0D86 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6804FE161B95AB005C0D86 /* InfoPlist.strings */; };
+		AA680502161B95AB005C0D86 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA680501161B95AB005C0D86 /* main.m */; };
+		AA680506161B95AB005C0D86 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA680505161B95AB005C0D86 /* AppDelegate.m */; };
+		AA680508161B95AB005C0D86 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AA680507161B95AB005C0D86 /* Default.png */; };
+		AA68050A161B95AB005C0D86 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA680509161B95AB005C0D86 /* Default@2x.png */; };
+		AA68050C161B95AB005C0D86 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA68050B161B95AB005C0D86 /* Default-568h@2x.png */; };
+		AA68050F161B95AB005C0D86 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA68050D161B95AB005C0D86 /* MainStoryboard.storyboard */; };
+		AA680512161B95AB005C0D86 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA680511161B95AB005C0D86 /* ViewController.m */; };
+		AA94E45E1620B474000CDFBA /* SketchListView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA94E45D1620B474000CDFBA /* SketchListView.m */; };
+		AA94E4631620B4DE000CDFBA /* FlipSketch.m in Sources */ = {isa = PBXBuildFile; fileRef = AA94E4621620B4DE000CDFBA /* FlipSketch.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		144A67C61620C08A003E694E /* Transformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Transformation.h; path = "Drawing Elements/Transformation.h"; sourceTree = "<group>"; };
+		144A67C71620C08A003E694E /* Transformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Transformation.m; path = "Drawing Elements/Transformation.m"; sourceTree = "<group>"; };
+		144A67CA1620C167003E694E /* Oval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Oval.h; path = "Drawing Elements/Oval.h"; sourceTree = "<group>"; };
+		144A67CB1620C167003E694E /* Oval.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Oval.m; path = "Drawing Elements/Oval.m"; sourceTree = "<group>"; };
+		144A67CD1620C20C003E694E /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Line.h; path = "Drawing Elements/Line.h"; sourceTree = "<group>"; };
+		144A67CE1620C20C003E694E /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Line.m; path = "Drawing Elements/Line.m"; sourceTree = "<group>"; };
+		144A67D01620C21D003E694E /* Brush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Brush.h; path = "Drawing Elements/Brush.h"; sourceTree = "<group>"; };
+		144A67D11620C21D003E694E /* Brush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Brush.m; path = "Drawing Elements/Brush.m"; sourceTree = "<group>"; };
+		144A67D31620C24E003E694E /* ShapePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShapePoint.h; path = "Drawing Elements/ShapePoint.h"; sourceTree = "<group>"; };
+		144A67D41620C24E003E694E /* ShapePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShapePoint.m; path = "Drawing Elements/ShapePoint.m"; sourceTree = "<group>"; };
+		147A9D471620B5B000CB02BE /* Rectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rectangle.h; path = "Drawing Elements/Rectangle.h"; sourceTree = "<group>"; };
+		147A9D481620B5B000CB02BE /* Rectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Rectangle.m; path = "Drawing Elements/Rectangle.m"; sourceTree = "<group>"; };
+		14A7A3621620B18600C86ED6 /* Shape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shape.h; path = "Drawing Elements/Shape.h"; sourceTree = "<group>"; };
+		14A7A3631620B18600C86ED6 /* Shape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Shape.m; path = "Drawing Elements/Shape.m"; sourceTree = "<group>"; };
+		AA459FE31628703B00ADC992 /* FlipSketchIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlipSketchIO.h; path = FlipSketchCore/FlipSketchIO.h; sourceTree = "<group>"; };
+		AA459FE41628703B00ADC992 /* FlipSketchIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipSketchIO.m; path = FlipSketchCore/FlipSketchIO.m; sourceTree = "<group>"; };
+		AA459FEA162874F600ADC992 /* FlipSketchPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlipSketchPreviewView.h; path = StartScreen/FlipSketchPreviewView.h; sourceTree = "<group>"; };
+		AA459FEB162874F600ADC992 /* FlipSketchPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipSketchPreviewView.m; path = StartScreen/FlipSketchPreviewView.m; sourceTree = "<group>"; };
+		AA459FED16289BF700ADC992 /* SketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SketchViewController.h; path = Sketch/SketchViewController.h; sourceTree = "<group>"; };
+		AA459FEE16289BF700ADC992 /* SketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SketchViewController.m; path = Sketch/SketchViewController.m; sourceTree = "<group>"; };
+		AA459FF016289FB900ADC992 /* SketchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SketchView.h; path = Sketch/SketchView.h; sourceTree = "<group>"; };
+		AA459FF116289FB900ADC992 /* SketchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SketchView.m; path = Sketch/SketchView.m; sourceTree = "<group>"; };
+		AA459FF31628A1D100ADC992 /* TimeLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeLineView.h; path = Sketch/TimeLineView.h; sourceTree = "<group>"; };
+		AA459FF41628A1D100ADC992 /* TimeLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeLineView.m; path = Sketch/TimeLineView.m; sourceTree = "<group>"; };
+		AA459FF71628AA4500ADC992 /* ShapeSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShapeSelectViewController.h; path = Sketch/ShapeSelectTable/ShapeSelectViewController.h; sourceTree = "<group>"; };
+		AA459FF81628AA4500ADC992 /* ShapeSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShapeSelectViewController.m; path = Sketch/ShapeSelectTable/ShapeSelectViewController.m; sourceTree = "<group>"; };
+		AA459FFC1628ABF900ADC992 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plus.png; path = Images/plus.png; sourceTree = "<group>"; };
+		AA459FFD1628ABF900ADC992 /* Rectangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Rectangle.png; path = Images/Rectangle.png; sourceTree = "<group>"; };
+		AA45A0001628AD6800ADC992 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utilities.h; path = FlipSketchCore/Utilities.h; sourceTree = "<group>"; };
+		AA45A0011628AD6800ADC992 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utilities.m; path = FlipSketchCore/Utilities.m; sourceTree = "<group>"; };
+		AA45A0031628B49400ADC992 /* Oval.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Oval.jpg; path = Images/Oval.jpg; sourceTree = "<group>"; };
+		AA45A0051628B6F500ADC992 /* Line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Line.png; path = Images/Line.png; sourceTree = "<group>"; };
+		AA45A0071628B85A00ADC992 /* brush.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = brush.jpg; path = Images/brush.jpg; sourceTree = "<group>"; };
+		AA45A00B1628BB8600ADC992 /* ColorChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorChooserViewController.h; sourceTree = "<group>"; };
+		AA45A00C1628BB8600ADC992 /* ColorChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorChooserViewController.m; sourceTree = "<group>"; };
+		AA45A00E1628BB9B00ADC992 /* ColorChooserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorChooserView.h; sourceTree = "<group>"; };
+		AA45A00F1628BB9B00ADC992 /* ColorChooserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorChooserView.m; sourceTree = "<group>"; };
+		AA6804F1161B95AB005C0D86 /* FlipSketch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlipSketch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA6804F5161B95AB005C0D86 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AA6804F7161B95AB005C0D86 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AA6804F9161B95AB005C0D86 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AA6804FD161B95AB005C0D86 /* FlipSketch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FlipSketch-Info.plist"; sourceTree = "<group>"; };
+		AA6804FF161B95AB005C0D86 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AA680501161B95AB005C0D86 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AA680503161B95AB005C0D86 /* FlipSketch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlipSketch-Prefix.pch"; sourceTree = "<group>"; };
+		AA680504161B95AB005C0D86 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AA680505161B95AB005C0D86 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AA680507161B95AB005C0D86 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		AA680509161B95AB005C0D86 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		AA68050B161B95AB005C0D86 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		AA68050E161B95AB005C0D86 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		AA680510161B95AB005C0D86 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		AA680511161B95AB005C0D86 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AA94E45C1620B474000CDFBA /* SketchListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SketchListView.h; path = StartScreen/SketchListView.h; sourceTree = "<group>"; };
+		AA94E45D1620B474000CDFBA /* SketchListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SketchListView.m; path = StartScreen/SketchListView.m; sourceTree = "<group>"; };
+		AA94E4611620B4DE000CDFBA /* FlipSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlipSketch.h; path = FlipSketchCore/FlipSketch.h; sourceTree = "<group>"; };
+		AA94E4621620B4DE000CDFBA /* FlipSketch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipSketch.m; path = FlipSketchCore/FlipSketch.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA6804EE161B95AB005C0D86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA6804F6161B95AB005C0D86 /* UIKit.framework in Frameworks */,
+				AA6804F8161B95AB005C0D86 /* Foundation.framework in Frameworks */,
+				AA6804FA161B95AB005C0D86 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA459FDE16286FEC00ADC992 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AA459FE31628703B00ADC992 /* FlipSketchIO.h */,
+				AA459FE41628703B00ADC992 /* FlipSketchIO.m */,
+				AA45A0001628AD6800ADC992 /* Utilities.h */,
+				AA45A0011628AD6800ADC992 /* Utilities.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		AA459FE01628700B00ADC992 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AA45A0071628B85A00ADC992 /* brush.jpg */,
+				AA45A0051628B6F500ADC992 /* Line.png */,
+				AA45A0031628B49400ADC992 /* Oval.jpg */,
+				AA459FFC1628ABF900ADC992 /* plus.png */,
+				AA459FFD1628ABF900ADC992 /* Rectangle.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		AA459FF61628AA0F00ADC992 /* ShapeTable */ = {
+			isa = PBXGroup;
+			children = (
+				AA459FF71628AA4500ADC992 /* ShapeSelectViewController.h */,
+				AA459FF81628AA4500ADC992 /* ShapeSelectViewController.m */,
+			);
+			name = ShapeTable;
+			sourceTree = "<group>";
+		};
+		AA45A0091628BB4D00ADC992 /* ColorChooser */ = {
+			isa = PBXGroup;
+			children = (
+				AA45A00A1628BB6800ADC992 /* ColorChooser */,
+			);
+			name = ColorChooser;
+			sourceTree = "<group>";
+		};
+		AA45A00A1628BB6800ADC992 /* ColorChooser */ = {
+			isa = PBXGroup;
+			children = (
+				AA45A00B1628BB8600ADC992 /* ColorChooserViewController.h */,
+				AA45A00C1628BB8600ADC992 /* ColorChooserViewController.m */,
+				AA45A00E1628BB9B00ADC992 /* ColorChooserView.h */,
+				AA45A00F1628BB9B00ADC992 /* ColorChooserView.m */,
+			);
+			name = ColorChooser;
+			path = Sketch/ColorChooser;
+			sourceTree = "<group>";
+		};
+		AA6804E6161B95AB005C0D86 = {
+			isa = PBXGroup;
+			children = (
+				AA6804FB161B95AB005C0D86 /* FlipSketch */,
+				AA6804F4161B95AB005C0D86 /* Frameworks */,
+				AA6804F2161B95AB005C0D86 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA6804F2161B95AB005C0D86 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA6804F1161B95AB005C0D86 /* FlipSketch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA6804F4161B95AB005C0D86 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA6804F5161B95AB005C0D86 /* UIKit.framework */,
+				AA6804F7161B95AB005C0D86 /* Foundation.framework */,
+				AA6804F9161B95AB005C0D86 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA6804FB161B95AB005C0D86 /* FlipSketch */ = {
+			isa = PBXGroup;
+			children = (
+				AA459FE01628700B00ADC992 /* Resources */,
+				AA94E45F1620B494000CDFBA /* FlipSketchCore */,
+				AA690A2B1620AF93007F7291 /* Drawing Elements */,
+				AA690A2A1620AF5B007F7291 /* Sketch */,
+				AA690A271620AF30007F7291 /* StartScreen */,
+				AA680504161B95AB005C0D86 /* AppDelegate.h */,
+				AA680505161B95AB005C0D86 /* AppDelegate.m */,
+				AA68050D161B95AB005C0D86 /* MainStoryboard.storyboard */,
+				AA6804FC161B95AB005C0D86 /* Supporting Files */,
+			);
+			path = FlipSketch;
+			sourceTree = "<group>";
+		};
+		AA6804FC161B95AB005C0D86 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AA6804FD161B95AB005C0D86 /* FlipSketch-Info.plist */,
+				AA6804FE161B95AB005C0D86 /* InfoPlist.strings */,
+				AA680501161B95AB005C0D86 /* main.m */,
+				AA680503161B95AB005C0D86 /* FlipSketch-Prefix.pch */,
+				AA680507161B95AB005C0D86 /* Default.png */,
+				AA680509161B95AB005C0D86 /* Default@2x.png */,
+				AA68050B161B95AB005C0D86 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AA690A271620AF30007F7291 /* StartScreen */ = {
+			isa = PBXGroup;
+			children = (
+				AA680510161B95AB005C0D86 /* ViewController.h */,
+				AA680511161B95AB005C0D86 /* ViewController.m */,
+				AA94E45C1620B474000CDFBA /* SketchListView.h */,
+				AA94E45D1620B474000CDFBA /* SketchListView.m */,
+				AA459FEA162874F600ADC992 /* FlipSketchPreviewView.h */,
+				AA459FEB162874F600ADC992 /* FlipSketchPreviewView.m */,
+			);
+			name = StartScreen;
+			sourceTree = "<group>";
+		};
+		AA690A2A1620AF5B007F7291 /* Sketch */ = {
+			isa = PBXGroup;
+			children = (
+				AA45A0091628BB4D00ADC992 /* ColorChooser */,
+				AA459FF61628AA0F00ADC992 /* ShapeTable */,
+				AA459FED16289BF700ADC992 /* SketchViewController.h */,
+				AA459FEE16289BF700ADC992 /* SketchViewController.m */,
+				AA459FF016289FB900ADC992 /* SketchView.h */,
+				AA459FF116289FB900ADC992 /* SketchView.m */,
+				AA459FF31628A1D100ADC992 /* TimeLineView.h */,
+				AA459FF41628A1D100ADC992 /* TimeLineView.m */,
+			);
+			name = Sketch;
+			sourceTree = "<group>";
+		};
+		AA690A2B1620AF93007F7291 /* Drawing Elements */ = {
+			isa = PBXGroup;
+			children = (
+				14A7A3621620B18600C86ED6 /* Shape.h */,
+				14A7A3631620B18600C86ED6 /* Shape.m */,
+				147A9D471620B5B000CB02BE /* Rectangle.h */,
+				147A9D481620B5B000CB02BE /* Rectangle.m */,
+				144A67CA1620C167003E694E /* Oval.h */,
+				144A67CB1620C167003E694E /* Oval.m */,
+				144A67CD1620C20C003E694E /* Line.h */,
+				144A67CE1620C20C003E694E /* Line.m */,
+				144A67D01620C21D003E694E /* Brush.h */,
+				144A67D11620C21D003E694E /* Brush.m */,
+				144A67C61620C08A003E694E /* Transformation.h */,
+				144A67C71620C08A003E694E /* Transformation.m */,
+				144A67D31620C24E003E694E /* ShapePoint.h */,
+				144A67D41620C24E003E694E /* ShapePoint.m */,
+			);
+			name = "Drawing Elements";
+			sourceTree = "<group>";
+		};
+		AA94E45F1620B494000CDFBA /* FlipSketchCore */ = {
+			isa = PBXGroup;
+			children = (
+				AA459FDE16286FEC00ADC992 /* Utilities */,
+				AA94E4611620B4DE000CDFBA /* FlipSketch.h */,
+				AA94E4621620B4DE000CDFBA /* FlipSketch.m */,
+			);
+			name = FlipSketchCore;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA6804F0161B95AB005C0D86 /* FlipSketch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA680515161B95AB005C0D86 /* Build configuration list for PBXNativeTarget "FlipSketch" */;
+			buildPhases = (
+				AA6804ED161B95AB005C0D86 /* Sources */,
+				AA6804EE161B95AB005C0D86 /* Frameworks */,
+				AA6804EF161B95AB005C0D86 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlipSketch;
+			productName = FlipSketch;
+			productReference = AA6804F1161B95AB005C0D86 /* FlipSketch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA6804E8161B95AB005C0D86 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Kevin Hampton";
+			};
+			buildConfigurationList = AA6804EB161B95AB005C0D86 /* Build configuration list for PBXProject "FlipSketch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AA6804E6161B95AB005C0D86;
+			productRefGroup = AA6804F2161B95AB005C0D86 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA6804F0161B95AB005C0D86 /* FlipSketch */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA6804EF161B95AB005C0D86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA680500161B95AB005C0D86 /* InfoPlist.strings in Resources */,
+				AA680508161B95AB005C0D86 /* Default.png in Resources */,
+				AA68050A161B95AB005C0D86 /* Default@2x.png in Resources */,
+				AA68050C161B95AB005C0D86 /* Default-568h@2x.png in Resources */,
+				AA68050F161B95AB005C0D86 /* MainStoryboard.storyboard in Resources */,
+				AA459FFE1628ABF900ADC992 /* plus.png in Resources */,
+				AA459FFF1628ABF900ADC992 /* Rectangle.png in Resources */,
+				AA45A0041628B49400ADC992 /* Oval.jpg in Resources */,
+				AA45A0061628B6F500ADC992 /* Line.png in Resources */,
+				AA45A0081628B85A00ADC992 /* brush.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA6804ED161B95AB005C0D86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA680502161B95AB005C0D86 /* main.m in Sources */,
+				AA680506161B95AB005C0D86 /* AppDelegate.m in Sources */,
+				AA680512161B95AB005C0D86 /* ViewController.m in Sources */,
+				14A7A3641620B18600C86ED6 /* Shape.m in Sources */,
+				AA94E45E1620B474000CDFBA /* SketchListView.m in Sources */,
+				AA94E4631620B4DE000CDFBA /* FlipSketch.m in Sources */,
+				147A9D491620B5B000CB02BE /* Rectangle.m in Sources */,
+				144A67C81620C08A003E694E /* Transformation.m in Sources */,
+				144A67CC1620C167003E694E /* Oval.m in Sources */,
+				144A67CF1620C20C003E694E /* Line.m in Sources */,
+				144A67D21620C21D003E694E /* Brush.m in Sources */,
+				144A67D51620C24E003E694E /* ShapePoint.m in Sources */,
+				AA459FE51628703B00ADC992 /* FlipSketchIO.m in Sources */,
+				AA459FEC162874F600ADC992 /* FlipSketchPreviewView.m in Sources */,
+				AA459FEF16289BF700ADC992 /* SketchViewController.m in Sources */,
+				AA459FF216289FB900ADC992 /* SketchView.m in Sources */,
+				AA459FF51628A1D100ADC992 /* TimeLineView.m in Sources */,
+				AA459FF91628AA4500ADC992 /* ShapeSelectViewController.m in Sources */,
+				AA45A0021628AD6800ADC992 /* Utilities.m in Sources */,
+				AA45A00D1628BB8600ADC992 /* ColorChooserViewController.m in Sources */,
+				AA45A0101628BB9B00ADC992 /* ColorChooserView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AA6804FE161B95AB005C0D86 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA6804FF161B95AB005C0D86 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		AA68050D161B95AB005C0D86 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA68050E161B95AB005C0D86 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AA680513161B95AB005C0D86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		AA680514161B95AB005C0D86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA680516161B95AB005C0D86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FlipSketch/FlipSketch-Prefix.pch";
+				INFOPLIST_FILE = "FlipSketch/FlipSketch-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		AA680517161B95AB005C0D86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FlipSketch/FlipSketch-Prefix.pch";
+				INFOPLIST_FILE = "FlipSketch/FlipSketch-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA6804EB161B95AB005C0D86 /* Build configuration list for PBXProject "FlipSketch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA680513161B95AB005C0D86 /* Debug */,
+				AA680514161B95AB005C0D86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA680515161B95AB005C0D86 /* Build configuration list for PBXNativeTarget "FlipSketch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA680516161B95AB005C0D86 /* Debug */,
+				AA680517161B95AB005C0D86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA6804E8161B95AB005C0D86 /* Project object */;
+}
