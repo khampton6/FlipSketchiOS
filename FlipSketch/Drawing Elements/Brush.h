@@ -8,9 +8,11 @@
 
 #import "Shape.h"
 
-@interface Brush : Shape
+@interface Brush : Shape {
+  UIBezierPath* strokePath;
+}
 
 
-- (id)initWithX:(int)x withY:(int)y withColor:(UIColor *)shapeColor;
+- (id)initWithX:(int)xPos withY:(int)yPos withColor:(UIColor *)shapeColor withStrokeWidth:(int) strokeWid;
 
 @end

@@ -9,10 +9,24 @@
 #import <UIKit/UIKit.h>
 #import "Shape.h"
 
+@class SketchView;
+
 @interface SketchViewController : UIViewController {
-  Shape* currShape;
+  ShapeType currShape;
+  Shape* selectedShape;
+  IBOutlet SketchView* sketchView;
+  
+  IBOutlet UISwitch* filledSwitch;
+  
+  int selectedStrokeWidth;
+  UIColor* selectedColor;
+  BOOL selectedFilled;
 }
 
--(void)setCurrShape: (Shape*) aShape;
+-(IBAction)switchFilled:(id)sender;
+
+-(void)setCurrShape: (ShapeType) type;
+-(void)setSelectedStrokeWidth: (int) strokeWidth;
+-(void)setSelectedColor:(UIColor*) color;
 
 @end

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class SketchViewController;
+
 @interface ColorChooserViewController : UIViewController {
   IBOutlet UISlider* rSlider;
   IBOutlet UISlider* gSlider;
@@ -19,5 +21,7 @@
   
   double r, g, b;
 }
+
+@property (nonatomic, retain) SketchViewController* parentController;
 
 @end

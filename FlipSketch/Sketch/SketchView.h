@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Shape.h"
 
-@interface SketchView : UIView
+@interface SketchView : UIView {
+  NSMutableArray* shapes;
+}
+
+@property (nonatomic, retain) Shape* draggedShape;
+
+-(void) addDraggedShape;
+-(void) cancelDraggedShape;
 
 @end

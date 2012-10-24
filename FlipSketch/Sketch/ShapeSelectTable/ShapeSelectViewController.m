@@ -9,6 +9,7 @@
 #import "ShapeSelectViewController.h"
 #import "SketchViewController.h"
 #import "Utilities.h"
+#import "Shape.h"
 #import "Rectangle.h"
 #import "Oval.h"
 #import "Line.h"
@@ -114,25 +115,21 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  //find the current shape object that is selected
-  if([[[shapeDetails allKeys] objectAtIndex:[indexPath row]] isEqualToString:@"Rectangle"]){
-    
-    //sets the current shape selected for the SketchViewController
-    [parentController setCurrShape: [[Rectangle alloc] init]];
-    
-//    [parentController setCurrShape: [[shapeDetails allKeys] objectAtIndex:[indexPath row]]];
+  NSString* shapeString = [[shapeDetails allKeys] objectAtIndex:[indexPath row]];
+  
+  if([shapeString isEqualToString:@"Rectangle"]) {
+    [parentController setCurrShape: rect];
+  }
+  else if([shapeString isEqualToString:@"Oval"]) {
+    [parentController setCurrShape: oval];
+  }
+  else if([shapeString isEqualToString:@"Line"]) {
+    [parentController setCurrShape: line];
+  }
+  else if([shapeString isEqualToString:@"Brush"]) {
+    [parentController setCurrShape: brush];
   }
   
-  
-  
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
 }
 
 

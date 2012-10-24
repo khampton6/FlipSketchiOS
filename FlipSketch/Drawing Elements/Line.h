@@ -10,7 +10,9 @@
 
 @interface Line : Shape
 
+@property int x2;
+@property int y2;
 
-- (id)initWithX:(int)x withY:(int)y withColor:(UIColor *)shapeColor;
+- (id)initWithX:(int)xPos withY:(int)yPos withColor:(UIColor *)shapeColor withStrokeWidth:(int)strokeWid;
 
 @end

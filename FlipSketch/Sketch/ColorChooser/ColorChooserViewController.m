@@ -7,12 +7,15 @@
 //
 
 #import "ColorChooserViewController.h"
+#import "SketchViewController.h"
 
 @interface ColorChooserViewController ()
 
 @end
 
 @implementation ColorChooserViewController
+
+@synthesize parentController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -71,6 +74,7 @@
       gLabel.textColor = [UIColor blackColor];
       bLabel.textColor = [UIColor blackColor];
   }
+  [parentController setSelectedColor:color];
 }
 
 - (void)viewDidLoad
