@@ -48,6 +48,17 @@
   float x = touchPoint.x;
   float y = touchPoint.y;
   
+  if(selectedColor == nil) {
+    for(int i = 0; i < 10000; i++) {
+      NSLog(@"AGH NIL");
+    }
+    selectedColor = [UIColor blackColor];
+  }
+  else{
+    NSLog(@"%@",selectedColor);
+    NSLog(@"hai");
+  }
+  
   switch (currShape) {
     case rect:
       selectedShape = [[Rectangle alloc] initWithX:x withY:y withColor:selectedColor withStrokeWidth:selectedStrokeWidth isFilled:selectedFilled];

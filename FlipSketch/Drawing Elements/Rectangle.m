@@ -27,9 +27,9 @@
   return self;
 }
 
--(id) initWithX:(int) xPos withY:(int) yPos withColor:(UIColor *)shapeColor withStrokeWidth:(int) strokeWid isFilled:(BOOL)filled {
+-(id) initWithX:(int) xPos withY:(int) yPos withColor:(UIColor *)sCol withStrokeWidth:(int) strokeWid isFilled:(BOOL)filled {
   
-  self = [super initWithX:xPos withY:yPos withColor:shapeColor withStrokeWidth: strokeWid isFilled:filled];
+  self = [super initWithX:xPos withY:yPos withColor:sCol withStrokeWidth: strokeWid isFilled:filled];
   if(self) {
     self.width = 1;
     self.height = 1;
