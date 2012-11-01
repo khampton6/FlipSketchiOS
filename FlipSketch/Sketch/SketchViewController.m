@@ -20,6 +20,8 @@
 
 @implementation SketchViewController
 
+@synthesize selectedColor;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -130,10 +132,6 @@
 
 -(void)setSelectedStrokeWidth: (int) strokeWidth {
   selectedStrokeWidth = strokeWidth;
-}
-
--(void)setSelectedColor:(UIColor*) color {
-  selectedColor = color;
 }
 
 -(IBAction)switchFilled:(id)sender {

@@ -27,6 +27,7 @@
 
 -(void)setCurrShape: (ShapeType) type;
 -(void)setSelectedStrokeWidth: (int) strokeWidth;
--(void)setSelectedColor:(UIColor*) color;
+
+@property (nonatomic, retain) UIColor* selectedColor ;
 
 @end
