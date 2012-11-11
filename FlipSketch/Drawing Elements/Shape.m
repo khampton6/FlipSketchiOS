@@ -12,7 +12,7 @@
 
 @implementation Shape
 
-@synthesize xPos = x, yPos = y, shapeStrokeWidth = strokeWidth, shapeColor = color, isShapeFilled = isFilled;
+@synthesize xPos = x, yPos = y, shapeStrokeWidth = strokeWidth, shapeColor = color, isShapeFilled = isFilled, isSelected = selected;
 
 - (id) initWithX: (int)xPos withY: (int)yPos withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid isFilled: (BOOL) filled {
   
@@ -24,6 +24,8 @@
     rgbColor = shapeColor;
     isFilled = filled;
     strokeWidth = strokeWid;
+    
+    selected = NO;
   }
   return self;
 }
@@ -43,12 +45,20 @@
   
 }
 
+- (void) moveShapeWithDirX:(int) vX withDirY:(int) vY {
+  
+}
+
 -(void) draw:(CGContextRef)context {
   
 }
 
 - (void) createShapePoints {
   
+}
+
+-(BOOL) pointTouchesShape:(CGPoint) point {
+  return NO;
 }
 
 - (NSString *)description

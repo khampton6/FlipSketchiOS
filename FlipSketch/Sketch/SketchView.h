@@ -17,5 +17,5 @@
 
 -(void) addDraggedShape;
 -(void) cancelDraggedShape;
-
+-(NSArray*) getShapes;
 @end

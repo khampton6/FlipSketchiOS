@@ -21,7 +21,7 @@
 
 @implementation SketchViewController
 
-@synthesize selectedColor;
+@synthesize selectedColor, selectMode;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,9 +36,11 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  selectedStrokeWidth = 4;
+  selectedStrokeWidth = 5;
   selectedColor = [[RGBColor alloc] initWithR:0 withG:0 withB:0];
   [self switchFilled:self];
+  [self setSelectedStrokeWidth:5];
+  [previewView setStrokeWidth:selectedStrokeWidth];
   [previewView setNeedsDisplay];
   
   currShape = rect;
@@ -50,6 +52,16 @@
   CGPoint touchPoint = [touch locationInView:self.view];
   float x = touchPoint.x;
   float y = touchPoint.y;
+  
+  dragPt = CGPointMake(x, y);
+  
+  if(selectMode) {
+    selectedShape = [self getSelectedShape:touchPoint];
+    [selectedShape setIsSelected:YES];
+    return;
+  }
+  
+  dragPoints = 1;
   
   switch (currShape) {
     case rect:
@@ -71,24 +83,62 @@
 }
 
 - (void) touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event {
+  
+  dragPoints++;
+  
   UITouch *touch = [[event allTouches] anyObject];
   CGPoint touchPoint = [touch locationInView:self.view];
 
   float x = touchPoint.x;
   float y = touchPoint.y;
+  CGPoint newPt = CGPointMake(x, y);
   
-  [selectedShape updateExtraPointWithX:x withY:y];
+  int vecX = x - dragPt.x;
+  int vecY = y - dragPt.y;
+  
+  dragPt = newPt;
+  
+  if(selectMode) {
+    NSLog(@"Dir vec: %d %d", vecX, vecY);
+    [selectedShape moveShapeWithDirX:vecX withDirY:vecY];
+  }
+  else {
+    [selectedShape updateExtraPointWithX:x withY:y];
+  }
+  
   [sketchView setNeedsDisplay];
 }
 
 - (void) touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event {
-  [sketchView addDraggedShape];
+  
+  if(dragPoints <= 2 || selectMode) {
+    [sketchView setDraggedShape:nil];
+  }
+  else {
+   [sketchView addDraggedShape]; 
+  }
   [sketchView setNeedsDisplay];
 }
 
 - (void) touchesCancelled:(NSSet*)touches withEvent:(UIEvent*)event {
   [sketchView setDraggedShape:nil];
   [sketchView setNeedsDisplay];
+}
+
+-(Shape*) getSelectedShape:(CGPoint) touchPoint {
+  NSArray* shapes = [sketchView getShapes];
+  
+  for(int i = 0; i < [shapes count]; i++) {
+    Shape* tempShape = [shapes objectAtIndex:i];
+    
+    if([tempShape pointTouchesShape:touchPoint]) {
+      NSLog(@"found shape");
+      return tempShape;
+    }
+  }
+  
+  NSLog(@"No Found Shape");
+  return nil;
 }
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -101,9 +151,9 @@
   }
   else if([destination isKindOfClass:[ColorChooserViewController class]]) {
     ColorChooserViewController* ccvc = (ColorChooserViewController*)destination;
+    [ccvc setStartColor: selectedColor];
     [ccvc setParentController:self];
   }
-  
 }
 
 - (void)didReceiveMemoryWarning
@@ -123,6 +173,10 @@
 
 -(void)setSelectedStrokeWidth: (int) strokeWidth {
   selectedStrokeWidth = strokeWidth;
+  
+  NSString* strokeStr = [NSString stringWithFormat:@"Stroke: %d", strokeWidth ];
+  [strokeWidthLabel setText:strokeStr];
+  
   [previewView setStrokeWidth: selectedStrokeWidth];
   [previewView setNeedsDisplay];
 }
@@ -137,6 +191,11 @@
   selectedFilled = [filledSwitch isOn];
   [previewView setIsFilled:selectedFilled];
   [previewView setNeedsDisplay];
+}
+
+-(IBAction)updateStrokeWidth:(UIStepper*)sender {
+  double value = [sender value];
+  [self setSelectedStrokeWidth:(int)value];
 }
 
 @end

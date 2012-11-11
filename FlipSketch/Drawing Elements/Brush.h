@@ -10,6 +10,7 @@
 
 @interface Brush : Shape {
   UIBezierPath* strokePath;
+  NSMutableArray* strokePoints;
 }
 
 

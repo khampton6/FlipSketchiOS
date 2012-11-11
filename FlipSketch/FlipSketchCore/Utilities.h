@@ -10,6 +10,6 @@
 
 @interface Utilities : NSObject
 
-+ (NSDictionary*) getShapeDetails;
++ (NSMutableArray*) getShapeDetails;
 
 @end

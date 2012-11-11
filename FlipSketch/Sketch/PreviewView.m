@@ -30,54 +30,23 @@
 {
   CGContextRef context = UIGraphicsGetCurrentContext();
   CGSize size = [self frame].size;
-  CGPoint origin = [self frame].origin;
-  
-  NSLog(@"Origin: x: %f y: %f", origin.x, origin.y);
   
   int startX = 5;
   int startY = 5;
   int width = size.width - 10;
-  int height = size.height - 10;
+  int midHeight = startY + size.height / 2 - strokeWidth;
   
   UIColor* uiColor = [selectedColor uiColor];
   
+  CGContextSetStrokeColorWithColor(context, uiColor.CGColor);
   CGContextSetLineWidth(context, strokeWidth);
-  CGRect drawRect = CGRectMake(startX, startY, width, height);
+  CGContextBeginPath(context);
   
-  if(shapeType ==  rect) {
-    if(isFilled) {
-      CGContextSetFillColorWithColor(context, uiColor.CGColor);
-      CGContextAddRect(context, drawRect);
-      CGContextStrokePath(context);
-      CGContextFillRect(context, drawRect);
-    }
-    else {
-      CGContextSetStrokeColorWithColor(context, uiColor.CGColor);
-      CGContextAddRect(context, drawRect);
-      CGContextStrokePath(context);
-    } 
-  }
-  else if(shapeType == oval) {
-    if(isFilled) {
-      CGContextSetFillColorWithColor(context, uiColor.CGColor);
-      CGContextAddEllipseInRect(context, drawRect);
-      CGContextStrokePath(context);
-      CGContextFillEllipseInRect(context, drawRect);
-    }
-    else {
-      CGContextSetStrokeColorWithColor(context, uiColor.CGColor);
-      CGContextAddEllipseInRect(context, drawRect);
-      CGContextStrokePath(context);
-    }
-  }
-  else if(shapeType ==  line || shapeType == brush) {
-    CGContextSetLineWidth(context, strokeWidth);
-    CGContextSetStrokeColorWithColor(context, uiColor.CGColor);
-    
-    CGContextMoveToPoint(context, startX, startY);
-    CGContextAddLineToPoint(context, startX + width, startY + height);
-    CGContextStrokePath(context);
-  }
+  CGContextMoveToPoint(context, startX, midHeight);
+  CGContextAddLineToPoint(context, startX + width, midHeight);
+  
+  CGContextStrokePath(context);
+  
 }
 
 

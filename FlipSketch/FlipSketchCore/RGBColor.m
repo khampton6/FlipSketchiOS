@@ -24,4 +24,16 @@
   return [UIColor colorWithRed:r green:g blue:b alpha:1.0];
 }
 
+-(float) getR {
+  return r;
+}
+
+-(float) getB {
+  return b;
+}
+
+-(float) getG {
+  return g;
+}
+
 @end

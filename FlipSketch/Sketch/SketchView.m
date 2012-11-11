@@ -21,7 +21,6 @@
     return self;
 }
 
-
 -(id) init {
   self = [super init];
   shapes = [[NSMutableArray alloc] init];
@@ -34,6 +33,10 @@
   return self;
 }
 
+-(NSArray*) getShapes {
+  return shapes;
+}
+
 -(void) addDraggedShape {
   [shapes addObject:draggedShape];
   draggedShape = nil;
@@ -43,18 +46,19 @@
   draggedShape = nil;
 }
 
+
 - (void)drawRect:(CGRect)rect
 {
   [super drawRect:rect];
   
   CGContextRef context = UIGraphicsGetCurrentContext();
   
-  [draggedShape draw:context];
-  
   for(int i = 0; i < [shapes count]; i++) {
     Shape* storedShape = [shapes objectAtIndex:i];
     [storedShape draw:context];
   }
+  
+  [draggedShape draw:context];
 }
 
 @end

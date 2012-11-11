@@ -13,7 +13,7 @@
 @class SketchViewController;
 
 @interface ShapeSelectViewController : UITableViewController {
-  NSDictionary* shapeDetails;
+  NSMutableArray* shapeDetails;
   
 }
 

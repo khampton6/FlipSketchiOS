@@ -63,6 +63,15 @@
   height = yPos - y;
 }
 
+- (void) moveShapeWithDirX:(int) vX withDirY:(int) vY {
+  x += vX;
+  y += vY;
+}
+
+-(BOOL) pointTouchesShape:(CGPoint) point {
+  return ((point.x >= x) && (point.x <= x+width) && (point.y >= y) && (point.y <= y+height));
+}
+
 -(void) draw:(CGContextRef) context {
   
   UIColor* uiColor = [rgbColor uiColor];
@@ -71,14 +80,12 @@
   CGRect rect = CGRectMake(x, y, width, height);
   
   if(isFilled) {
-    NSLog(@"Filled");
     CGContextSetFillColorWithColor(context, uiColor.CGColor);
     CGContextAddRect(context, rect);
     CGContextStrokePath(context);
     CGContextFillRect(context, rect);
   }
   else {
-    NSLog(@"Not filled");
     CGContextSetStrokeColorWithColor(context, uiColor.CGColor);
     CGContextAddRect(context, rect);
     CGContextStrokePath(context);

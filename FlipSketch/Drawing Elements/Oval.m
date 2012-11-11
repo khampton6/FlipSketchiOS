@@ -43,7 +43,6 @@
   ShapePoint* bottomPoint = [[ShapePoint alloc] initWithX:x+width/2 withY:y+height withOwner:self];
   
   shapePoints = [NSMutableArray arrayWithObjects:leftPoint, rightPoint, topPoint, bottomPoint, nil];
-  NSLog(@"Gets here and size: %d", [shapePoints count]);
 }
 
 - (void) updateShapePoints {
@@ -62,7 +61,15 @@
   height = yPos - y;
 }
 
-//this function is never called.
+- (void) moveShapeWithDirX:(int) vX withDirY:(int) vY {
+  x += vX;
+  y += vY;
+}
+
+-(BOOL) pointTouchesShape:(CGPoint) point {
+  return ((point.x >= x) && (point.x <= x+width) && (point.y >= y) && (point.y <= y+height));
+}
+
 -(void) draw:(CGContextRef) context {
   
   UIColor* uiColor = [rgbColor uiColor];
@@ -71,14 +78,12 @@
   CGRect rect = CGRectMake(x, y, width, height);
   
   if(isFilled) {
-    NSLog(@"Filled");
     CGContextSetFillColorWithColor(context, uiColor.CGColor);
     CGContextAddEllipseInRect(context, rect);
     CGContextStrokePath(context);
     CGContextFillEllipseInRect(context, rect);
   }
   else {
-    NSLog(@"Not filled");
     CGContextSetStrokeColorWithColor(context, uiColor.CGColor);
     CGContextAddEllipseInRect(context, rect);
     CGContextStrokePath(context);

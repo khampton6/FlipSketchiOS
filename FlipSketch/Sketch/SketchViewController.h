@@ -12,6 +12,7 @@
 @class SketchView;
 @class RGBColor;
 @class PreviewView;
+@class Shape;
 
 @interface SketchViewController : UIViewController {
   ShapeType currShape;
@@ -21,17 +22,25 @@
   IBOutlet PreviewView* previewView;
   
   IBOutlet UISwitch* filledSwitch;
+  IBOutlet UILabel* strokeWidthLabel;
   
   int selectedStrokeWidth;
   RGBColor* selectedColor;
   BOOL selectedFilled;
+  
+  int dragPoints;
+  
+  CGPoint dragPt;
 }
 
 -(IBAction)switchFilled:(id)sender;
 
 -(void)setCurrShape: (ShapeType) type;
 -(void)setSelectedStrokeWidth: (int) strokeWidth;
+-(IBAction)updateStrokeWidth:(id)sender;
+
+-(Shape*) getSelectedShape:(CGPoint) touchPoint;
 
 @property (nonatomic, retain) RGBColor* selectedColor ;
-
+@property BOOL selectMode;
 @end

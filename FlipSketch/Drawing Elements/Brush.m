@@ -16,6 +16,10 @@
     strokePath = [[UIBezierPath alloc] init];
     strokePath.lineWidth = strokeWidth;
     [strokePath moveToPoint:CGPointMake(x, y)];
+    
+    strokePoints = [[NSMutableArray alloc] init];
+    NSValue* pointWrapper = [NSValue valueWithCGPoint: CGPointMake(xPos, yPos)];
+    [strokePoints addObject:pointWrapper];
   }
   return self;
 }
@@ -37,6 +41,75 @@
 
 - (void) updateExtraPointWithX:(int) xPos withY:(int) yPos {
   [strokePath addLineToPoint:CGPointMake(xPos, yPos)];
+  NSValue* pointWrapper = [NSValue valueWithCGPoint: CGPointMake(xPos, yPos)];
+  [strokePoints addObject:pointWrapper];
+}
+
+- (void) moveShapeWithDirX:(int) vX withDirY:(int) vY {
+  
+  NSMutableArray* newStrPts = [[NSMutableArray alloc] init];
+
+  
+  for(int i = 0; i < [strokePoints count]; i++) {
+    CGPoint strokePt = [[strokePoints objectAtIndex:i] CGPointValue];
+    strokePt.x += vX;
+    strokePt.y += vY;
+    [newStrPts addObject:[NSValue valueWithCGPoint:strokePt]];
+  }
+  shapePoints = newStrPts;
+  
+  
+  CGAffineTransform transform = CGAffineTransformMakeTranslation(vX, vY);
+  [strokePath applyTransform:transform];
+}
+
+-(BOOL) pointTouchesShape:(CGPoint) point {
+
+  //return [strokePath containsPoint:point];
+  CGPoint prevPt = [[strokePoints objectAtIndex:0] CGPointValue];
+  
+  for(int i = 1; i < [strokePoints count]; i++) {
+    CGPoint currPt = [[strokePoints objectAtIndex:i] CGPointValue];
+    
+    BOOL segmentTouched = [self pointTouchesSegment:point withPoint1:currPt withPoint2:prevPt];
+    if(segmentTouched) {
+      NSLog(@"Segment touched");
+      return YES;
+    }
+    
+    prevPt = currPt;
+  }
+  NSLog(@"Segment not touched");
+  return NO;
+}
+
+-(BOOL) pointTouchesSegment:(CGPoint) touchPoint withPoint1:(CGPoint) point1 withPoint2:(CGPoint) point2 {
+    
+  CGPoint a = CGPointMake(point1.x, point1.y);
+  CGPoint lineVec = CGPointMake(point1.x-point2.x, point1.y-point2.y);
+  double lineDist = sqrt(pow(point1.x-point2.x,2.0) + pow(point1.y-point2.y, 2.0));
+  CGPoint unitVec = CGPointMake(lineVec.x/lineDist, lineVec.y/lineDist);
+    
+  CGPoint aminusp = CGPointMake(a.x - touchPoint.x, a.y - touchPoint.y);
+  double aminuspdpn = unitVec.x*aminusp.x + unitVec.y*aminusp.y;
+    
+  CGPoint newN = CGPointMake(aminuspdpn*unitVec.x, aminuspdpn*unitVec.y);
+    
+  CGPoint perpVec = CGPointMake(aminusp.x - newN.x, aminusp.y - newN.y);
+    
+  double pointDist = sqrt(pow(perpVec.x, 2.0) + pow(perpVec.y, 2.0));
+    
+  NSLog(@"Point dist: %f", pointDist);
+    
+  //BOOL boundingBox = (touchPoint.x >= point1.x) && (touchPoint.x <= point2.x) &&
+  //(touchPoint.y >= point1.y) && (touchPoint.y <= point2.y);
+  
+  double p1Dist = sqrt(pow(point1.x - touchPoint.x, 2.0) + pow(point1.y - touchPoint.y, 2.0));
+  double p2Dist = sqrt(pow(point2.x - touchPoint.x, 2.0) + pow(point2.y - touchPoint.y, 2.0));
+    
+  BOOL withinDist = (pointDist < 50) && (p1Dist < 100 || p2Dist < 100);
+    
+  return withinDist;
 }
 
 -(void) draw:(CGContextRef) context {

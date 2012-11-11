@@ -16,5 +16,8 @@
 
 -(id) initWithR:(float) rVal withG:(float) gVal withB:(float) bVal;
 -(UIColor*) uiColor;
+-(float) getR;
+-(float) getB;
+-(float) getG;
 
 @end

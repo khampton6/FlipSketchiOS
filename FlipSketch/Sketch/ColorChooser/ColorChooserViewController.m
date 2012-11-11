@@ -65,8 +65,6 @@
   
   double Y = 255 * 0.2126 * r + 255 * 0.7152 * g + 255 * 0.0722 * b;
   
-  NSLog(@"Y: %f", Y);
-  
   if( Y < 125 ) {
     rLabel.textColor = [UIColor whiteColor];
     gLabel.textColor = [UIColor whiteColor];
@@ -80,9 +78,40 @@
   [parentController setSelectedColor:color];
 }
 
+-(void) setStartColor: (RGBColor*) startColor {
+  r = [startColor getR];
+  g = [startColor getG];
+  b = [startColor getB];
+  
+  int rSliderVal = (int)(r*255);
+  int bSliderVal = (int)(b*255);
+  int gSliderVal = (int)(g*255);
+  
+  [rSlider setValue:rSliderVal];
+  [bSlider setValue:bSliderVal];
+  [gSlider setValue:gSliderVal];
+
+  rSlider.value = rSliderVal;
+  
+  [self updateColor];
+}
+
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+  [super viewDidLoad];
+  rSlider.value = (int)(r*255);
+  gSlider.value = (int)(g*255);
+  bSlider.value = (int)(b*255);
+  
+  NSString* bstr = [NSString stringWithFormat:@"B: %d", (int)(255*b)];
+  [bLabel setText:bstr];
+  
+  NSString* rstr = [NSString stringWithFormat:@"R: %d", (int)(255*r)];
+  [rLabel setText:rstr];
+  
+  NSString* gstr = [NSString stringWithFormat:@"B: %d", (int)(255*g)];
+  [gLabel setText:gstr];
+  
 	// Do any additional setup after loading the view.
 }
 

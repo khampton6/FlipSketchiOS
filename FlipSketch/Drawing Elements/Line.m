@@ -45,7 +45,39 @@
   y2 = yPos;
 }
 
-//still figuring out draw; complete later
+- (void) moveShapeWithDirX:(int) vX withDirY:(int) vY {
+  x += vX;
+  y += vY;
+  x2 += vX;
+  y2 += vY;
+}
+
+-(BOOL) pointTouchesShape:(CGPoint) point {
+  
+  CGPoint a = CGPointMake(x, y);
+  CGPoint lineVec = CGPointMake(x-x2, y-y2);
+  double lineDist = sqrt(pow(x-x2,2.0) + pow(y-y2, 2.0));
+  CGPoint unitVec = CGPointMake(lineVec.x/lineDist, lineVec.y/lineDist);
+  
+  CGPoint aminusp = CGPointMake(a.x - point.x, a.y - point.y);
+  double aminuspdpn = unitVec.x*aminusp.x + unitVec.y*aminusp.y;
+  
+  CGPoint newN = CGPointMake(aminuspdpn*unitVec.x, aminuspdpn*unitVec.y);
+  
+  CGPoint perpVec = CGPointMake(aminusp.x - newN.x, aminusp.y - newN.y);
+  
+  double pointDist = sqrt(pow(perpVec.x, 2.0) + pow(perpVec.y, 2.0));
+  
+  NSLog(@"Point dist: %f", pointDist);
+  
+  BOOL boundingBox = (point.x >= x) && (point.x <= x2) &&
+    (point.y >= y) && (point.y <= y2);
+  
+  BOOL withinDist = (pointDist < 100);
+  
+  return boundingBox && withinDist;
+}
+
 -(void) draw:(CGContextRef) context {
   
   UIColor* uiColor = [rgbColor uiColor];

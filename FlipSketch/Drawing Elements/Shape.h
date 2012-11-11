@@ -29,6 +29,8 @@ typedef enum {
   RGBColor* rgbColor;
   BOOL isFilled;
   int strokeWidth;
+  
+  BOOL selected;
 }
 
 @property int xPos;
@@ -36,6 +38,7 @@ typedef enum {
 @property int shapeStrokeWidth;
 @property (nonatomic, retain) UIColor* shapeColor;
 @property BOOL isShapeFilled;
+@property BOOL isSelected;
 
 - (id) initWithX: (int)xPos withY: (int)yPos withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid isFilled: (BOOL) filled;
 - (id) initWithX: (int)xPos withY: (int)yPos withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid;
@@ -43,4 +46,7 @@ typedef enum {
 - (void)draw:(CGContextRef)context;
 - (void) updatePositionWithX: (int) xPos withYPos: (int) yPos withWidth: (int) shapeWidth withHeight: (int) shapeHeight;
 - (void) updateExtraPointWithX:(int) xPos withY:(int) yPos;
+- (void) moveShapeWithDirX:(int) vX withDirY:(int) vY;
+
+-(BOOL) pointTouchesShape:(CGPoint) point;
 @end

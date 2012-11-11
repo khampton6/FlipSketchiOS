@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class SketchViewController;
+@class RGBColor;
 
 @interface ColorChooserViewController : UIViewController {
   IBOutlet UISlider* rSlider;
@@ -23,5 +24,7 @@
 }
 
 @property (nonatomic, retain) SketchViewController* parentController;
+
+-(void) setStartColor: (RGBColor*) startColor;
 
 @end

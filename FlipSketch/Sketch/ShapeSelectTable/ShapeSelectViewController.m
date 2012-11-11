@@ -9,6 +9,7 @@
 #import "ShapeSelectViewController.h"
 #import "SketchViewController.h"
 #import "Utilities.h"
+#import "DrawOp.h"
 #import "Shape.h"
 #import "Rectangle.h"
 #import "Oval.h"
@@ -37,18 +38,6 @@
   [super viewDidLoad];
   
   shapeDetails = [Utilities getShapeDetails];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -68,54 +57,33 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   int index = [indexPath row];
-  NSString* shapeName = [[shapeDetails allKeys] objectAtIndex:index];
-  UIImage* shapeImg = [shapeDetails objectForKey:shapeName];
+  
+  DrawOp* op = [shapeDetails objectAtIndex:index];
   
   static NSString *CellIdentifier = @"ShapeCell";
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
   
-  cell.textLabel.text = shapeName;
+  cell.textLabel.text = [op tag];
   cell.textLabel.textAlignment = kCTRightTextAlignment;
-  cell.imageView.image = shapeImg;
+  cell.imageView.image = [op image];
   
   return cell;
 }
 
-// Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
     return NO;
 }
-
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  NSString* shapeString = [[shapeDetails allKeys] objectAtIndex:[indexPath row]];
+  
+  DrawOp* shapeOp = [shapeDetails objectAtIndex:[indexPath row]];
+  NSString* shapeString = [shapeOp tag];
+  
+  [parentController setSelectMode:NO];
   
   if([shapeString isEqualToString:@"Rectangle"]) {
     [parentController setCurrShape: rect];
@@ -129,7 +97,12 @@
   else if([shapeString isEqualToString:@"Brush"]) {
     [parentController setCurrShape: brush];
   }
+  else if([shapeString isEqualToString:@"Select"])
+  {
+    [parentController setSelectMode:YES];
+  }
   
+  [self removeFromParentViewController];
 }
 
 
