@@ -29,7 +29,6 @@
 		AA45A00D1628BB8600ADC992 /* ColorChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA45A00C1628BB8600ADC992 /* ColorChooserViewController.m */; };
 		AA6804F6161B95AB005C0D86 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6804F5161B95AB005C0D86 /* UIKit.framework */; };
 		AA6804F8161B95AB005C0D86 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6804F7161B95AB005C0D86 /* Foundation.framework */; };
-		AA6804FA161B95AB005C0D86 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6804F9161B95AB005C0D86 /* CoreGraphics.framework */; };
 		AA680500161B95AB005C0D86 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AA6804FE161B95AB005C0D86 /* InfoPlist.strings */; };
 		AA680502161B95AB005C0D86 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA680501161B95AB005C0D86 /* main.m */; };
 		AA680506161B95AB005C0D86 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA680505161B95AB005C0D86 /* AppDelegate.m */; };
@@ -42,9 +41,10 @@
 		AA94E4631620B4DE000CDFBA /* FlipSketch.m in Sources */ = {isa = PBXBuildFile; fileRef = AA94E4621620B4DE000CDFBA /* FlipSketch.m */; };
 		AAC5B79416458BB500BB2362 /* RGBColor.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC5B79316458BB500BB2362 /* RGBColor.m */; };
 		AAC5B7981645975400BB2362 /* PreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC5B7971645975400BB2362 /* PreviewView.m */; };
-		AAD8AFFF165026FB00CE728F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD8AFFE165026FB00CE728F /* QuartzCore.framework */; };
 		AAD8B00216504ACA00CE728F /* select.png in Resources */ = {isa = PBXBuildFile; fileRef = AAD8B00116504ACA00CE728F /* select.png */; };
 		AAD8B005165052B000CE728F /* DrawOp.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD8B004165052AF00CE728F /* DrawOp.m */; };
+		AAD8B00916506E5800CE728F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD8B00716506E5800CE728F /* libsqlite3.dylib */; };
+		AAD8B00A16506E7E00CE728F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6804F9161B95AB005C0D86 /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +111,7 @@
 		AAD8B00116504ACA00CE728F /* select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = select.png; path = Images/select.png; sourceTree = "<group>"; };
 		AAD8B003165052AF00CE728F /* DrawOp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawOp.h; path = FlipSketchCore/DrawOp.h; sourceTree = "<group>"; };
 		AAD8B004165052AF00CE728F /* DrawOp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawOp.m; path = FlipSketchCore/DrawOp.m; sourceTree = "<group>"; };
+		AAD8B00716506E5800CE728F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,8 +119,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA6804FA161B95AB005C0D86 /* CoreGraphics.framework in Frameworks */,
-				AAD8AFFF165026FB00CE728F /* QuartzCore.framework in Frameworks */,
+				AAD8B00A16506E7E00CE728F /* CoreGraphics.framework in Frameworks */,
+				AAD8B00916506E5800CE728F /* libsqlite3.dylib in Frameworks */,
 				AA6804F6161B95AB005C0D86 /* UIKit.framework in Frameworks */,
 				AA6804F8161B95AB005C0D86 /* Foundation.framework in Frameworks */,
 			);
@@ -186,7 +187,7 @@
 		AA6804E6161B95AB005C0D86 = {
 			isa = PBXGroup;
 			children = (
-				AAD8AFFE165026FB00CE728F /* QuartzCore.framework */,
+				AAD8B00716506E5800CE728F /* libsqlite3.dylib */,
 				AA6804FB161B95AB005C0D86 /* FlipSketch */,
 				AA6804F4161B95AB005C0D86 /* Frameworks */,
 				AA6804F2161B95AB005C0D86 /* Products */,
@@ -204,6 +205,7 @@
 		AA6804F4161B95AB005C0D86 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAD8AFFE165026FB00CE728F /* QuartzCore.framework */,
 				AA6804F5161B95AB005C0D86 /* UIKit.framework */,
 				AA6804F7161B95AB005C0D86 /* Foundation.framework */,
 				AA6804F9161B95AB005C0D86 /* CoreGraphics.framework */,
