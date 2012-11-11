@@ -34,7 +34,7 @@
   int startX = 5;
   int startY = 5;
   int width = size.width - 10;
-  int midHeight = startY + size.height / 2 - strokeWidth;
+  int midHeight = startY + size.height / 2 - strokeWidth/2;
   
   UIColor* uiColor = [selectedColor uiColor];
   

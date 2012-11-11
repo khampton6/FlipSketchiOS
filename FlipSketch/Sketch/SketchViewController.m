@@ -115,7 +115,8 @@
     [sketchView setDraggedShape:nil];
   }
   else {
-   [sketchView addDraggedShape]; 
+    [sketchView addDraggedShape];
+    selectedShape = nil;
   }
   [sketchView setNeedsDisplay];
 }
@@ -177,18 +178,35 @@
   NSString* strokeStr = [NSString stringWithFormat:@"Stroke: %d", strokeWidth ];
   [strokeWidthLabel setText:strokeStr];
   
+  if(selectedShape != nil) {
+    [selectedShape setShapeStrokeWidth:selectedStrokeWidth];
+    [sketchView setNeedsDisplay];
+  }
+  
   [previewView setStrokeWidth: selectedStrokeWidth];
   [previewView setNeedsDisplay];
 }
 
 -(void) setSelectedColor:(RGBColor *) selColor {
   selectedColor = selColor;
+  
+  if(selectedColor != nil) {
+    [selectedShape setShapeColor:selectedColor];
+    [sketchView setNeedsDisplay];
+  }
+  
   [previewView setSelectedColor:selectedColor];
   [previewView setNeedsDisplay];
 }
 
 -(IBAction)switchFilled:(id)sender {
   selectedFilled = [filledSwitch isOn];
+  
+  if(selectedShape != nil) {
+    [selectedShape setIsShapeFilled:selectedFilled];
+    [sketchView setNeedsDisplay];
+  }
+  
   [previewView setIsFilled:selectedFilled];
   [previewView setNeedsDisplay];
 }

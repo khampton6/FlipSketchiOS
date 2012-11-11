@@ -80,10 +80,12 @@
   CGRect rect = CGRectMake(x, y, width, height);
   
   if(isFilled) {
+    CGContextSetStrokeColorWithColor(context, uiColor.CGColor);
     CGContextSetFillColorWithColor(context, uiColor.CGColor);
     CGContextAddRect(context, rect);
     CGContextStrokePath(context);
     CGContextFillRect(context, rect);
+    CGContextStrokePath(context);
   }
   else {
     CGContextSetStrokeColorWithColor(context, uiColor.CGColor);

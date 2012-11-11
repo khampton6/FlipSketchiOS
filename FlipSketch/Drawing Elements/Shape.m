@@ -12,7 +12,7 @@
 
 @implementation Shape
 
-@synthesize xPos = x, yPos = y, shapeStrokeWidth = strokeWidth, shapeColor = color, isShapeFilled = isFilled, isSelected = selected;
+@synthesize xPos = x, yPos = y, shapeStrokeWidth = strokeWidth, isShapeFilled = isFilled, isSelected = selected, shapeColor = rgbColor;
 
 - (id) initWithX: (int)xPos withY: (int)yPos withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid isFilled: (BOOL) filled {
   

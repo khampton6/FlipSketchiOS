@@ -36,7 +36,7 @@ typedef enum {
 @property int xPos;
 @property int yPos;
 @property int shapeStrokeWidth;
-@property (nonatomic, retain) UIColor* shapeColor;
+@property (nonatomic, retain) RGBColor* shapeColor;
 @property BOOL isShapeFilled;
 @property BOOL isSelected;
 
