@@ -14,8 +14,8 @@
 @property int height;
 
 -(id) initWithX:(int) xPos withY:(int)yPos withWidth:(int) shapeWidth withHeight: (int) shapeHeight
-      withColor:(UIColor *)shapeColor withStrokeWidth:(int) strokeWidth isFilled:(BOOL) filled;
+      withColor:(RGBColor *)shapeColor withStrokeWidth:(int) strokeWidth isFilled:(BOOL) filled;
 
--(id) initWithX:(int) xPos withY:(int) yPos withColor:(UIColor *)shapeColor withStrokeWidth:(int) strokeWidth isFilled:(BOOL)filled;
+-(id) initWithX:(int) xPos withY:(int) yPos withColor:(RGBColor *)shapeColor withStrokeWidth:(int) strokeWidth isFilled:(BOOL)filled;
 
 @end

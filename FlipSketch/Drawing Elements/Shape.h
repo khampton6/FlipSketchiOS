@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Transformation.h"
 #import "ShapePoint.h"
+#import "RGBColor.h"
 
 typedef enum {
   rect = 1,
@@ -25,6 +26,7 @@ typedef enum {
   int x;
   int y;
   UIColor* color;
+  RGBColor* rgbColor;
   BOOL isFilled;
   int strokeWidth;
 }
@@ -35,8 +37,8 @@ typedef enum {
 @property (nonatomic, retain) UIColor* shapeColor;
 @property BOOL isShapeFilled;
 
-- (id) initWithX: (int)xPos withY: (int)yPos withColor: (UIColor*) shapeColor withStrokeWidth:(int) strokeWid isFilled: (BOOL) filled;
-- (id) initWithX: (int)xPos withY: (int)yPos withColor: (UIColor*) shapeColor withStrokeWidth:(int) strokeWid;
+- (id) initWithX: (int)xPos withY: (int)yPos withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid isFilled: (BOOL) filled;
+- (id) initWithX: (int)xPos withY: (int)yPos withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid;
 
 - (void)draw:(CGContextRef)context;
 - (void) updatePositionWithX: (int) xPos withYPos: (int) yPos withWidth: (int) shapeWidth withHeight: (int) shapeHeight;

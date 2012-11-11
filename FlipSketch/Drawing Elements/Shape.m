@@ -14,21 +14,21 @@
 
 @synthesize xPos = x, yPos = y, shapeStrokeWidth = strokeWidth, shapeColor = color, isShapeFilled = isFilled;
 
-- (id) initWithX: (int)xPos withY: (int)yPos withColor: (UIColor*) shapeColor withStrokeWidth:(int) strokeWid isFilled: (BOOL) filled {
+- (id) initWithX: (int)xPos withY: (int)yPos withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid isFilled: (BOOL) filled {
   
   self = [super init];
   
   if(self) {
     x = xPos;
     y = yPos;
-    color = shapeColor;
+    rgbColor = shapeColor;
     isFilled = filled;
     strokeWidth = strokeWid;
   }
   return self;
 }
 
-- (id) initWithX: (int)xPos withY: (int)yPos withColor: (UIColor*) shapeColor withStrokeWidth:(int) strokeWid {
+- (id) initWithX: (int)xPos withY: (int)yPos withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid {
   self = [self initWithX:xPos withY:yPos withColor:shapeColor withStrokeWidth:strokeWid isFilled:YES];
   
   return self;

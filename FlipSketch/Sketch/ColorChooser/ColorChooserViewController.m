@@ -8,6 +8,7 @@
 
 #import "ColorChooserViewController.h"
 #import "SketchViewController.h"
+#import "RGBColor.h"
 
 @interface ColorChooserViewController ()
 
@@ -57,8 +58,10 @@
 }
 
 -(void) updateColor {
-  UIColor* color = [UIColor colorWithRed:r green:g blue:b alpha:1];
-  [self.view setBackgroundColor:color];
+  
+  RGBColor* color = [[RGBColor alloc] initWithR:r withG:g withB:b];
+  
+  [self.view setBackgroundColor:[color uiColor]];
   
   double Y = 255 * 0.2126 * r + 255 * 0.7152 * g + 255 * 0.0722 * b;
   

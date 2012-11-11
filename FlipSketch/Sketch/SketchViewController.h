@@ -10,16 +10,20 @@
 #import "Shape.h"
 
 @class SketchView;
+@class RGBColor;
+@class PreviewView;
 
 @interface SketchViewController : UIViewController {
   ShapeType currShape;
   Shape* selectedShape;
   IBOutlet SketchView* sketchView;
   
+  IBOutlet PreviewView* previewView;
+  
   IBOutlet UISwitch* filledSwitch;
   
   int selectedStrokeWidth;
-  UIColor* selectedColor;
+  RGBColor* selectedColor;
   BOOL selectedFilled;
 }
 
@@ -28,6 +32,6 @@
 -(void)setCurrShape: (ShapeType) type;
 -(void)setSelectedStrokeWidth: (int) strokeWidth;
 
-@property (nonatomic, retain) UIColor* selectedColor ;
+@property (nonatomic, retain) RGBColor* selectedColor ;
 
 @end

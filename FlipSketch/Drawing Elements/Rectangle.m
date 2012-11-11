@@ -15,7 +15,7 @@
 @synthesize width, height;
 
 -(id) initWithX:(int) xPos withY:(int)yPos withWidth:(int) shapeWidth withHeight: (int) shapeHeight
-      withColor:(UIColor *)shapeColor withStrokeWidth:(int) strokeWid isFilled:(BOOL) filled {
+      withColor:(RGBColor *)shapeColor withStrokeWidth:(int) strokeWid isFilled:(BOOL) filled {
   
   self = [super initWithX:xPos withY:yPos withColor:shapeColor withStrokeWidth:strokeWid isFilled:filled];
   if(self) {
@@ -27,7 +27,7 @@
   return self;
 }
 
--(id) initWithX:(int) xPos withY:(int) yPos withColor:(UIColor *)sCol withStrokeWidth:(int) strokeWid isFilled:(BOOL)filled {
+-(id) initWithX:(int) xPos withY:(int) yPos withColor:(RGBColor *)sCol withStrokeWidth:(int) strokeWid isFilled:(BOOL)filled {
   
   self = [super initWithX:xPos withY:yPos withColor:sCol withStrokeWidth: strokeWid isFilled:filled];
   if(self) {
@@ -65,19 +65,21 @@
 
 -(void) draw:(CGContextRef) context {
   
+  UIColor* uiColor = [rgbColor uiColor];
+  
   CGContextSetLineWidth(context, strokeWidth);
   CGRect rect = CGRectMake(x, y, width, height);
   
   if(isFilled) {
     NSLog(@"Filled");
-    CGContextSetFillColorWithColor(context, self.shapeColor.CGColor);
+    CGContextSetFillColorWithColor(context, uiColor.CGColor);
     CGContextAddRect(context, rect);
     CGContextStrokePath(context);
     CGContextFillRect(context, rect);
   }
   else {
     NSLog(@"Not filled");
-    CGContextSetStrokeColorWithColor(context, color.CGColor);
+    CGContextSetStrokeColorWithColor(context, uiColor.CGColor);
     CGContextAddRect(context, rect);
     CGContextStrokePath(context);
   }

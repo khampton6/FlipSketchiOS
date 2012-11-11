@@ -13,6 +13,6 @@
 }
 
 
-- (id)initWithX:(int)xPos withY:(int)yPos withColor:(UIColor *)shapeColor withStrokeWidth:(int) strokeWid;
+- (id)initWithX:(int)xPos withY:(int)yPos withColor:(RGBColor *)shapeColor withStrokeWidth:(int) strokeWid;
 
 @end

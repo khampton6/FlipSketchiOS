@@ -9,6 +9,7 @@
 #import "SketchViewController.h"
 #import "ShapeSelectViewController.h"
 #import "ColorChooserViewController.h"
+#import "PreviewView.h"
 #import "Shape.h"
 #import "SketchView.h"
 #import "Line.h"
@@ -36,30 +37,19 @@
 {
   [super viewDidLoad];
   selectedStrokeWidth = 4;
-  selectedColor = [UIColor blackColor];
+  selectedColor = [[RGBColor alloc] initWithR:0 withG:0 withB:0];
+  [self switchFilled:self];
+  [previewView setNeedsDisplay];
+  
+  currShape = rect;
 }
 
 - (void) touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event {
   
-  // Retrieve the touch point
-  NSLog(@"dragBegan");
-  
   UITouch *touch = [[event allTouches] anyObject];
   CGPoint touchPoint = [touch locationInView:self.view];
-  NSLog(@"Touch x : %f y : %f", touchPoint.x, touchPoint.y);
   float x = touchPoint.x;
   float y = touchPoint.y;
-  
-  if(selectedColor == nil) {
-    for(int i = 0; i < 10000; i++) {
-      NSLog(@"AGH NIL");
-    }
-    selectedColor = [UIColor blackColor];
-  }
-  else{
-    NSLog(@"%@",selectedColor);
-    NSLog(@"hai");
-  }
   
   switch (currShape) {
     case rect:
@@ -118,8 +108,7 @@
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  [super didReceiveMemoryWarning];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -128,15 +117,26 @@
 
 -(void)setCurrShape: (ShapeType) type {
   currShape = type;
+  [previewView setShapeType:type];
+  [previewView setNeedsDisplay];
 }
 
 -(void)setSelectedStrokeWidth: (int) strokeWidth {
   selectedStrokeWidth = strokeWidth;
+  [previewView setStrokeWidth: selectedStrokeWidth];
+  [previewView setNeedsDisplay];
+}
+
+-(void) setSelectedColor:(RGBColor *) selColor {
+  selectedColor = selColor;
+  [previewView setSelectedColor:selectedColor];
+  [previewView setNeedsDisplay];
 }
 
 -(IBAction)switchFilled:(id)sender {
-  NSLog(@"switch");
   selectedFilled = [filledSwitch isOn];
+  [previewView setIsFilled:selectedFilled];
+  [previewView setNeedsDisplay];
 }
 
 @end

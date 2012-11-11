@@ -12,8 +12,8 @@
 
 @synthesize x2,y2;
 
-- (id)initWithX:(int)xPos withY:(int)yPos withColor:(UIColor *)shapeColor withStrokeWidth:(int)strokeWid {
-  self = [super initWithX: xPos withY: yPos withColor:(UIColor *)shapeColor withStrokeWidth:strokeWid isFilled:YES];
+- (id)initWithX:(int)xPos withY:(int)yPos withColor:(RGBColor *)shapeColor withStrokeWidth:(int)strokeWid {
+  self = [super initWithX: xPos withY: yPos withColor:shapeColor withStrokeWidth:strokeWid isFilled:YES];
   if(self) {
     x2 = x;
     y2 = y;
@@ -47,9 +47,11 @@
 
 //still figuring out draw; complete later
 -(void) draw:(CGContextRef) context {
-    
+  
+  UIColor* uiColor = [rgbColor uiColor];
+  
   CGContextSetLineWidth(context, strokeWidth);
-  CGContextSetStrokeColorWithColor(context, color.CGColor);
+  CGContextSetStrokeColorWithColor(context, uiColor.CGColor);
 
   CGContextMoveToPoint(context, x, y);
   CGContextAddLineToPoint(context, x2, y2);

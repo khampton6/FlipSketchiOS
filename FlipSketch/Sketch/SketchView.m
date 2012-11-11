@@ -16,9 +16,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
       shapes = [[NSMutableArray alloc] init];
-      NSLog(@"init here");
     }
     return self;
 }
@@ -45,8 +43,6 @@
   draggedShape = nil;
 }
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
   [super drawRect:rect];
@@ -55,7 +51,6 @@
   
   [draggedShape draw:context];
   
-  NSLog(@"Num shapes: %d", [shapes count]);
   for(int i = 0; i < [shapes count]; i++) {
     Shape* storedShape = [shapes objectAtIndex:i];
     [storedShape draw:context];

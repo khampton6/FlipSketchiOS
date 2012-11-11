@@ -10,7 +10,7 @@
 
 @implementation Brush
 
-- (id)initWithX:(int)xPos withY:(int)yPos withColor:(UIColor *)shapeColor withStrokeWidth:(int) strokeWid {
+- (id)initWithX:(int)xPos withY:(int)yPos withColor:(RGBColor *)shapeColor withStrokeWidth:(int) strokeWid {
   self = [super initWithX: xPos withY: yPos withColor: shapeColor withStrokeWidth:strokeWid];
   if(self) {
     strokePath = [[UIBezierPath alloc] init];
@@ -40,7 +40,8 @@
 }
 
 -(void) draw:(CGContextRef) context {
-  [color set];
+  UIColor* uiColor = [rgbColor uiColor];
+  [uiColor set];
   [strokePath stroke];
 }
 
