@@ -187,7 +187,6 @@
 		AA6804E6161B95AB005C0D86 = {
 			isa = PBXGroup;
 			children = (
-				AAD8B00716506E5800CE728F /* libsqlite3.dylib */,
 				AA6804FB161B95AB005C0D86 /* FlipSketch */,
 				AA6804F4161B95AB005C0D86 /* Frameworks */,
 				AA6804F2161B95AB005C0D86 /* Products */,
@@ -205,6 +204,7 @@
 		AA6804F4161B95AB005C0D86 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AAD8B00716506E5800CE728F /* libsqlite3.dylib */,
 				AAD8AFFE165026FB00CE728F /* QuartzCore.framework */,
 				AA6804F5161B95AB005C0D86 /* UIKit.framework */,
 				AA6804F7161B95AB005C0D86 /* Foundation.framework */,
@@ -259,6 +259,7 @@
 		AA690A2A1620AF5B007F7291 /* Sketch */ = {
 			isa = PBXGroup;
 			children = (
+				AABF97F41651719C00D5A27C /* Timeline */,
 				AA45A0091628BB4D00ADC992 /* ColorChooser */,
 				AA459FF61628AA0F00ADC992 /* ShapeTable */,
 				AA459FED16289BF700ADC992 /* SketchViewController.h */,
@@ -302,6 +303,13 @@
 				AA94E4621620B4DE000CDFBA /* FlipSketch.m */,
 			);
 			name = FlipSketchCore;
+			sourceTree = "<group>";
+		};
+		AABF97F41651719C00D5A27C /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Timeline;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

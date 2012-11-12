@@ -31,6 +31,8 @@
   int dragPoints;
   
   CGPoint dragPt;
+  
+  UIView* tView;
 }
 
 -(IBAction)switchFilled:(id)sender;

@@ -44,6 +44,13 @@
   [previewView setNeedsDisplay];
   
   currShape = rect;
+  
+  //Timeline allocation goes here.
+  CGRect tViewRect = CGRectMake(20, 675, 984, 50);
+  tView = [[UIView alloc] initWithFrame:tViewRect];
+  [tView setBackgroundColor:[UIColor blackColor]];
+  [self.view addSubview:tView];
+  [tView setHidden:YES];
 }
 
 - (void) touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event {
@@ -55,13 +62,13 @@
   
   dragPt = CGPointMake(x, y);
   
+  dragPoints = 1;
+  
   if(selectMode) {
     selectedShape = [self getSelectedShape:touchPoint];
     [selectedShape setIsSelected:YES];
     return;
   }
-  
-  dragPoints = 1;
   
   switch (currShape) {
     case rect:
@@ -99,7 +106,6 @@
   dragPt = newPt;
   
   if(selectMode) {
-    NSLog(@"Dir vec: %d %d", vecX, vecY);
     [selectedShape moveShapeWithDirX:vecX withDirY:vecY];
   }
   else {
@@ -110,6 +116,11 @@
 }
 
 - (void) touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event {
+  
+  if(dragPoints <= 2 && selectMode) {
+    //Toggle timelineview
+    [tView setHidden:![tView isHidden]];
+  }
   
   if(dragPoints <= 2 || selectMode) {
     [sketchView setDraggedShape:nil];
@@ -133,12 +144,9 @@
     Shape* tempShape = [shapes objectAtIndex:i];
     
     if([tempShape pointTouchesShape:touchPoint]) {
-      NSLog(@"found shape");
       return tempShape;
     }
   }
-  
-  NSLog(@"No Found Shape");
   return nil;
 }
 

@@ -358,9 +358,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="HqK-72-gpm">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="27" id="BdE-px-2BO"/>
-                                        </constraints>
                                         <connections>
                                             <action selector="updateStrokeWidth:" destination="dki-Ov-Te2" eventType="valueChanged" id="LIw-sy-LCd"/>
                                         </connections>
@@ -392,20 +389,13 @@
                                     <constraint firstAttribute="trailing" secondItem="Rxe-OQ-d61" secondAttribute="trailing" constant="239" id="q5I-aZ-HVs"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ke9-de-7gE">
-                                <color key="backgroundColor" red="0.2588235438" green="0.51372551919999998" blue="0.70980393890000004" alpha="1" colorSpace="deviceRGB"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="X8B-eo-rHQ" firstAttribute="trailing" secondItem="WAb-rG-5DD" secondAttribute="trailing" type="default" id="Asg-el-z1Q"/>
-                            <constraint firstItem="Ke9-de-7gE" firstAttribute="trailing" secondItem="WAb-rG-5DD" secondAttribute="trailing" type="default" id="Dry-fB-SJd"/>
                             <constraint firstItem="X8B-eo-rHQ" firstAttribute="top" secondItem="WAb-rG-5DD" secondAttribute="top" type="default" id="F0M-Eq-fqf"/>
-                            <constraint firstItem="Ke9-de-7gE" firstAttribute="leading" secondItem="WAb-rG-5DD" secondAttribute="leading" type="default" id="Lha-bX-1hu"/>
                             <constraint firstAttribute="bottom" secondItem="X8B-eo-rHQ" secondAttribute="bottom" constant="701" id="dDB-8P-DSY"/>
-                            <constraint firstItem="Ke9-de-7gE" firstAttribute="top" secondItem="WAb-rG-5DD" secondAttribute="top" constant="697" id="dIn-Pd-qFU"/>
                             <constraint firstItem="X8B-eo-rHQ" firstAttribute="leading" secondItem="WAb-rG-5DD" secondAttribute="leading" type="default" id="rAD-70-6BU"/>
-                            <constraint firstItem="Ke9-de-7gE" firstAttribute="bottom" secondItem="WAb-rG-5DD" secondAttribute="bottom" type="default" id="s4C-gb-7Vk"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -429,6 +419,9 @@
         <class className="ColorChooserViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ColorChooserViewController.h"/>
             <relationships>
+                <relationship kind="action" name="bSliderChanged:"/>
+                <relationship kind="action" name="gSliderChanged:"/>
+                <relationship kind="action" name="rSliderChanged:"/>
                 <relationship kind="outlet" name="bLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="bSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="gLabel" candidateClass="UILabel"/>
