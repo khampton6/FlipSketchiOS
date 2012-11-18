@@ -14,6 +14,7 @@
 		144A67D51620C24E003E694E /* ShapePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 144A67D41620C24E003E694E /* ShapePoint.m */; };
 		147A9D491620B5B000CB02BE /* Rectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 147A9D481620B5B000CB02BE /* Rectangle.m */; };
 		14A7A3641620B18600C86ED6 /* Shape.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A7A3631620B18600C86ED6 /* Shape.m */; };
+		14D7B20316598B4400900599 /* FileIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D7B20216598B4400900599 /* FileIO.m */; };
 		AA459FE51628703B00ADC992 /* FlipSketchIO.m in Sources */ = {isa = PBXBuildFile; fileRef = AA459FE41628703B00ADC992 /* FlipSketchIO.m */; };
 		AA459FEC162874F600ADC992 /* FlipSketchPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA459FEB162874F600ADC992 /* FlipSketchPreviewView.m */; };
 		AA459FEF16289BF700ADC992 /* SketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA459FEE16289BF700ADC992 /* SketchViewController.m */; };
@@ -62,6 +63,8 @@
 		147A9D481620B5B000CB02BE /* Rectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Rectangle.m; path = "Drawing Elements/Rectangle.m"; sourceTree = "<group>"; };
 		14A7A3621620B18600C86ED6 /* Shape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shape.h; path = "Drawing Elements/Shape.h"; sourceTree = "<group>"; };
 		14A7A3631620B18600C86ED6 /* Shape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Shape.m; path = "Drawing Elements/Shape.m"; sourceTree = "<group>"; };
+		14D7B20116598B4400900599 /* FileIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileIO.h; path = FlipSketchCore/FileIO/FileIO.h; sourceTree = "<group>"; };
+		14D7B20216598B4400900599 /* FileIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileIO.m; path = FlipSketchCore/FileIO/FileIO.m; sourceTree = "<group>"; };
 		AA459FE31628703B00ADC992 /* FlipSketchIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlipSketchIO.h; path = FlipSketchCore/FlipSketchIO.h; sourceTree = "<group>"; };
 		AA459FE41628703B00ADC992 /* FlipSketchIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipSketchIO.m; path = FlipSketchCore/FlipSketchIO.m; sourceTree = "<group>"; };
 		AA459FEA162874F600ADC992 /* FlipSketchPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlipSketchPreviewView.h; path = StartScreen/FlipSketchPreviewView.h; sourceTree = "<group>"; };
@@ -129,9 +132,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14D7B1FF16598AF900900599 /* FileIO */ = {
+			isa = PBXGroup;
+			children = (
+				14D7B20116598B4400900599 /* FileIO.h */,
+				14D7B20216598B4400900599 /* FileIO.m */,
+			);
+			name = FileIO;
+			sourceTree = "<group>";
+		};
 		AA459FDE16286FEC00ADC992 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				14D7B1FF16598AF900900599 /* FileIO */,
 				AA459FE31628703B00ADC992 /* FlipSketchIO.h */,
 				AA459FE41628703B00ADC992 /* FlipSketchIO.m */,
 				AA45A0001628AD6800ADC992 /* Utilities.h */,
@@ -407,6 +420,7 @@
 				AAC5B79416458BB500BB2362 /* RGBColor.m in Sources */,
 				AAC5B7981645975400BB2362 /* PreviewView.m in Sources */,
 				AAD8B005165052B000CE728F /* DrawOp.m in Sources */,
+				14D7B20316598B4400900599 /* FileIO.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

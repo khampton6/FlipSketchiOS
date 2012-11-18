@@ -10,6 +10,8 @@
 
 //#import "SketchListView.h"
 #import "FlipSketch.h"
+#import "FileIO.h"
+
 
 @class SketchListView;
 
@@ -21,6 +23,7 @@
 }
 
 @property (nonatomic, retain) NSMutableArray* flipSketches;
+@property (nonatomic, retain) FileIO* fIO;
 
 -(void) setSketch:(FlipSketch*) sketch;
 

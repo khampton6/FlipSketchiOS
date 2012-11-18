@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SketchListView.h"
+#import "FileIO.h"
 
 @interface ViewController ()
 
@@ -20,6 +21,7 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  [[[FileIO alloc]init]loadData];
   flipSketches = [[NSMutableArray alloc] init];
   [sketchList loadSketches:flipSketches];
 }
