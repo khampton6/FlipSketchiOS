@@ -54,6 +54,83 @@
   [transformations setObject:newTransform forKey: [NSNumber numberWithInt:pageNum]];
 }
 
+- (CGPoint) pointOnPage:(int) page {
+  NSNumber* key = [NSNumber numberWithInt:page];
+  Transformation* trans = [transformations objectForKey:key];
+  
+  if(trans != nil) {
+    return CGPointMake([trans newX], [trans newY]);
+  }
+  
+  Transformation* prev = [self findPrevTransform:page];
+  Transformation* next = [self findPrevTransform:page];
+  
+  if(next ==  nil) {
+    return CGPointMake([prev newX], [prev newY]);
+  }
+  
+  int startX = [prev newX];
+  int startY = [prev newY];
+  
+  int numNewTransitions = [next pageNum] - [prev pageNum] - 1;
+  
+  int xDiff = [next newX] - startX;
+  int yDiff = [next newY] - startY;
+
+  double ratio = (page - [prev pageNum]) / (numNewTransitions+1.0);
+  
+  int newX = (int)(startX + xDiff*ratio);
+  int newY = (int)(startY + yDiff*ratio);
+  
+  return CGPointMake(newX, newY);
+}
+
+-(Transformation*) findNextTransform:(int) pageNum {
+  
+  if([transformations count] == 0) {
+    return nil;
+  }
+  
+  Transformation* closest = nil;
+  int minDist = INT_MAX;
+  
+  NSArray* keys = [transformations allKeys];
+  
+  for(int i = 0; i < [keys count]; i++) {
+    NSNumber* key = [keys objectAtIndex:i];
+    Transformation* curr = [transformations objectForKey:key];
+    int currPageNum = [curr pageNum];
+    if(abs(currPageNum - pageNum) < minDist && currPageNum > pageNum) {
+      closest = curr;
+      minDist = abs(currPageNum - pageNum);
+    }
+  }
+  return closest;
+}
+
+-(Transformation*) findPrevTransform:(int) pageNum {
+  
+  if([transformations count] == 0) {
+    return nil;
+  }
+  
+  Transformation* closest = nil;
+  int minDist = INT_MAX;
+  
+  NSArray* keys = [transformations allKeys];
+  
+  for(int i = 0; i < [keys count]; i++) {
+    NSNumber* key = [keys objectAtIndex:i];
+    Transformation* curr = [transformations objectForKey:key];
+    int currPageNum = [curr pageNum];
+    if(abs(currPageNum - pageNum) < minDist && currPageNum < pageNum) {
+      closest = curr;
+      minDist = abs(currPageNum - pageNum);
+    }
+  }
+  return closest;
+}
+
 -(void) draw:(CGContextRef)context {
   
 }
