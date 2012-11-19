@@ -20,8 +20,13 @@
 
 - (void)viewDidLoad
 {
+  
+  _fIO = [[FileIO alloc] init];
+  [_fIO saveData];
+  //[_fIO loadData];
   [super viewDidLoad];
   [[[FileIO alloc]init]loadData];
+
   flipSketches = [[NSMutableArray alloc] init];
   [sketchList loadSketches:flipSketches];
 }
