@@ -281,9 +281,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X8B-eo-rHQ">
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Awa-QZ-kqn">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="34" id="3uf-JB-IaV"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Back">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -298,7 +295,6 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="939-32-SSM">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="34" id="QOf-75-fS1"/>
                                             <constraint firstAttribute="width" constant="70" id="Wzz-OX-OAq"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -362,31 +358,55 @@
                                             <action selector="updateStrokeWidth:" destination="dki-Ov-Te2" eventType="valueChanged" id="LIw-sy-LCd"/>
                                         </connections>
                                     </stepper>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Page: 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNV-Ad-u0i">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="102" id="1JA-tj-wG6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39C-AD-Dbh">
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Preview">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.2588235438" green="0.51372551919999998" blue="0.70980393890000004" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="vOL-MF-WSA" secondAttribute="bottom" constant="2" id="3mC-Ht-gXv"/>
                                     <constraint firstItem="GRY-sn-o36" firstAttribute="leading" secondItem="939-32-SSM" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="6W9-Xi-mOR"/>
                                     <constraint firstItem="vOL-MF-WSA" firstAttribute="top" secondItem="X8B-eo-rHQ" secondAttribute="top" constant="3" id="9Sd-Pw-xhB"/>
+                                    <constraint firstItem="Awa-QZ-kqn" firstAttribute="bottom" secondItem="vOL-MF-WSA" secondAttribute="bottom" type="default" id="BkO-LL-iXq"/>
                                     <constraint firstItem="HqK-72-gpm" firstAttribute="leading" secondItem="X8B-eo-rHQ" secondAttribute="leading" constant="346" id="CEk-DW-0Eg"/>
-                                    <constraint firstItem="939-32-SSM" firstAttribute="leading" secondItem="X8B-eo-rHQ" secondAttribute="leading" constant="490" id="Cw2-0q-dOx"/>
-                                    <constraint firstItem="HqK-72-gpm" firstAttribute="top" secondItem="X8B-eo-rHQ" secondAttribute="top" constant="9" id="Fy6-IR-JI9"/>
+                                    <constraint firstItem="39C-AD-Dbh" firstAttribute="top" secondItem="GRY-sn-o36" secondAttribute="top" type="default" id="GE7-5H-MKV"/>
                                     <constraint firstItem="GRY-sn-o36" firstAttribute="centerY" secondItem="hlM-dT-HFA" secondAttribute="centerY" type="default" id="Jgh-kA-j4g"/>
                                     <constraint firstItem="HTX-2s-hBh" firstAttribute="leading" secondItem="X8B-eo-rHQ" secondAttribute="leading" constant="226" id="K4T-Va-j1D"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rxe-OQ-d61" secondAttribute="trailing" constant="271" id="NUM-X2-b9t"/>
                                     <constraint firstItem="HTX-2s-hBh" firstAttribute="baseline" secondItem="Awa-QZ-kqn" secondAttribute="baseline" type="default" id="OED-CB-mdA"/>
                                     <constraint firstItem="Awa-QZ-kqn" firstAttribute="leading" secondItem="X8B-eo-rHQ" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="QCL-8l-148"/>
                                     <constraint firstAttribute="trailing" secondItem="vOL-MF-WSA" secondAttribute="trailing" constant="821" id="QQb-1b-0ir"/>
-                                    <constraint firstItem="Awa-QZ-kqn" firstAttribute="centerY" secondItem="X8B-eo-rHQ" secondAttribute="centerY" type="default" id="QzG-jX-MO3"/>
                                     <constraint firstItem="939-32-SSM" firstAttribute="bottom" secondItem="GRY-sn-o36" secondAttribute="bottom" type="default" id="Sy4-g1-JL1"/>
-                                    <constraint firstItem="hlM-dT-HFA" firstAttribute="top" secondItem="HqK-72-gpm" secondAttribute="top" type="default" id="TUc-M6-hhn"/>
                                     <constraint firstItem="Rxe-OQ-d61" firstAttribute="leading" secondItem="hlM-dT-HFA" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="TXf-OT-pSr"/>
+                                    <constraint firstItem="wNV-Ad-u0i" firstAttribute="leading" secondItem="X8B-eo-rHQ" secondAttribute="leading" constant="930" id="ZbZ-z7-bp0"/>
                                     <constraint firstItem="939-32-SSM" firstAttribute="top" secondItem="GRY-sn-o36" secondAttribute="top" type="default" id="bRY-RA-e2c"/>
                                     <constraint firstItem="vOL-MF-WSA" firstAttribute="leading" secondItem="X8B-eo-rHQ" secondAttribute="leading" constant="103" id="cLR-n1-Jbf"/>
-                                    <constraint firstItem="Awa-QZ-kqn" firstAttribute="baseline" secondItem="939-32-SSM" secondAttribute="baseline" type="default" id="ctQ-bu-7bj"/>
-                                    <constraint firstItem="HqK-72-gpm" firstAttribute="centerY" secondItem="HTX-2s-hBh" secondAttribute="centerY" type="default" id="fu9-Qb-9f8"/>
+                                    <constraint firstAttribute="trailing" secondItem="39C-AD-Dbh" secondAttribute="trailing" constant="167" id="h8W-5f-oLZ"/>
+                                    <constraint firstItem="hlM-dT-HFA" firstAttribute="baseline" secondItem="HTX-2s-hBh" secondAttribute="baseline" type="default" id="hJm-jM-NbL"/>
                                     <constraint firstItem="Rxe-OQ-d61" firstAttribute="centerY" secondItem="hlM-dT-HFA" secondAttribute="centerY" type="default" id="iE8-6H-6Au"/>
+                                    <constraint firstItem="wNV-Ad-u0i" firstAttribute="bottom" secondItem="HqK-72-gpm" secondAttribute="bottom" type="default" id="iTy-PF-p9y"/>
+                                    <constraint firstItem="39C-AD-Dbh" firstAttribute="centerY" secondItem="X8B-eo-rHQ" secondAttribute="centerY" type="default" id="jpr-pV-uXB"/>
                                     <constraint firstItem="GRY-sn-o36" firstAttribute="baseline" secondItem="hlM-dT-HFA" secondAttribute="baseline" type="default" id="jvq-nl-Is0"/>
-                                    <constraint firstAttribute="trailing" secondItem="Rxe-OQ-d61" secondAttribute="trailing" constant="239" id="q5I-aZ-HVs"/>
+                                    <constraint firstItem="939-32-SSM" firstAttribute="baseline" secondItem="GRY-sn-o36" secondAttribute="baseline" type="default" id="kHC-dT-aOQ"/>
+                                    <constraint firstItem="39C-AD-Dbh" firstAttribute="bottom" secondItem="GRY-sn-o36" secondAttribute="bottom" type="default" id="nX3-AP-NcO"/>
+                                    <constraint firstItem="wNV-Ad-u0i" firstAttribute="centerY" secondItem="vOL-MF-WSA" secondAttribute="centerY" type="default" id="scX-OV-Ksx"/>
+                                    <constraint firstItem="939-32-SSM" firstAttribute="leading" secondItem="X8B-eo-rHQ" secondAttribute="leading" constant="458" id="v88-cf-p0X"/>
+                                    <constraint firstItem="939-32-SSM" firstAttribute="bottom" secondItem="vOL-MF-WSA" secondAttribute="bottom" type="default" id="wVZ-7a-Dsy"/>
+                                    <constraint firstItem="39C-AD-Dbh" firstAttribute="baseline" secondItem="GRY-sn-o36" secondAttribute="baseline" type="default" id="zTC-Lk-usz"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UxX-XP-8rr">
@@ -417,9 +437,9 @@
                             <constraint firstAttribute="trailing" secondItem="UxX-XP-8rr" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="9jy-Zq-034"/>
                             <constraint firstItem="X8B-eo-rHQ" firstAttribute="trailing" secondItem="WAb-rG-5DD" secondAttribute="trailing" type="default" id="Asg-el-z1Q"/>
                             <constraint firstItem="X8B-eo-rHQ" firstAttribute="top" secondItem="WAb-rG-5DD" secondAttribute="top" type="default" id="F0M-Eq-fqf"/>
+                            <constraint firstAttribute="bottom" secondItem="X8B-eo-rHQ" secondAttribute="bottom" constant="701" id="Ju5-SG-F0V"/>
                             <constraint firstItem="UxX-XP-8rr" firstAttribute="leading" secondItem="WAb-rG-5DD" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="LIw-vx-1YM"/>
                             <constraint firstItem="UxX-XP-8rr" firstAttribute="top" secondItem="WAb-rG-5DD" secondAttribute="top" constant="674" id="UWp-cj-pMa"/>
-                            <constraint firstAttribute="bottom" secondItem="X8B-eo-rHQ" secondAttribute="bottom" constant="701" id="gZI-Ha-EXr"/>
                             <constraint firstItem="X8B-eo-rHQ" firstAttribute="leading" secondItem="WAb-rG-5DD" secondAttribute="leading" type="default" id="rAD-70-6BU"/>
                             <constraint firstAttribute="bottom" secondItem="UxX-XP-8rr" secondAttribute="bottom" constant="12" id="rrU-Nz-fKq"/>
                         </constraints>
@@ -432,6 +452,7 @@
                     <connections>
                         <outlet property="addPageView" destination="cLn-Hz-t1f" id="OWn-JK-Ei9"/>
                         <outlet property="filledSwitch" destination="Rxe-OQ-d61" id="dH6-0S-oQu"/>
+                        <outlet property="pageLabel" destination="wNV-Ad-u0i" id="qkG-Ce-Nkj"/>
                         <outlet property="previewView" destination="vOL-MF-WSA" id="rzb-Yk-ZBr"/>
                         <outlet property="sketchView" destination="WAb-rG-5DD" id="OyO-qx-qnK"/>
                         <outlet property="strokeWidthLabel" destination="HTX-2s-hBh" id="Rfc-h9-ElW"/>
@@ -484,12 +505,14 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SketchViewController.h"/>
             <relationships>
                 <relationship kind="action" name="addPageImage:" candidateClass="UITapGestureRecognizer"/>
+                <relationship kind="action" name="setEndForShape:"/>
                 <relationship kind="action" name="switchFilled:"/>
                 <relationship kind="action" name="timelinePan:" candidateClass="UIPanGestureRecognizer"/>
                 <relationship kind="action" name="timelineTap:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="action" name="updateStrokeWidth:"/>
                 <relationship kind="outlet" name="addPageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="filledSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="pageLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="previewView" candidateClass="PreviewView"/>
                 <relationship kind="outlet" name="sketchView" candidateClass="SketchView"/>
                 <relationship kind="outlet" name="strokeWidthLabel" candidateClass="UILabel"/>

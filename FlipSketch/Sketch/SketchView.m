@@ -10,7 +10,7 @@
 
 @implementation SketchView
 
-@synthesize draggedShape;
+@synthesize draggedShape, page;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -46,6 +46,14 @@
   draggedShape = nil;
 }
 
+-(int) page {
+  return page;
+}
+
+-(void) setPage:(int)npage {
+  page = npage;
+  [self setNeedsDisplay];
+}
 
 - (void)drawRect:(CGRect)rect
 {
@@ -55,10 +63,15 @@
   
   for(int i = 0; i < [shapes count]; i++) {
     Shape* storedShape = [shapes objectAtIndex:i];
-    [storedShape draw:context];
+    
+    NSLog(@"Curr page: %d", page);
+    NSLog(@"Shape start: %d end: %d", [storedShape startPage], [storedShape endPage]);
+    if( [storedShape startPage] <= page && (page <=[storedShape endPage] || [storedShape endPage] == -1)) {
+      [storedShape drawWithContext:context onPage:page];
+    }
   }
   
-  [draggedShape draw:context];
+  [draggedShape drawWithContext:context onPage:page];
 }
 
 @end

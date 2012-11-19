@@ -13,6 +13,7 @@
 @implementation Shape
 
 @synthesize xPos = x, yPos = y, shapeStrokeWidth = strokeWidth, isShapeFilled = isFilled, isSelected = selected, shapeColor = rgbColor;
+@synthesize startPage = _startPage, endPage = _endPage;
 
 - (id) initWithX: (int)xPos withY: (int)yPos withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid isFilled: (BOOL) filled {
   
@@ -27,9 +28,10 @@
     
     selected = NO;
     
+    _startPage = 0;
+    _endPage = -1;
+    
     transformations = [[NSMutableDictionary alloc] init];
-    Transformation* transform = [[Transformation alloc] initWithPageNumber:0 withX:x withY:y];
-    [transformations setObject:transform forKey:[NSNumber numberWithInt:0]];
   }
   return self;
 }
@@ -38,6 +40,16 @@
   self = [self initWithX:xPos withY:yPos withColor:shapeColor withStrokeWidth:strokeWid isFilled:YES];
   
   return self;
+}
+
+-(void) setStartPage:(int)startPage {
+  _startPage = startPage;
+  Transformation* transform = [[Transformation alloc] initWithPageNumber:startPage withX:x withY:y];
+  [transformations setObject:transform forKey:[NSNumber numberWithInt:startPage]];
+}
+
+-(int) startPage {
+  return _startPage;
 }
 
 - (void) updatePositionWithX: (int) xPos withYPos: (int) yPos withWidth: (int) shapeWidth
@@ -50,11 +62,16 @@
 }
 
 - (void) moveShapeWithDirX:(int) vX withDirY:(int) vY withPageNumber:(int) pageNum {
-  Transformation* newTransform = [[Transformation alloc] initWithPageNumber:pageNum withX:vX withY:vY];
+  Transformation* newTransform = [[Transformation alloc] initWithPageNumber:pageNum withX:x+vX withY:y+vY];
   [transformations setObject:newTransform forKey: [NSNumber numberWithInt:pageNum]];
 }
 
 - (CGPoint) pointOnPage:(int) page {
+  
+  if(selected) {
+    return CGPointMake(x, y);
+  }
+  
   NSNumber* key = [NSNumber numberWithInt:page];
   Transformation* trans = [transformations objectForKey:key];
   
@@ -63,7 +80,7 @@
   }
   
   Transformation* prev = [self findPrevTransform:page];
-  Transformation* next = [self findPrevTransform:page];
+  Transformation* next = [self findNextTransform:page];
   
   if(next ==  nil) {
     return CGPointMake([prev newX], [prev newY]);
@@ -131,7 +148,7 @@
   return closest;
 }
 
--(void) draw:(CGContextRef)context {
+- (void)drawWithContext:(CGContextRef)context onPage:(int) page {
   
 }
 
@@ -146,6 +163,10 @@
 - (NSString *)description
 {
   return [NSString stringWithFormat:@"Generic Shape"];
+}
+
+- (NSMutableDictionary*) transformations {
+  return transformations;
 }
 
 @end

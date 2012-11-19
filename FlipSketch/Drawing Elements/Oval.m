@@ -71,12 +71,16 @@
   return ((point.x >= x) && (point.x <= x+width) && (point.y >= y) && (point.y <= y+height));
 }
 
--(void) draw:(CGContextRef) context {
+- (void)drawWithContext:(CGContextRef)context onPage:(int) page {
+  
+  CGPoint pt = [super pointOnPage:page];
+  CGFloat cX = (int)pt.x;
+  CGFloat cY = (int)pt.y;
   
   UIColor* uiColor = [rgbColor uiColor];
   
   CGContextSetLineWidth(context, strokeWidth);
-  CGRect rect = CGRectMake(x, y, width, height);
+  CGRect rect = CGRectMake(cX, cY, width, height);
   
   if(isFilled) {
     CGContextSetFillColorWithColor(context, uiColor.CGColor);

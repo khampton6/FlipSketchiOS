@@ -112,7 +112,7 @@
   return withinDist;
 }
 
--(void) draw:(CGContextRef) context {
+- (void)drawWithContext:(CGContextRef)context onPage:(int) page {
   UIColor* uiColor = [rgbColor uiColor];
   [uiColor set];
   [strokePath stroke];

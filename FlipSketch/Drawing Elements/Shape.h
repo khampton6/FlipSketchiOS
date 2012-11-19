@@ -30,6 +30,9 @@ typedef enum {
   BOOL isFilled;
   int strokeWidth;
   
+  int _startPage;
+  int _stopPage;
+  
   BOOL selected;
 }
 
@@ -39,11 +42,13 @@ typedef enum {
 @property (nonatomic, retain) RGBColor* shapeColor;
 @property BOOL isShapeFilled;
 @property BOOL isSelected;
+@property int startPage;
+@property int endPage;
 
 - (id) initWithX: (int)xPos withY: (int)yPos withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid isFilled: (BOOL) filled;
 - (id) initWithX: (int)xPos withY: (int)yPos withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid;
 
-- (void)draw:(CGContextRef)context;
+- (void)drawWithContext:(CGContextRef)context onPage:(int) page;
 - (void) updatePositionWithX: (int) xPos withYPos: (int) yPos withWidth: (int) shapeWidth withHeight: (int) shapeHeight;
 - (void) updateExtraPointWithX:(int) xPos withY:(int) yPos;
 - (void) moveShapeWithDirX:(int) vX withDirY:(int) vY withPageNumber:(int) pageNum;
@@ -53,4 +58,6 @@ typedef enum {
 
 -(Transformation*) findNextTransform:(int) pageNum;
 -(Transformation*) findPrevTransform:(int) pageNum;
+
+- (NSMutableDictionary*) transformations;
 @end

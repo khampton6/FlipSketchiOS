@@ -38,6 +38,10 @@
   IBOutlet TimeLineView* tView;
   IBOutlet UIView* tViewPanel;
   IBOutlet UIImageView* addPageView;
+  
+  IBOutlet UILabel* pageLabel;
+  
+  int currPage;
 }
 
 -(IBAction)switchFilled:(id)sender;
@@ -47,6 +51,8 @@
 -(IBAction)updateStrokeWidth:(id)sender;
 
 -(Shape*) getSelectedShape:(CGPoint) touchPoint;
+
+-(void) updatePageLabel:(int) newPage;
 
 @property (nonatomic, retain) RGBColor* selectedColor ;
 @property BOOL selectMode;

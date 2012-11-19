@@ -14,6 +14,7 @@
 }
 
 @property (nonatomic, retain) Shape* draggedShape;
+@property int page;
 
 -(void) addDraggedShape;
 -(void) cancelDraggedShape;

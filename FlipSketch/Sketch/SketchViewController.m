@@ -42,6 +42,8 @@
   
   selectMode = YES;
   
+  currPage = 0;
+  
   selectedStrokeWidth = 5;
   selectedColor = [[RGBColor alloc] initWithR:0 withG:0 withB:0];
   [self switchFilled:self];
@@ -81,23 +83,42 @@
   dragPoints = 1;
   
   if(selectMode) {
+    
+    if(selectedShape != nil) {
+      [selectedShape setIsSelected:NO];
+    }
     selectedShape = [self getSelectedShape:touchPoint];
     [selectedShape setIsSelected:YES];
+    
+    if([touch tapCount] == 2) {
+      if([selectedShape endPage] == -1) {
+        [selectedShape setEndPage:currPage];
+      }
+      else {
+        [selectedShape setEndPage:-1];
+      }
+      [sketchView setNeedsDisplay];
+    }
+    
     return;
   }
   
   switch (currShape) {
     case rect:
       selectedShape = [[Rectangle alloc] initWithX:x withY:y withColor:selectedColor withStrokeWidth:selectedStrokeWidth isFilled:selectedFilled];
+      [selectedShape setStartPage:currPage];
       break;
     case oval:
       selectedShape = [[Oval alloc] initWithX:x withY:y withColor:selectedColor withStrokeWidth:selectedStrokeWidth isFilled:selectedFilled];
+      [selectedShape setStartPage:currPage];
       break;
     case line:
       selectedShape = [[Line alloc] initWithX:x withY:y withColor:selectedColor withStrokeWidth:selectedStrokeWidth];
+      [selectedShape setStartPage:currPage];
       break;
     case brush:
       selectedShape = [[Brush alloc] initWithX:x withY:y withColor:selectedColor withStrokeWidth:selectedStrokeWidth];
+      [selectedShape setStartPage:currPage];
       break;
   }
   
@@ -122,7 +143,7 @@
   dragPt = newPt;
   
   if(selectMode) {
-    [selectedShape moveShapeWithDirX:vecX withDirY:vecY];
+    [selectedShape moveShapeWithDirX:vecX withDirY:vecY withPageNumber:currPage];
   }
   else {
     [selectedShape updateExtraPointWithX:x withY:y];
@@ -159,7 +180,10 @@
   for(int i = 0; i < [shapes count]; i++) {
     Shape* tempShape = [shapes objectAtIndex:i];
     
-    if([tempShape pointTouchesShape:touchPoint]) {
+    BOOL withinBounds = [tempShape startPage] <= currPage &&
+      (currPage <= [tempShape endPage] || [tempShape endPage] == -1);
+    
+    if([tempShape pointTouchesShape:touchPoint] && withinBounds) {
       return tempShape;
     }
   }
@@ -249,10 +273,18 @@
   NSLog(@"Pushed");
 }
 
+-(void) updatePageLabel:(int) newPage {
+  NSString* pageStr = [NSString stringWithFormat:@"Page: %d", newPage+1];
+  [pageLabel setText:pageStr];
+}
+
 //scroll the timelineArea to specify a page to make active.
 -(IBAction)timelinePan:(UIPanGestureRecognizer *)recognizer{
   
   int theActivePage = [self calcActivePage:recognizer];
+  currPage = theActivePage;
+  [self updatePageLabel:currPage];
+  [sketchView setPage:currPage];
   
   [timeline setActivePageWithIndex:theActivePage];
   [(TimeLineView *)tView setActivePage: theActivePage];
@@ -266,12 +298,14 @@
   //int theActivePage = 0;
   
   int theActivePage = [self calcActivePage:(UIPanGestureRecognizer *)recognizer];
+  currPage = theActivePage;
+  [self updatePageLabel:currPage];
+  [sketchView setPage:currPage];
   
   [timeline setActivePageWithIndex:theActivePage];
   [(TimeLineView *)tView setActivePage: theActivePage];
   
   [tView setNeedsDisplay];
-  
 }
 
 -(int) calcActivePage:(UIGestureRecognizer *)recognizer{
