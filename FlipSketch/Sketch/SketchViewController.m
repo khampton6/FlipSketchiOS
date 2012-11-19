@@ -40,6 +40,20 @@
 {
   [super viewDidLoad];
   
+  NSMutableArray* arr = [[NSMutableArray alloc] init];
+  
+  Transformation* start = [[Transformation alloc] initWithPageNumber:0 withX:100 withY:100];
+  Transformation* end = [[Transformation alloc] initWithPageNumber:9 withX:300 withY:400];
+  
+  [arr addObject:start];
+  [arr addObject:end];
+  [Transformation translateBetweenTransformations:start andTransformation: end withList:arr];
+  
+  for(int i = 0; i < [arr count]; i++) {
+    Transformation* t = [arr objectAtIndex:i];
+    [t print];
+  }
+  
   selectMode = YES;
   
   selectedStrokeWidth = 5;
@@ -122,7 +136,7 @@
   dragPt = newPt;
   
   if(selectMode) {
-    [selectedShape moveShapeWithDirX:vecX withDirY:vecY];
+    [selectedShape moveShapeWithDirX:vecX withDirY:vecY withPageNumber:0];
   }
   else {
     [selectedShape updateExtraPointWithX:x withY:y];

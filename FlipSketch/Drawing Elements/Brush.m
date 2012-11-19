@@ -45,10 +45,10 @@
   [strokePoints addObject:pointWrapper];
 }
 
-- (void) moveShapeWithDirX:(int) vX withDirY:(int) vY {
+- (void) moveShapeWithDirX:(int) vX withDirY:(int) vY withPageNumber:(int) pageNum {
+  [super moveShapeWithDirX:vX withDirY:vY withPageNumber:pageNum];
   
   NSMutableArray* newStrPts = [[NSMutableArray alloc] init];
-
   
   for(int i = 0; i < [strokePoints count]; i++) {
     CGPoint strokePt = [[strokePoints objectAtIndex:i] CGPointValue];

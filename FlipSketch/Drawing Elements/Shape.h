@@ -20,7 +20,7 @@ typedef enum {
 
 @interface Shape : NSObject {
 
-  NSMutableArray* transformations;
+  NSMutableDictionary* transformations;
   NSMutableArray* shapePoints;
   
   int x;
@@ -46,7 +46,7 @@ typedef enum {
 - (void)draw:(CGContextRef)context;
 - (void) updatePositionWithX: (int) xPos withYPos: (int) yPos withWidth: (int) shapeWidth withHeight: (int) shapeHeight;
 - (void) updateExtraPointWithX:(int) xPos withY:(int) yPos;
-- (void) moveShapeWithDirX:(int) vX withDirY:(int) vY;
+- (void) moveShapeWithDirX:(int) vX withDirY:(int) vY withPageNumber:(int) pageNum;
 
 -(BOOL) pointTouchesShape:(CGPoint) point;
 @end

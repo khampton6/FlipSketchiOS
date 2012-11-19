@@ -63,7 +63,8 @@
   height = yPos - y;
 }
 
-- (void) moveShapeWithDirX:(int) vX withDirY:(int) vY {
+- (void) moveShapeWithDirX:(int) vX withDirY:(int) vY withPageNumber:(int) pageNum {
+  [super moveShapeWithDirX:vX withDirY:vY withPageNumber:pageNum];
   x += vX;
   y += vY;
 }

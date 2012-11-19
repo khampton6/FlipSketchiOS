@@ -26,6 +26,10 @@
     strokeWidth = strokeWid;
     
     selected = NO;
+    
+    transformations = [[NSMutableDictionary alloc] init];
+    Transformation* transform = [[Transformation alloc] initWithPageNumber:0 withX:x withY:y];
+    [transformations setObject:transform forKey:[NSNumber numberWithInt:0]];
   }
   return self;
 }
@@ -45,8 +49,9 @@
   
 }
 
-- (void) moveShapeWithDirX:(int) vX withDirY:(int) vY {
-  
+- (void) moveShapeWithDirX:(int) vX withDirY:(int) vY withPageNumber:(int) pageNum {
+  Transformation* newTransform = [[Transformation alloc] initWithPageNumber:pageNum withX:vX withY:vY];
+  [transformations setObject:newTransform forKey: [NSNumber numberWithInt:pageNum]];
 }
 
 -(void) draw:(CGContextRef)context {

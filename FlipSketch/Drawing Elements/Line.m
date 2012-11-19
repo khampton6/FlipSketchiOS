@@ -45,7 +45,8 @@
   y2 = yPos;
 }
 
-- (void) moveShapeWithDirX:(int) vX withDirY:(int) vY {
+- (void) moveShapeWithDirX:(int) vX withDirY:(int) vY withPageNumber:(int) pageNum {
+  [super moveShapeWithDirX:vX withDirY:vY withPageNumber:pageNum];
   x += vX;
   y += vY;
   x2 += vX;

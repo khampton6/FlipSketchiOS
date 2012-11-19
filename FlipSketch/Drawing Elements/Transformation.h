@@ -21,6 +21,7 @@
 @property int newY;
 
 -(id) initWithPageNumber:(int) pageNumber withX:(int) x withY:(int) y;
-+ (NSArray*) translateBetweenTransformations: (Transformation*) prev andTransformation:(Transformation* ) current;
++ (NSArray*) translateBetweenTransformations: (Transformation*) prev andTransformation:(Transformation* ) current withList:(NSMutableArray*) array;
+-(void) print;
 
 @end
