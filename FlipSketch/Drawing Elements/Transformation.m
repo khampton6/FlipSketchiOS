@@ -10,5 +10,24 @@
 
 @implementation Transformation
 
+@synthesize pageNum = _pageNum, newX = _newX, newY = _newY;
+
+-(id) initWithPageNumber:(int) pageNumber withX:(int) x withY:(int) y {
+  self = [super init];
+  
+  _pageNum = pageNumber;
+  _newX = x;
+  _newY = y;
+  
+  return self;
+}
+
++ (NSArray*) translateBetweenTransformations: (Transformation*) prev andTransformation:(Transformation* ) current {
+  int startIndex = [prev pageNum] + 1;
+  
+  
+  
+}
+
 
 @end

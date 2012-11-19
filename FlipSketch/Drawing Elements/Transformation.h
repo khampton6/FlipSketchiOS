@@ -9,6 +9,18 @@
 //
 #import <Foundation/Foundation.h>
 
-@interface Transformation : NSObject
+@interface Transformation : NSObject {
+  int _pageNum;
+  
+  int _newX;
+  int _newY;
+}
+
+@property int pageNum;
+@property int newX;
+@property int newY;
+
+-(id) initWithPageNumber:(int) pageNumber withX:(int) x withY:(int) y;
++ (NSArray*) translateBetweenTransformations: (Transformation*) prev andTransformation:(Transformation* ) current;
 
 @end

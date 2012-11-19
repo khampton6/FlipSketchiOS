@@ -99,7 +99,7 @@
     }
     
     [filemgr release];
-    [super viewDidLoad];
+    //[super viewDidLoad];
   }
 }
 

@@ -14,6 +14,9 @@
 #import "SketchView.h"
 #import "Line.h"
 #import "Brush.h"
+#import "TimeLineView.h"
+#import "TimeLineViewController.h"
+#import "Timeline.h"
 
 @interface SketchViewController ()
 
@@ -21,7 +24,7 @@
 
 @implementation SketchViewController
 
-@synthesize selectedColor, selectMode;
+@synthesize selectedColor, selectMode, timeline;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,6 +39,9 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  
+  selectMode = YES;
+  
   selectedStrokeWidth = 5;
   selectedColor = [[RGBColor alloc] initWithR:0 withG:0 withB:0];
   [self switchFilled:self];
@@ -45,12 +51,22 @@
   
   currShape = rect;
   
-  //Timeline allocation goes here.
-  CGRect tViewRect = CGRectMake(20, 675, 984, 50);
-  tView = [[UIView alloc] initWithFrame:tViewRect];
-  [tView setBackgroundColor:[UIColor blackColor]];
-  [self.view addSubview:tView];
-  [tView setHidden:YES];
+  [tViewPanel setHidden:YES];
+  
+  timeline = [[Timeline alloc] init];
+  
+  UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(timelineTap:)];
+  [tView addGestureRecognizer:tapGesture];
+  
+  UIPanGestureRecognizer* drag = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(timelinePan:)];
+  [tView addGestureRecognizer:drag];
+  
+  UITapGestureRecognizer* addTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(addPageImage:)];
+  [addPageView addGestureRecognizer:addTapGesture];
+  
+  [tapGesture release];
+  [drag release];
+  [addTapGesture release];
 }
 
 - (void) touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event {
@@ -119,7 +135,7 @@
   
   if(dragPoints <= 2 && selectMode) {
     //Toggle timelineview
-    [tView setHidden:![tView isHidden]];
+    [tViewPanel setHidden:![tViewPanel isHidden]];
   }
   
   if(dragPoints <= 2 || selectMode) {
@@ -223,5 +239,75 @@
   double value = [sender value];
   [self setSelectedStrokeWidth:(int)value];
 }
+
+#pragma mark TimeLine
+
+-(IBAction)addPageImage:(UITapGestureRecognizer *)recognizer {
+  [timeline addPage];
+  [(TimeLineView *)tView setNumLines:[[timeline pages] count]];
+  [tView setNeedsDisplay];
+  NSLog(@"Pushed");
+}
+
+//scroll the timelineArea to specify a page to make active.
+-(IBAction)timelinePan:(UIPanGestureRecognizer *)recognizer{
+  
+  int theActivePage = [self calcActivePage:recognizer];
+  
+  [timeline setActivePageWithIndex:theActivePage];
+  [(TimeLineView *)tView setActivePage: theActivePage];
+  
+  [tView setNeedsDisplay];
+}
+
+//tap on the timeline area to specify a page to make active
+-(IBAction)timelineTap:(UITapGestureRecognizer *)recognizer{
+  
+  //int theActivePage = 0;
+  
+  int theActivePage = [self calcActivePage:(UIPanGestureRecognizer *)recognizer];
+  
+  [timeline setActivePageWithIndex:theActivePage];
+  [(TimeLineView *)tView setActivePage: theActivePage];
+  
+  [tView setNeedsDisplay];
+  
+}
+
+-(int) calcActivePage:(UIGestureRecognizer *)recognizer{
+  
+  CGRect rect = [tView frame];
+  
+  //TODO; make this get the size of the view object, not hardcoded width based on the storyboard attribute.
+  //CGRect screenRect = [[UIScreen mainScreen] bounds];
+  //  CGFloat screenWidth = screenRect.size.width-108;
+  CGFloat screenWidth = rect.size.width;//screenRect.size.height-108;
+  
+  NSLog(@"numlines is %d",[(TimeLineView *)tView numLines]);
+  int numLines = [(TimeLineView *)tView numLines];
+  int displacement = screenWidth/numLines;
+  int absLoc = screenWidth;
+  int activeIndex = 0;
+  int tempActive = -1;
+  if(numLines>0){
+    for(int i = 0; i<numLines-1; i++){
+      tempActive = numLines-2;
+      absLoc = absLoc - displacement;
+      
+      CGPoint location = [recognizer locationInView:tView];
+      
+      if(location.x < absLoc){
+        //NSLog(@"trans %f%f",location.x,location.y);
+        tempActive = tempActive - i;
+        activeIndex = (numLines-1) - tempActive;
+        
+        //NSLog(@"trans %f  %f  %d",location.x,location.y,tempActive);
+      }
+    }
+  }
+  NSLog(@" activeIndex is %d", activeIndex);
+  return activeIndex;
+}
+
 
 @end

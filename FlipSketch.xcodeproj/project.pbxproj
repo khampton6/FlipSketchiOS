@@ -19,7 +19,6 @@
 		AA459FEC162874F600ADC992 /* FlipSketchPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA459FEB162874F600ADC992 /* FlipSketchPreviewView.m */; };
 		AA459FEF16289BF700ADC992 /* SketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA459FEE16289BF700ADC992 /* SketchViewController.m */; };
 		AA459FF216289FB900ADC992 /* SketchView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA459FF116289FB900ADC992 /* SketchView.m */; };
-		AA459FF51628A1D100ADC992 /* TimeLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA459FF41628A1D100ADC992 /* TimeLineView.m */; };
 		AA459FF91628AA4500ADC992 /* ShapeSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA459FF81628AA4500ADC992 /* ShapeSelectViewController.m */; };
 		AA459FFE1628ABF900ADC992 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = AA459FFC1628ABF900ADC992 /* plus.png */; };
 		AA459FFF1628ABF900ADC992 /* Rectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = AA459FFD1628ABF900ADC992 /* Rectangle.png */; };
@@ -46,6 +45,11 @@
 		AAD8B005165052B000CE728F /* DrawOp.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD8B004165052AF00CE728F /* DrawOp.m */; };
 		AAD8B00916506E5800CE728F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD8B00716506E5800CE728F /* libsqlite3.dylib */; };
 		AAD8B00A16506E7E00CE728F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6804F9161B95AB005C0D86 /* CoreGraphics.framework */; };
+		AAF5E4E91659969800194DA5 /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF5E4E31659969800194DA5 /* Page.m */; };
+		AAF5E4EA1659969800194DA5 /* Plus_sign.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AAF5E4E41659969800194DA5 /* Plus_sign.jpg */; };
+		AAF5E4EB1659969800194DA5 /* Timeline.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF5E4E61659969800194DA5 /* Timeline.m */; };
+		AAF5E4EC1659969800194DA5 /* TimeLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF5E4E81659969800194DA5 /* TimeLineView.m */; };
+		AAF5E4F01659983800194DA5 /* TimeLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF5E4EF1659983800194DA5 /* TimeLineViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,8 +77,6 @@
 		AA459FEE16289BF700ADC992 /* SketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SketchViewController.m; path = Sketch/SketchViewController.m; sourceTree = "<group>"; };
 		AA459FF016289FB900ADC992 /* SketchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SketchView.h; path = Sketch/SketchView.h; sourceTree = "<group>"; };
 		AA459FF116289FB900ADC992 /* SketchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SketchView.m; path = Sketch/SketchView.m; sourceTree = "<group>"; };
-		AA459FF31628A1D100ADC992 /* TimeLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeLineView.h; path = Sketch/TimeLineView.h; sourceTree = "<group>"; };
-		AA459FF41628A1D100ADC992 /* TimeLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeLineView.m; path = Sketch/TimeLineView.m; sourceTree = "<group>"; };
 		AA459FF71628AA4500ADC992 /* ShapeSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShapeSelectViewController.h; path = Sketch/ShapeSelectTable/ShapeSelectViewController.h; sourceTree = "<group>"; };
 		AA459FF81628AA4500ADC992 /* ShapeSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShapeSelectViewController.m; path = Sketch/ShapeSelectTable/ShapeSelectViewController.m; sourceTree = "<group>"; };
 		AA459FFC1628ABF900ADC992 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plus.png; path = Images/plus.png; sourceTree = "<group>"; };
@@ -115,6 +117,15 @@
 		AAD8B003165052AF00CE728F /* DrawOp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawOp.h; path = FlipSketchCore/DrawOp.h; sourceTree = "<group>"; };
 		AAD8B004165052AF00CE728F /* DrawOp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawOp.m; path = FlipSketchCore/DrawOp.m; sourceTree = "<group>"; };
 		AAD8B00716506E5800CE728F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		AAF5E4E21659969800194DA5 /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Page.h; path = Timeline/Page.h; sourceTree = "<group>"; };
+		AAF5E4E31659969800194DA5 /* Page.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Page.m; path = Timeline/Page.m; sourceTree = "<group>"; };
+		AAF5E4E41659969800194DA5 /* Plus_sign.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Plus_sign.jpg; path = Timeline/Plus_sign.jpg; sourceTree = "<group>"; };
+		AAF5E4E51659969800194DA5 /* Timeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Timeline.h; path = Timeline/Timeline.h; sourceTree = "<group>"; };
+		AAF5E4E61659969800194DA5 /* Timeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Timeline.m; path = Timeline/Timeline.m; sourceTree = "<group>"; };
+		AAF5E4E71659969800194DA5 /* TimeLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeLineView.h; path = Timeline/TimeLineView.h; sourceTree = "<group>"; };
+		AAF5E4E81659969800194DA5 /* TimeLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeLineView.m; path = Timeline/TimeLineView.m; sourceTree = "<group>"; };
+		AAF5E4EE1659983800194DA5 /* TimeLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeLineViewController.h; path = Timeline/TimeLineViewController.h; sourceTree = "<group>"; };
+		AAF5E4EF1659983800194DA5 /* TimeLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeLineViewController.m; path = Timeline/TimeLineViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +171,7 @@
 		AA459FE01628700B00ADC992 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AAF5E4E41659969800194DA5 /* Plus_sign.jpg */,
 				AAD8B00116504ACA00CE728F /* select.png */,
 				AA45A0071628B85A00ADC992 /* brush.jpg */,
 				AA45A0051628B6F500ADC992 /* Line.png */,
@@ -279,8 +291,6 @@
 				AA459FEE16289BF700ADC992 /* SketchViewController.m */,
 				AA459FF016289FB900ADC992 /* SketchView.h */,
 				AA459FF116289FB900ADC992 /* SketchView.m */,
-				AA459FF31628A1D100ADC992 /* TimeLineView.h */,
-				AA459FF41628A1D100ADC992 /* TimeLineView.m */,
 				AAC5B7961645975400BB2362 /* PreviewView.h */,
 				AAC5B7971645975400BB2362 /* PreviewView.m */,
 			);
@@ -321,6 +331,14 @@
 		AABF97F41651719C00D5A27C /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
+				AAF5E4EE1659983800194DA5 /* TimeLineViewController.h */,
+				AAF5E4EF1659983800194DA5 /* TimeLineViewController.m */,
+				AAF5E4E21659969800194DA5 /* Page.h */,
+				AAF5E4E31659969800194DA5 /* Page.m */,
+				AAF5E4E51659969800194DA5 /* Timeline.h */,
+				AAF5E4E61659969800194DA5 /* Timeline.m */,
+				AAF5E4E71659969800194DA5 /* TimeLineView.h */,
+				AAF5E4E81659969800194DA5 /* TimeLineView.m */,
 			);
 			name = Timeline;
 			sourceTree = "<group>";
@@ -387,6 +405,7 @@
 				AA45A0061628B6F500ADC992 /* Line.png in Resources */,
 				AA45A0081628B85A00ADC992 /* brush.jpg in Resources */,
 				AAD8B00216504ACA00CE728F /* select.png in Resources */,
+				AAF5E4EA1659969800194DA5 /* Plus_sign.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,7 +432,6 @@
 				AA459FEC162874F600ADC992 /* FlipSketchPreviewView.m in Sources */,
 				AA459FEF16289BF700ADC992 /* SketchViewController.m in Sources */,
 				AA459FF216289FB900ADC992 /* SketchView.m in Sources */,
-				AA459FF51628A1D100ADC992 /* TimeLineView.m in Sources */,
 				AA459FF91628AA4500ADC992 /* ShapeSelectViewController.m in Sources */,
 				AA45A0021628AD6800ADC992 /* Utilities.m in Sources */,
 				AA45A00D1628BB8600ADC992 /* ColorChooserViewController.m in Sources */,
@@ -421,6 +439,10 @@
 				AAC5B7981645975400BB2362 /* PreviewView.m in Sources */,
 				AAD8B005165052B000CE728F /* DrawOp.m in Sources */,
 				14D7B20316598B4400900599 /* FileIO.m in Sources */,
+				AAF5E4E91659969800194DA5 /* Page.m in Sources */,
+				AAF5E4EB1659969800194DA5 /* Timeline.m in Sources */,
+				AAF5E4EC1659969800194DA5 /* TimeLineView.m in Sources */,
+				AAF5E4F01659983800194DA5 /* TimeLineViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
