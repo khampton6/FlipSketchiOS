@@ -28,31 +28,17 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    
-    return self;
+  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+  if (self) {
+    // Custom initialization
+  }
+  
+  return self;
 }
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  
-  NSMutableArray* arr = [[NSMutableArray alloc] init];
-  
-  Transformation* start = [[Transformation alloc] initWithPageNumber:0 withX:100 withY:100];
-  Transformation* end = [[Transformation alloc] initWithPageNumber:9 withX:300 withY:400];
-  
-  [arr addObject:start];
-  [arr addObject:end];
-  [Transformation translateBetweenTransformations:start andTransformation: end withList:arr];
-  
-  for(int i = 0; i < [arr count]; i++) {
-    Transformation* t = [arr objectAtIndex:i];
-    [t print];
-  }
   
   selectMode = YES;
   
@@ -125,7 +111,7 @@
   
   UITouch *touch = [[event allTouches] anyObject];
   CGPoint touchPoint = [touch locationInView:self.view];
-
+  
   float x = touchPoint.x;
   float y = touchPoint.y;
   CGPoint newPt = CGPointMake(x, y);
@@ -136,7 +122,7 @@
   dragPt = newPt;
   
   if(selectMode) {
-    [selectedShape moveShapeWithDirX:vecX withDirY:vecY withPageNumber:0];
+    [selectedShape moveShapeWithDirX:vecX withDirY:vecY];
   }
   else {
     [selectedShape updateExtraPointWithX:x withY:y];
@@ -297,23 +283,26 @@
   //  CGFloat screenWidth = screenRect.size.width-108;
   CGFloat screenWidth = rect.size.width;//screenRect.size.height-108;
   
-  NSLog(@"numlines is %d",[(TimeLineView *)tView numLines]);
+  //NSLog(@"numlines is %d",[(TimeLineView *)tView numLines]);
   int numLines = [(TimeLineView *)tView numLines];
   int displacement = screenWidth/numLines;
-  int absLoc = screenWidth;
+  //  int absLoc = screenWidth;
+  int absLoc = 0;
   int activeIndex = 0;
   int tempActive = -1;
   if(numLines>0){
     for(int i = 0; i<numLines-1; i++){
       tempActive = numLines-2;
-      absLoc = absLoc - displacement;
+      //tempActive = 0;
+      absLoc = absLoc + displacement;
       
       CGPoint location = [recognizer locationInView:tView];
       
-      if(location.x < absLoc){
+      if(location.x > absLoc){
         //NSLog(@"trans %f%f",location.x,location.y);
         tempActive = tempActive - i;
         activeIndex = (numLines-1) - tempActive;
+        //activeIndex = tempActive  (numLines -1);
         
         //NSLog(@"trans %f  %f  %d",location.x,location.y,tempActive);
       }

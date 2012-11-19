@@ -10,7 +10,7 @@
  This class is the class associated with all the interaction with the TimelineView.
  You will need to monitor drags for moving through the timeline.
  Taps will need to show or hide the view so you'll set a isHidden variable.
-*/
+ */
 
 #import "TimeLineViewController.h"
 
@@ -58,7 +58,7 @@
   //  CGFloat screenWidth = screenRect.size.width-108;
   CGFloat screenWidth = screenRect.size.height-108;
   
-  NSLog(@"numlines is %d",[(TimeLineView *)_tlView numLines]);
+  //NSLog(@"numlines is %d",[(TimeLineView *)_tlView numLines]);
   int numLines = [(TimeLineView *)_tlView numLines];
   int displacement = screenWidth/numLines;
   int absLoc = screenWidth;
@@ -74,7 +74,9 @@
       if(location.x < absLoc){
         //NSLog(@"trans %f%f",location.x,location.y);
         tempActive = tempActive - i;
-        activeIndex = (numLines-1) - tempActive;
+        //activeIndex = (numLines-1) - tempActive;
+        
+        activeIndex = 3;
         
         //NSLog(@"trans %f  %f  %d",location.x,location.y,tempActive);
       }
@@ -92,7 +94,7 @@
   
   _tlView = (UIView *)[self.view viewWithTag:1];
   _apView = (UIView *)[self.view viewWithTag:2];
-
+  
 }
 
 - (void)didReceiveMemoryWarning

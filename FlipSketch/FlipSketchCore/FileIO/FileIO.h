@@ -11,5 +11,7 @@
 @interface FileIO : NSObject
 
 - (void)loadData;
+- (void)saveData;
+- (NSDictionary *)convertToJson:(NSData *)responseData;
 
 @end

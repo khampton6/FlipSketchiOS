@@ -10,8 +10,8 @@
  Create a view that is instantiated by the initWithFrame constructor. This means the view is built given some rectangle object, Rect I believe.
  This view will contain a timeline view and will draw it using drawRect.
  
- this 
-*/
+ this
+ */
 
 #import "TimeLineView.h"
 
@@ -42,25 +42,30 @@
   
   CGFloat screenWidth = self.frame.size.width;//screenRect.size.height-108;
   CGContextRef context = UIGraphicsGetCurrentContext();
-
+  
   CGContextSetStrokeColorWithColor(context, [UIColor grayColor].CGColor);
-
+  
   // Draw them with a 2.0 stroke width so they are a bit more visible.
   CGContextSetLineWidth(context, 2.0);
   
   int displacement = screenWidth/numLines;
-  int absLoc = screenWidth;
+  //  int absLoc = screenWidth;
+  int absLoc = 0;
   int activeLoc = 0;
   if(numLines > 0){
     for(int i = 0; i < numLines-1; i++){
-      absLoc = absLoc - displacement;
+      absLoc = absLoc + displacement;
       CGContextMoveToPoint(context, absLoc, 0); //start at this point
       CGContextAddLineToPoint(context, absLoc, 100); //draw to this point
       
-      if (activePage == i) {
+      if (activePage == i+1) {
         activeLoc = absLoc;
       }
     }
+  }
+  else{
+    activeLoc = 0;
+    displacement = screenWidth;
   }
   
   // and now draw the Path!
