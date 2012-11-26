@@ -22,10 +22,16 @@
 {
   
   _fIO = [[FileIO alloc] init];
-  [_fIO saveData];
-  //[_fIO loadData];
+  
+  _temp = [[NSMutableArray alloc] init];
+
   [super viewDidLoad];
-  [[[FileIO alloc]init]loadData];
+  
+  NSData *dataToSave = [_fIO addSketchToJSON:@"named" withDescription:@"desc" withID:1 withShapeArray:_temp];
+  
+  [_fIO saveData:dataToSave];
+  
+  [_fIO loadData];
 
   flipSketches = [[NSMutableArray alloc] init];
   [sketchList loadSketches:flipSketches];

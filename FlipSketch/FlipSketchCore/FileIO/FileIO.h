@@ -10,8 +10,17 @@
 
 @interface FileIO : NSObject
 
+@property (retain, nonatomic) NSError *writeError;
+@property (retain, nonatomic) NSData *jsonData;
+
 - (void)loadData;
-- (void)saveData;
+- (void)saveData:(NSData*)data;
 - (NSDictionary *)convertToJson:(NSData *)responseData;
+
+- (void)createFullJSON:(NSMutableArray*)sketchesArray;
+
+- (NSData*)addSketchToJSON:(NSString *)name withDescription: (NSString*)desc withID: (int)theID withShapeArray: (NSMutableArray*)shapesArr;
+
+//-create
 
 @end
