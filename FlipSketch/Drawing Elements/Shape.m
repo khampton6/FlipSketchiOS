@@ -12,8 +12,7 @@
 
 @implementation Shape
 
-@synthesize xPos = x, yPos = y, shapeStrokeWidth = strokeWidth, isShapeFilled = isFilled, isSelected = selected, shapeColor = rgbColor;
-@synthesize startPage = _startPage, endPage = _endPage;
+@synthesize xPos = x, yPos = y, shapeStrokeWidth = strokeWidth, isShapeFilled = isFilled, isSelected = selected, shapeColor = rgbColor, startPage = _startPage, endPage = _endPage;
 
 - (id) initWithX: (int)xPos withY: (int)yPos withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid isFilled: (BOOL) filled {
   
@@ -38,6 +37,29 @@
 
 - (id) initWithX: (int)xPos withY: (int)yPos withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid {
   self = [self initWithX:xPos withY:yPos withColor:shapeColor withStrokeWidth:strokeWid isFilled:YES];
+  
+  return self;
+}
+
+- (id) initWithX: (int)xPos withY: (int)yPos withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid isFilled: (BOOL) filled withStartingPage:(int) sPage withEndingPage:(int) ePage withTransArray:(NSMutableDictionary *) tArray {
+  
+  self = [super init];
+  
+  if(self){
+    x = xPos;
+    y = yPos;
+    rgbColor = shapeColor;
+    isFilled = filled;
+    strokeWidth = strokeWid;
+    
+    selected = NO;
+    
+    _startPage = sPage;
+    _endPage = ePage;
+    
+    transformations = [[NSMutableDictionary alloc] init];
+  }
+  
   
   return self;
 }

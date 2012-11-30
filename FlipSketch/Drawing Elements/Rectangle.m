@@ -38,6 +38,18 @@
   return self;
 }
 
+-(id) initWithX: (int)xPos withY: (int)yPos withWidth:(int) shapeWidth withHeight:(int) shapeHeight withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid isFilled: (BOOL) filled withStartingPage:(int) sPage withEndingPage:(int) ePage withTransArray:(NSMutableDictionary *) tArray{
+  self = [super initWithX: (int)xPos withY: (int)yPos withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid isFilled: (BOOL) filled withStartingPage:(int) sPage withEndingPage:(int) ePage withTransArray:(NSMutableDictionary *) tArray];
+  
+  if(self){
+    self.width = 1;
+    self.height = 1;
+  }
+  
+  return self;
+  
+}
+
 - (void) createShapePoints {
   ShapePoint* leftPoint = [[ShapePoint alloc] initWithX:x withY:y+height/2 withOwner:self];
   ShapePoint* rightPoint = [[ShapePoint alloc] initWithX:x+width withY:y+height/2 withOwner:self];
@@ -106,5 +118,6 @@
 {
   return [NSString stringWithFormat:@"Rectangle"];
 }
+
 
 @end
