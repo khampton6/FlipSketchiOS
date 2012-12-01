@@ -67,7 +67,7 @@
   y += vY;
 }
 
--(BOOL) pointTouchesShape:(CGPoint) point {
+-(BOOL) pointTouchesShape:(CGPoint) point atPage:(int) pageNum {
   return ((point.x >= x) && (point.x <= x+width) && (point.y >= y) && (point.y <= y+height));
 }
 

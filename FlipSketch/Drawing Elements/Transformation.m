@@ -11,6 +11,7 @@
 @implementation Transformation
 
 @synthesize pageNum = _pageNum, newX = _newX, newY = _newY;
+@synthesize isKeyFrame = _isKeyFrame;
 
 -(id) initWithPageNumber:(int) pageNumber withX:(int) x withY:(int) y {
   self = [super init];

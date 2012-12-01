@@ -84,19 +84,30 @@
 }
 
 - (void) moveShapeWithDirX:(int) vX withDirY:(int) vY withPageNumber:(int) pageNum {
-  Transformation* newTransform = [[Transformation alloc] initWithPageNumber:pageNum withX:x+vX withY:y+vY];
-  [transformations setObject:newTransform forKey: [NSNumber numberWithInt:pageNum]];
+  
+  NSLog(@"Moving shape");
+  
+  NSNumber* key = [NSNumber numberWithInt:pageNum];
+  
+  Transformation* existing = [transformations objectForKey:key];
+  if(existing != nil) {
+    int newX = [existing newX];
+    int newY = [existing newY];
+    [existing setNewX:newX+vX];
+    [existing setNewY:newY+vY];
+  }
+  else {
+    CGPoint pt = [self pointOnPage:pageNum];
+    Transformation* newTransform = [[Transformation alloc] initWithPageNumber:pageNum withX: pt.x+vX withY:pt.y+vY];
+    [transformations setObject:newTransform forKey: [NSNumber numberWithInt:pageNum]];
+  }
 }
 
 - (CGPoint) pointOnPage:(int) page {
   
-  if(selected) {
-    return CGPointMake(x, y);
-  }
-  
   NSNumber* key = [NSNumber numberWithInt:page];
   Transformation* trans = [transformations objectForKey:key];
-  
+
   if(trans != nil) {
     return CGPointMake([trans newX], [trans newY]);
   }
@@ -178,7 +189,7 @@
   
 }
 
--(BOOL) pointTouchesShape:(CGPoint) point {
+-(BOOL) pointTouchesShape:(CGPoint) point atPage:(int) pageNum {
   return NO;
 }
 

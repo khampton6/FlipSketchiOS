@@ -54,7 +54,7 @@ typedef enum {
 - (void) updateExtraPointWithX:(int) xPos withY:(int) yPos;
 - (void) moveShapeWithDirX:(int) vX withDirY:(int) vY withPageNumber:(int) pageNum;
 
-- (BOOL) pointTouchesShape:(CGPoint) point;
+-(BOOL) pointTouchesShape:(CGPoint) point atPage:(int) pageNum;
 - (CGPoint) pointOnPage:(int) page;
 
 -(Transformation*) findNextTransform:(int) pageNum;

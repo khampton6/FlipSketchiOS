@@ -81,8 +81,11 @@
   y += vY;
 }
 
--(BOOL) pointTouchesShape:(CGPoint) point {
-  return ((point.x >= x) && (point.x <= x+width) && (point.y >= y) && (point.y <= y+height));
+-(BOOL) pointTouchesShape:(CGPoint) point atPage:(int) pageNum {
+  
+  CGPoint pt = [super pointOnPage:pageNum];
+  
+  return ((point.x >= pt.x) && (point.x <= pt.x+width) && (point.y >= pt.y) && (point.y <= pt.y+height));
 }
 
 - (void)drawWithContext:(CGContextRef)context onPage:(int) page {
@@ -95,9 +98,6 @@
   
   CGContextSetLineWidth(context, strokeWidth);
   CGRect rect = CGRectMake(cX, cY, width, height);
-  
-  NSLog(@"Start pt: x: %d y: %d", x, y);
-  NSLog(@"Curr  pt: x: %d y: %d", (int)cX, (int)cY);
   
   if(isFilled) {
     CGContextSetStrokeColorWithColor(context, uiColor.CGColor);

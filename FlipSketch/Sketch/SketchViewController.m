@@ -83,12 +83,15 @@
   dragPoints = 1;
   
   if(selectMode) {
-    
-    if(selectedShape != nil) {
-      [selectedShape setIsSelected:NO];
-    }
     selectedShape = [self getSelectedShape:touchPoint];
+    NSLog(@"Setting selected");
     [selectedShape setIsSelected:YES];
+    if([selectedShape isSelected]) {
+      NSLog(@"Selected");
+    }
+    else {
+      NSLog(@"Not selected");
+    }
     
     if([touch tapCount] == 2) {
       if([selectedShape endPage] == -1) {
@@ -98,6 +101,10 @@
         [selectedShape setEndPage:-1];
       }
       [sketchView setNeedsDisplay];
+    }
+    
+    if(selectedShape != nil) {
+      [selectedShape setIsSelected:NO];
     }
     
     return;
@@ -143,6 +150,8 @@
   dragPt = newPt;
   
   if(selectMode) {
+    //NSLog(@"Dragging");
+    
     [selectedShape moveShapeWithDirX:vecX withDirY:vecY withPageNumber:currPage];
   }
   else {
@@ -180,10 +189,10 @@
   for(int i = 0; i < [shapes count]; i++) {
     Shape* tempShape = [shapes objectAtIndex:i];
     
-    BOOL withinBounds = [tempShape startPage] <= currPage &&
+    BOOL withinPages = [tempShape startPage] <= currPage &&
       (currPage <= [tempShape endPage] || [tempShape endPage] == -1);
     
-    if([tempShape pointTouchesShape:touchPoint] && withinBounds) {
+    if([tempShape pointTouchesShape:touchPoint atPage:currPage] && withinPages) {
       return tempShape;
     }
   }

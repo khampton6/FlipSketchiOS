@@ -53,7 +53,7 @@
   y2 += vY;
 }
 
--(BOOL) pointTouchesShape:(CGPoint) point {
+-(BOOL) pointTouchesShape:(CGPoint) point atPage:(int) pageNum {
   
   CGPoint a = CGPointMake(x, y);
   CGPoint lineVec = CGPointMake(x-x2, y-y2);
@@ -68,8 +68,6 @@
   CGPoint perpVec = CGPointMake(aminusp.x - newN.x, aminusp.y - newN.y);
   
   double pointDist = sqrt(pow(perpVec.x, 2.0) + pow(perpVec.y, 2.0));
-  
-  NSLog(@"Point dist: %f", pointDist);
   
   BOOL boundingBox = (point.x >= x) && (point.x <= x2) &&
     (point.y >= y) && (point.y <= y2);

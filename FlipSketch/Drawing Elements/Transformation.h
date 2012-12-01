@@ -14,11 +14,14 @@
   
   int _newX;
   int _newY;
+  
+  BOOL _isKeyFrame;
 }
 
 @property int pageNum;
 @property int newX;
 @property int newY;
+@property BOOL isKeyFrame;
 
 -(id) initWithPageNumber:(int) pageNumber withX:(int) x withY:(int) y;
 + (NSArray*) translateBetweenTransformations: (Transformation*) prev andTransformation:(Transformation* ) current withList:(NSMutableArray*) array;

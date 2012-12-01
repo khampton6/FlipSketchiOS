@@ -63,9 +63,7 @@
   
   for(int i = 0; i < [shapes count]; i++) {
     Shape* storedShape = [shapes objectAtIndex:i];
-    
-    NSLog(@"Curr page: %d", page);
-    NSLog(@"Shape start: %d end: %d", [storedShape startPage], [storedShape endPage]);
+  
     if( [storedShape startPage] <= page && (page <=[storedShape endPage] || [storedShape endPage] == -1)) {
       [storedShape drawWithContext:context onPage:page];
     }
