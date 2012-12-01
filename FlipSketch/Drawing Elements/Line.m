@@ -10,13 +10,17 @@
 
 @implementation Line
 
-@synthesize x2,y2;
+@synthesize x2,y2, dirX, dirY;
 
 - (id)initWithX:(int)xPos withY:(int)yPos withColor:(RGBColor *)shapeColor withStrokeWidth:(int)strokeWid {
   self = [super initWithX: xPos withY: yPos withColor:shapeColor withStrokeWidth:strokeWid isFilled:YES];
   if(self) {
     x2 = x;
     y2 = y;
+    
+    dirX = 0;
+    dirY = 0;
+    
     [self createShapePoints];
   }
   
@@ -43,6 +47,9 @@
 - (void) updateExtraPointWithX:(int) xPos withY:(int) yPos {
   x2 = xPos;
   y2 = yPos;
+  
+  dirX = x2 - x;
+  dirY = y2 - y;
 }
 
 - (void) moveShapeWithDirX:(int) vX withDirY:(int) vY withPageNumber:(int) pageNum {
@@ -55,9 +62,14 @@
 
 -(BOOL) pointTouchesShape:(CGPoint) point atPage:(int) pageNum {
   
+  CGPoint pt = [super pointOnPage:pageNum];
+  
+  x = pt.x;
+  y = pt.y;
+  
   CGPoint a = CGPointMake(x, y);
-  CGPoint lineVec = CGPointMake(x-x2, y-y2);
-  double lineDist = sqrt(pow(x-x2,2.0) + pow(y-y2, 2.0));
+  CGPoint lineVec = CGPointMake(dirX, dirY);
+  double lineDist = sqrt(pow(dirX,2.0) + pow(dirY, 2.0));
   CGPoint unitVec = CGPointMake(lineVec.x/lineDist, lineVec.y/lineDist);
   
   CGPoint aminusp = CGPointMake(a.x - point.x, a.y - point.y);
@@ -69,8 +81,15 @@
   
   double pointDist = sqrt(pow(perpVec.x, 2.0) + pow(perpVec.y, 2.0));
   
-  BOOL boundingBox = (point.x >= x) && (point.x <= x2) &&
-    (point.y >= y) && (point.y <= y2);
+  
+  int minStartX = (dirX > 0) ? x : x +  dirX;
+  int minStartY = (dirY > 0) ? y : y +  dirY;
+  
+  int maxStartX = minStartX + abs(dirX);
+  int maxStartY = minStartY + abs(dirY);
+  
+  BOOL boundingBox = (point.x >= minStartX) && (point.x <= maxStartX) &&
+    (point.y >= minStartY) && (point.y <= maxStartY);
   
   BOOL withinDist = (pointDist < 100);
   
@@ -83,9 +102,15 @@
   
   CGContextSetLineWidth(context, strokeWidth);
   CGContextSetStrokeColorWithColor(context, uiColor.CGColor);
+  
+  CGPoint pt = [super pointOnPage:page];
+  
+  x = pt.x;
+  y = pt.y;
+  
 
   CGContextMoveToPoint(context, x, y);
-  CGContextAddLineToPoint(context, x2, y2);
+  CGContextAddLineToPoint(context, x + dirX, y + dirY);
   CGContextStrokePath(context);
 }
 

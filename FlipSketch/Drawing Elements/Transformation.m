@@ -43,9 +43,6 @@
     int newX = xDiff*percentage + startX;
     int newY = yDiff*percentage + startY;
     int newPageNumber = i+startIndex;
-    int insertIndex = startIndex + i;
-    NSLog(@"inserting at index: %d", insertIndex );
-    NSLog(@"Page number: %d", newPageNumber);
     
     Transformation* newTrans = [[Transformation alloc] initWithPageNumber:newPageNumber withX:newX withY:newY];
     [array insertObject:newTrans atIndex:newPageNumber];

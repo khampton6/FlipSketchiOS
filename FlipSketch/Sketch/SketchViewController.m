@@ -196,6 +196,8 @@
       return tempShape;
     }
   }
+  
+  NSLog(@"Didn't find shape");
   return nil;
 }
 

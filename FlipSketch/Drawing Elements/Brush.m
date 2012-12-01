@@ -65,7 +65,6 @@
 
 -(BOOL) pointTouchesShape:(CGPoint) point atPage:(int) pageNum {
 
-  //return [strokePath containsPoint:point];
   CGPoint prevPt = [[strokePoints objectAtIndex:0] CGPointValue];
   
   for(int i = 1; i < [strokePoints count]; i++) {
@@ -96,9 +95,6 @@
   CGPoint perpVec = CGPointMake(aminusp.x - newN.x, aminusp.y - newN.y);
     
   double pointDist = sqrt(pow(perpVec.x, 2.0) + pow(perpVec.y, 2.0));
-    
-  //BOOL boundingBox = (touchPoint.x >= point1.x) && (touchPoint.x <= point2.x) &&
-  //(touchPoint.y >= point1.y) && (touchPoint.y <= point2.y);
   
   double p1Dist = sqrt(pow(point1.x - touchPoint.x, 2.0) + pow(point1.y - touchPoint.y, 2.0));
   double p2Dist = sqrt(pow(point2.x - touchPoint.x, 2.0) + pow(point2.y - touchPoint.y, 2.0));
@@ -109,6 +105,11 @@
 }
 
 - (void)drawWithContext:(CGContextRef)context onPage:(int) page {
+  
+  CGPoint pt = [super pointOnPage:page];
+  
+  
+  
   UIColor* uiColor = [rgbColor uiColor];
   [uiColor set];
   [strokePath stroke];

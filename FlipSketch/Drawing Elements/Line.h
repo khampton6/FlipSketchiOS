@@ -13,6 +13,9 @@
 @property int x2;
 @property int y2;
 
+@property double dirX;
+@property double dirY;
+
 - (id)initWithX:(int)xPos withY:(int)yPos withColor:(RGBColor *)shapeColor withStrokeWidth:(int)strokeWid;
 
 @end
