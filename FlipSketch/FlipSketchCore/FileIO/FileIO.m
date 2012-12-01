@@ -441,7 +441,7 @@
   
   NSMutableArray *shapeDataArrayc = [[NSMutableArray alloc] initWithObjects:shapeDatac, nil];
   
-  NSDictionary *sketchDatac = [NSDictionary dictionaryWithObjectsAndKeys:@"sketch A", @"name", @"thisNewDesc", @"desc", @"1", @"id", shapeDataArrayc, @"shapesData", totPagesc, @"totalNumOfPages", nil];
+  NSDictionary *sketchDatac = [NSDictionary dictionaryWithObjectsAndKeys:@"sketch C", @"name", @"thisNewDesc", @"desc", @"1", @"id", shapeDataArrayc, @"shapesData", totPagesc, @"totalNumOfPages", nil];
   
   NSMutableArray *sketchDataArrayc = [[NSMutableArray alloc] initWithObjects:sketchDatac, nil];
   
@@ -480,7 +480,7 @@
   
   NSMutableArray *shapeDataArrayd = [[NSMutableArray alloc] initWithObjects:shapeDatad, nil];
   
-  NSDictionary *sketchDatad = [NSDictionary dictionaryWithObjectsAndKeys:@"sketch A", @"name", @"thisNewDesc", @"desc", @"1", @"id", shapeDataArrayd, @"shapesData", totPagesd, @"totalNumOfPages", nil];
+  NSDictionary *sketchDatad = [NSDictionary dictionaryWithObjectsAndKeys:@"sketch D", @"name", @"thisNewDesc", @"desc", @"1", @"id", shapeDataArrayd, @"shapesData", totPagesd, @"totalNumOfPages", nil];
   
   NSMutableArray *sketchDataArrayd = [[NSMutableArray alloc] initWithObjects:sketchDatad, nil];
   

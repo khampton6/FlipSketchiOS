@@ -56,7 +56,7 @@
   [sketch shapesArray];
   
 //  [nameLabel setText:@"Llamas"];
-  [sketch setSketchName:@"Llamas"];
+  //[sketch setSketchName:@"Llamas"];
 
   NSLog(@"String: %@", [sketch sketchName]);
   [nameLabel setText:[sketch sketchName]];
@@ -64,7 +64,7 @@
   NSString* pagesStr = [NSString stringWithFormat:@"%d", [sketch totalPages]];
   [pagesLabel setText: pagesStr];
   
-  [previewTextView setText: [sketch description]];
+  [previewTextView setText: [sketch desc]];
 }
 
 - (void)didReceiveMemoryWarning

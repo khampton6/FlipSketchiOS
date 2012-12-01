@@ -19,8 +19,10 @@
   if(self){
     [aName retain];
     _sketchName = aName;
+    [aDesc retain];
     desc = aDesc;
     sID = aSID;
+    [aDesc retain];
     shapesArray = [[NSMutableArray alloc] init];
     totalPages = theTotPages;
   }
@@ -48,6 +50,7 @@
 -(void) addShapeToArray:(Shape *) aShape{
   //NSLog(@"addingToArray");
   //NSLog(@" shapeArrSize is %d", shapesArray.count);
+  [aShape retain];
   [shapesArray addObject:aShape];
   //NSLog(@" shapeArrSize is %d", shapesArray.count);
 }
