@@ -58,7 +58,6 @@
   }
   shapePoints = newStrPts;
   
-  
   CGAffineTransform transform = CGAffineTransformMakeTranslation(vX, vY);
   [strokePath applyTransform:transform];
 }
@@ -99,16 +98,12 @@
   double p1Dist = sqrt(pow(point1.x - touchPoint.x, 2.0) + pow(point1.y - touchPoint.y, 2.0));
   double p2Dist = sqrt(pow(point2.x - touchPoint.x, 2.0) + pow(point2.y - touchPoint.y, 2.0));
     
-  BOOL withinDist = (pointDist < 50) && (p1Dist < 100 || p2Dist < 100);
+  BOOL withinDist = (pointDist < 200) && (p1Dist < 100 || p2Dist < 100);
     
   return withinDist;
 }
 
 - (void)drawWithContext:(CGContextRef)context onPage:(int) page {
-  
-  CGPoint pt = [super pointOnPage:page];
-  
-  
   
   UIColor* uiColor = [rgbColor uiColor];
   [uiColor set];

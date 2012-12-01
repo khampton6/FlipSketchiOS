@@ -84,14 +84,8 @@
   
   if(selectMode) {
     selectedShape = [self getSelectedShape:touchPoint];
-    NSLog(@"Setting selected");
+
     [selectedShape setIsSelected:YES];
-    if([selectedShape isSelected]) {
-      NSLog(@"Selected");
-    }
-    else {
-      NSLog(@"Not selected");
-    }
     
     if([touch tapCount] == 2) {
       if([selectedShape endPage] == -1) {
@@ -150,8 +144,6 @@
   dragPt = newPt;
   
   if(selectMode) {
-    //NSLog(@"Dragging");
-    
     [selectedShape moveShapeWithDirX:vecX withDirY:vecY withPageNumber:currPage];
   }
   else {
@@ -281,7 +273,6 @@
   [timeline addPage];
   [(TimeLineView *)tView setNumLines:[[timeline pages] count]];
   [tView setNeedsDisplay];
-  NSLog(@"Pushed");
 }
 
 -(void) updatePageLabel:(int) newPage {
@@ -322,13 +313,9 @@
 -(int) calcActivePage:(UIGestureRecognizer *)recognizer{
   
   CGRect rect = [tView frame];
+
+  CGFloat screenWidth = rect.size.width;
   
-  //TODO; make this get the size of the view object, not hardcoded width based on the storyboard attribute.
-  //CGRect screenRect = [[UIScreen mainScreen] bounds];
-  //  CGFloat screenWidth = screenRect.size.width-108;
-  CGFloat screenWidth = rect.size.width;//screenRect.size.height-108;
-  
-  //NSLog(@"numlines is %d",[(TimeLineView *)tView numLines]);
   int numLines = [(TimeLineView *)tView numLines];
   int displacement = screenWidth/numLines;
   //  int absLoc = screenWidth;

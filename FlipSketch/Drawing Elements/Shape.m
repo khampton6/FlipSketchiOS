@@ -85,8 +85,6 @@
 
 - (void) moveShapeWithDirX:(int) vX withDirY:(int) vY withPageNumber:(int) pageNum {
   
-  NSLog(@"Moving shape");
-  
   NSNumber* key = [NSNumber numberWithInt:pageNum];
   
   Transformation* existing = [transformations objectForKey:key];
