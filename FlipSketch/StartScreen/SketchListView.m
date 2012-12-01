@@ -9,6 +9,7 @@
 #import "SketchListView.h"
 #import "FlipSketchIO.h"
 #import "FlipSketchPreviewView.h"
+#import "Sketch.h"
 
 @implementation SketchListView
 
@@ -31,7 +32,7 @@ const int SKETCHNODESPACINGX = 40;
   sketchPreviews = [[NSMutableArray alloc] initWithCapacity:[slist count]+1];
   
   //Need to resize view
-  int selfWidth = SKETCHNODEWIDTH * [slist count] + SKETCHNODESPACINGX;
+  int selfWidth = SKETCHNODEWIDTH * [slist count] + 1 + SKETCHNODESPACINGX;
   int selfHeight = SKETCHNODEHEIGHT;
   [self setContentSize:CGSizeMake(selfWidth, selfHeight)];
   
@@ -43,16 +44,17 @@ const int SKETCHNODESPACINGX = 40;
   FlipSketchPreviewView* addNew = [FlipSketchPreviewView createNewPreviewView: frame];
   [self addSubview:addNew];
   
-  FlipSketch* addNewSketch = [addNew sketch];
+  //FlipSketch* addNewSketch = [addNew sketch];
+  Sketch* addNewSketch = [addNew sketch];
   [sketchPreviews addObject: addNew];
   
   [parentController setSketch: addNewSketch];
   [addNew setSelected: YES];
   selected = 0;
 
-  for(int i = 1; i < [slist count]; i++) {
-    frame = CGRectMake(startX+i*(SKETCHNODEWIDTH+SKETCHNODESPACINGX), startY, SKETCHNODEWIDTH, SKETCHNODEHEIGHT);
-    addNew = [FlipSketchPreviewView createNewPreviewView: frame];
+  for(int i = 0; i < [slist count]; i++) {
+    frame = CGRectMake(startX+(i+1)*(SKETCHNODEWIDTH+SKETCHNODESPACINGX), startY, SKETCHNODEWIDTH, SKETCHNODEHEIGHT);
+    addNew = [FlipSketchPreviewView createNewPreviewView: frame withSketch: [slist objectAtIndex:i]];
     [sketchPreviews addObject: addNew];
     [self addSubview:addNew];
   }
@@ -89,8 +91,8 @@ const int SKETCHNODESPACINGX = 40;
     [[sketchPreviews objectAtIndex:selected] setSelected:NO];
     selected = found;
     
-    FlipSketch* selectedSketch = [[sketchPreviews objectAtIndex:selected] sketch];
-    [parentController setSketch: selectedSketch];
+    Sketch* selectedSketch = [[sketchPreviews objectAtIndex:selected] sketch];
+    [parentController setSketch: selectedSketch];	
     [[sketchPreviews objectAtIndex:selected] setSelected:YES];
   }
   

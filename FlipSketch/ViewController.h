@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "FlipSketch.h"
 #import "FileIO.h"
 #import "SketchView.h"
+#import "Sketch.h"
 
 
 @class SketchListView;
@@ -27,6 +27,6 @@
 @property (nonatomic, retain) NSMutableArray* temp;
 @property (nonatomic, retain) SketchView* sView;
 
--(void) setSketch:(FlipSketch*) sketch;
+-(void) setSketch:(Sketch*) sketch;
 
 @end

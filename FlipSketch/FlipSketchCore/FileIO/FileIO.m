@@ -9,6 +9,7 @@
 #import "FileIO.h"
 #import "ViewController.h"
 #import "SketchViewController.h"
+#import "SketchListView.h"
 
 #import "Rectangle.h"
 #import "Oval.h"
@@ -19,7 +20,7 @@
 @implementation FileIO
 
 @synthesize allSketches;
-- (void)loadData {
+- (NSMutableArray *)loadData {
   
   NSLog(@"inLoadData");
   
@@ -53,7 +54,7 @@
     NSError* error;
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
-    [self processData:json];
+    return [self processData:json];
     
   }
   
@@ -84,7 +85,7 @@
 }
 
 
-- (void)processData:(NSDictionary *) JSONObject{
+- (NSMutableArray *)processData:(NSDictionary *) JSONObject{
   NSArray        *sketches = [JSONObject valueForKey:@"sketches"];
   NSArray        *sketch    = [[[JSONObject objectForKey:@"sketches"] objectAtIndex:0] objectForKey:@"sketch"];
   //NSString        *shapesData = [[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:0] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:0];
@@ -106,7 +107,15 @@
     
     int theId = [[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"id"] intValue];
     
+    NSDictionary* dict = [[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0];
+    
+    NSObject* obj = [dict objectForKey:@"name"];
+    NSString* type = NSStringFromClass([obj class]);
+    NSLog(@"Type: %@", type);
+    
     NSString *theName = [[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"name"];
+    
+    int theTotalPages = [[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"totalNumOfPages"] intValue];
     
     
     
@@ -116,12 +125,13 @@
     NSLog(@"theDesc is %@", theDesc);
     NSLog(@"theId is %d", theId);
     NSLog(@"theName is %@", theName);
+    NSLog(@"the Total Pages is %d", theTotalPages);
     
     NSLog(@"the size of allSketches is %d", [allSketches count]);
     
     //allSketches = [[allSketches alloc] initWithObject:[[Sketch alloc] initWithName:theName withDesc:theDesc withSID:theId]];
     
-    [allSketches addObject:[[Sketch alloc] initWithName:theName withDesc:theDesc withSID:theId]];
+    [allSketches addObject:[[Sketch alloc] initWithName:theName withDesc:theDesc withSID:theId withTotalPages:theTotalPages]];
     
     NSLog(@"the size of allSketches is %d", [allSketches count]);
     
@@ -301,7 +311,7 @@
   
   
 
-
+  return allSketches;
 }
 
 - (NSData*)addSketchToJSON:(NSString *)name withDescription: (NSString*)desc withID: (int)theID withShapeArray: (NSMutableArray*)shapesArr{
@@ -313,6 +323,8 @@
   NSMutableArray *colorVals = [NSMutableArray array];
   for (NSInteger i = 0; i < 3; i++)
     [colorVals addObject:[NSNumber numberWithInteger:(i+25)]];
+  
+  NSNumber *totPages = [NSNumber numberWithInt:10];
   
   NSNumber *x1 = [NSNumber numberWithInt:10];
   NSNumber *y1 = [NSNumber numberWithInt:11];
@@ -348,7 +360,7 @@
   
   NSMutableArray *shapeDataArray = [[NSMutableArray alloc] initWithObjects:shapeData, nil];
   
-  NSDictionary *sketchData = [NSDictionary dictionaryWithObjectsAndKeys:@"NamedSketch", @"name", @"thisNewDesc", @"desc", @"1", @"id", shapeDataArray, @"shapesData", nil];
+  NSDictionary *sketchData = [NSDictionary dictionaryWithObjectsAndKeys:@"sketch A", @"name", @"thisNewDesc", @"desc", @"1", @"id", shapeDataArray, @"shapesData", totPages, @"totalNumOfPages", nil];
   
   NSMutableArray *sketchDataArray = [[NSMutableArray alloc] initWithObjects:sketchData, nil];
   
@@ -360,6 +372,8 @@
   
   
   /***SECOND OBJECT; OVAL ****/
+  NSNumber *totPagesb = [NSNumber numberWithInt:12];
+  
   NSNumber *x1b = [NSNumber numberWithInt:10];
   NSNumber *y1b = [NSNumber numberWithInt:11];
   NSNumber *x2b = [NSNumber numberWithInt:20];
@@ -386,7 +400,7 @@
   
   NSMutableArray *shapeDataArrayb = [[NSMutableArray alloc] initWithObjects:shapeDatab, nil];
   
-  NSDictionary *sketchDatab = [NSDictionary dictionaryWithObjectsAndKeys:@"NamedSketchb", @"name", @"thisNewDescb", @"desc", @"0", @"id", shapeDataArrayb, @"shapesData", nil];
+  NSDictionary *sketchDatab = [NSDictionary dictionaryWithObjectsAndKeys:@"sketch B", @"name", @"thisNewDesc", @"desc", @"1", @"id", shapeDataArrayb, @"shapesData", totPagesb, @"totalNumOfPages", nil];
   
   NSMutableArray *sketchDataArrayb = [[NSMutableArray alloc] initWithObjects:sketchDatab, nil];
   
@@ -399,6 +413,8 @@
   
   
   /***SECOND OBJECT; LINE ****/
+  NSNumber *totPagesc = [NSNumber numberWithInt:15];
+  
   NSNumber *x1c = [NSNumber numberWithInt:10];
   NSNumber *y1c = [NSNumber numberWithInt:11];
   NSNumber *x2c = [NSNumber numberWithInt:20];
@@ -425,7 +441,7 @@
   
   NSMutableArray *shapeDataArrayc = [[NSMutableArray alloc] initWithObjects:shapeDatac, nil];
   
-  NSDictionary *sketchDatac = [NSDictionary dictionaryWithObjectsAndKeys:@"NamedSketchc", @"name", @"thisNewDescc", @"desc", @"0", @"id", shapeDataArrayc, @"shapesData", nil];
+  NSDictionary *sketchDatac = [NSDictionary dictionaryWithObjectsAndKeys:@"sketch A", @"name", @"thisNewDesc", @"desc", @"1", @"id", shapeDataArrayc, @"shapesData", totPagesc, @"totalNumOfPages", nil];
   
   NSMutableArray *sketchDataArrayc = [[NSMutableArray alloc] initWithObjects:sketchDatac, nil];
   
@@ -436,6 +452,8 @@
   
   
   /***SECOND OBJECT; BRUSH ****/
+  NSNumber *totPagesd = [NSNumber numberWithInt:20];
+  
   NSNumber *x1d = [NSNumber numberWithInt:10];
   NSNumber *y1d = [NSNumber numberWithInt:11];
   NSNumber *x2d = [NSNumber numberWithInt:20];
@@ -462,7 +480,7 @@
   
   NSMutableArray *shapeDataArrayd = [[NSMutableArray alloc] initWithObjects:shapeDatad, nil];
   
-  NSDictionary *sketchDatad = [NSDictionary dictionaryWithObjectsAndKeys:@"NamedSketchc", @"name", @"thisNewDescc", @"desc", @"0", @"id", shapeDataArrayd, @"shapesData", nil];
+  NSDictionary *sketchDatad = [NSDictionary dictionaryWithObjectsAndKeys:@"sketch A", @"name", @"thisNewDesc", @"desc", @"1", @"id", shapeDataArrayd, @"shapesData", totPagesd, @"totalNumOfPages", nil];
   
   NSMutableArray *sketchDataArrayd = [[NSMutableArray alloc] initWithObjects:sketchDatad, nil];
   

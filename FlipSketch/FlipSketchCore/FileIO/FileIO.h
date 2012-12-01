@@ -14,7 +14,7 @@
 @property (retain, nonatomic) NSData *jsonData;
 @property (retain, nonatomic) NSMutableArray *allSketches;
 
-- (void)loadData;
+- (NSMutableArray *)loadData;
 - (void)saveData:(NSData*)data;
 //- (NSDictionary *)convertToJson:(NSData *)responseData;
 

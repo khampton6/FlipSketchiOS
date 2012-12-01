@@ -9,14 +9,19 @@
 #import <Foundation/Foundation.h>
 #import "Shape.h"
 
-@interface Sketch : NSObject
+@interface Sketch : NSObject {
+  NSString* _sketchName;
+}
 
-@property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSString *desc;
+@property (retain, nonatomic) NSString *desc;
 @property int sID;
+@property int totalPages;
 @property (strong, nonatomic) NSMutableArray *shapesArray;
 
--(id) initWithName:(NSString *) aName withDesc:(NSString *) aDesc withSID:(int) aSID;
+-(void) setSketchName:(NSString*) sName;
+-(NSString*) sketchName;
+
+-(id) initWithName:(NSString *) aName withDesc:(NSString *) aDesc withSID:(int) aSID withTotalPages:(int) totalPages;
 
 //-(id) initWithName:(NSString *) aName withDesc:(NSString *) aDesc withSID:(int) aSID withShapes:(NSMutableArray *) theShapes;
 

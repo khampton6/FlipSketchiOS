@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "SketchListView.h"
 #import "FileIO.h"
+#import "Sketch.h"
 
 @interface ViewController ()
 
@@ -31,17 +32,36 @@
   
   [_fIO saveData:dataToSave];
   
-  [_fIO loadData];
+  flipSketches = [_fIO loadData];
 
-  flipSketches = [[NSMutableArray alloc] init];
   [sketchList loadSketches:flipSketches];
 }
 
--(void) setSketch:(FlipSketch*) sketch {
-    
-  [nameLabel setText:[sketch name]];
+-(void) setSketch:(Sketch*) sketch {
   
-  NSString* pagesStr = [NSString stringWithFormat:@"%d", [sketch numPages]];
+  if(sketch == nil) {
+    NSLog(@"I AM SO NIL");
+    return;
+  }
+  
+  NSObject* obj = [sketch sketchName];
+  NSString* type = NSStringFromClass([obj class]);
+  NSLog(@"Type: %@", type);
+  
+  NSString* name = [sketch sketchName];
+  if(name == NULL || name == nil) {
+    NSLog(@"ARRRRGH");
+  }
+  
+  [sketch shapesArray];
+  
+//  [nameLabel setText:@"Llamas"];
+  [sketch setSketchName:@"Llamas"];
+
+  NSLog(@"String: %@", [sketch sketchName]);
+  [nameLabel setText:[sketch sketchName]];
+  
+  NSString* pagesStr = [NSString stringWithFormat:@"%d", [sketch totalPages]];
   [pagesLabel setText: pagesStr];
   
   [previewTextView setText: [sketch description]];

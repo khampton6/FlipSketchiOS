@@ -10,17 +10,19 @@
 
 @implementation Sketch
 
-@synthesize name, desc, sID, shapesArray;
+@synthesize desc, sID, shapesArray, totalPages;
 
--(id) initWithName:(NSString *) aName withDesc:(NSString *) aDesc withSID:(int) aSID{
+-(id) initWithName:(NSString *) aName withDesc:(NSString *) aDesc withSID:(int) aSID withTotalPages:(int) theTotPages{
   
   self = [super init];
   
   if(self){
-    name = aName;
+    [aName retain];
+    _sketchName = aName;
     desc = aDesc;
     sID = aSID;
     shapesArray = [[NSMutableArray alloc] init];
+    totalPages = theTotPages;
   }
   
   return self;
@@ -34,6 +36,14 @@
   return self;
 }
  */
+
+-(void) setSketchName:(NSString*) sName {
+  _sketchName = sName;
+}
+
+-(NSString*) sketchName {
+  return _sketchName;
+}
 
 -(void) addShapeToArray:(Shape *) aShape{
   //NSLog(@"addingToArray");
