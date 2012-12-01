@@ -375,6 +375,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="play:" destination="dki-Ov-Te2" eventType="touchUpInside" id="07C-0a-xjd"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljr-VM-tAe">
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -469,6 +472,7 @@
                         <outlet property="addPageView" destination="cLn-Hz-t1f" id="OWn-JK-Ei9"/>
                         <outlet property="filledSwitch" destination="Rxe-OQ-d61" id="dH6-0S-oQu"/>
                         <outlet property="pageLabel" destination="wNV-Ad-u0i" id="qkG-Ce-Nkj"/>
+                        <outlet property="playButton" destination="39C-AD-Dbh" id="Ket-HC-8E6"/>
                         <outlet property="previewView" destination="vOL-MF-WSA" id="rzb-Yk-ZBr"/>
                         <outlet property="sketchView" destination="WAb-rG-5DD" id="OyO-qx-qnK"/>
                         <outlet property="strokeWidthLabel" destination="HTX-2s-hBh" id="Rfc-h9-ElW"/>
@@ -522,6 +526,7 @@
             <relationships>
                 <relationship kind="action" name="addPageImage:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="action" name="deleteSelectedShape:"/>
+                <relationship kind="action" name="play:"/>
                 <relationship kind="action" name="switchFilled:"/>
                 <relationship kind="action" name="timelinePan:" candidateClass="UIPanGestureRecognizer"/>
                 <relationship kind="action" name="timelineTap:" candidateClass="UITapGestureRecognizer"/>
@@ -529,6 +534,7 @@
                 <relationship kind="outlet" name="addPageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="filledSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="pageLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="previewView" candidateClass="PreviewView"/>
                 <relationship kind="outlet" name="sketchView" candidateClass="SketchView"/>
                 <relationship kind="outlet" name="strokeWidthLabel" candidateClass="UILabel"/>

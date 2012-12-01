@@ -43,6 +43,8 @@
   
   selectMode = YES;
   
+  playing = false;
+  
   currPage = 0;
   
   selectedStrokeWidth = 5;
@@ -310,8 +312,6 @@
 //tap on the timeline area to specify a page to make active
 -(IBAction)timelineTap:(UITapGestureRecognizer *)recognizer{
   
-  //int theActivePage = 0;
-  
   int theActivePage = [self calcActivePage:(UIPanGestureRecognizer *)recognizer];
   currPage = theActivePage;
   [self updatePageLabel:currPage];
@@ -357,5 +357,55 @@
   return activeIndex;
 }
 
+-(void) goToPage:(int) page {
+
+  currPage = page;
+  [self updatePageLabel:currPage];
+  [sketchView setPage:currPage];
+  
+  [timeline setActivePageWithIndex:currPage];
+  [(TimeLineView *)tView setActivePage: currPage];
+  
+  [tView setNeedsDisplay];
+}
+
+#pragma mark playing transitions.
+
+-(IBAction) play: (id) sender {
+  
+  if([tView numLines] == 0) {
+    return;
+  }
+  
+  if(playing && playTimer != nil) {
+    [playTimer invalidate];
+    [playButton setTitle:@"Play" forState:UIControlStateNormal];
+    [self goToPage:returnPage];
+    playing = NO;
+    return;
+  }
+  
+  returnPage = currPage;
+  playTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(incrementFrame:) userInfo:nil repeats:YES];
+  [playButton setTitle:@"Stop" forState:UIControlStateNormal];
+  playing = YES;
+}
+
+-(void) incrementFrame: (NSTimer*) timer {
+  NSLog(@"Increment Frame");
+  
+  NSLog(@"Going to page: %d", currPage + 1 );
+  [self goToPage: currPage+1];
+  
+  
+  
+  //If curr page is on last.
+  if(currPage == [tView numLines] - 1) {
+    [timer invalidate];
+    [playButton setTitle:@"Play" forState:UIControlStateNormal];
+    [self goToPage:returnPage];
+    playing = NO;
+  }
+}
 
 @end

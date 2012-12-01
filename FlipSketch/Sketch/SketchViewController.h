@@ -41,11 +41,20 @@
   
   IBOutlet UILabel* pageLabel;
   
+  IBOutlet UIButton* playButton;
+  
   int currPage;
+  
+  NSTimer* playTimer;
+  int returnPage;
+  BOOL playing;
 }
 
 -(IBAction)switchFilled:(id)sender;
 -(IBAction)deleteSelectedShape:(id)sender;
+
+-(IBAction) play: (id) sender;
+-(void) incrementFrame: (NSTimer*) timer;
 
 -(void)setCurrShape: (ShapeType) type;
 -(void)setSelectedStrokeWidth: (int) strokeWidth;
@@ -54,6 +63,8 @@
 -(Shape*) getSelectedShape:(CGPoint) touchPoint;
 
 -(void) updatePageLabel:(int) newPage;
+-(void) goToPage:(int) page;
+
 
 @property (nonatomic, retain) RGBColor* selectedColor ;
 @property BOOL selectMode;
