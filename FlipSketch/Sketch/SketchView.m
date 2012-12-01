@@ -37,6 +37,11 @@
   return shapes;
 }
 
+-(void) removeShape: (Shape*) shape {
+  [shapes removeObject:shape];
+  [self setNeedsDisplay];
+}
+
 -(void) addDraggedShape {
   [shapes addObject:draggedShape];
   draggedShape = nil;

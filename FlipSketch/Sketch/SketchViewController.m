@@ -17,6 +17,7 @@
 #import "TimeLineView.h"
 #import "TimeLineViewController.h"
 #import "Timeline.h"
+#import "ViewController.h"
 
 @interface SketchViewController ()
 
@@ -196,7 +197,12 @@
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   
   UIViewController* destination = [segue destinationViewController];
-  if([destination isKindOfClass: [ShapeSelectViewController class]]) {
+  
+  
+  if([destination isKindOfClass: [ViewController class]]) {
+    //Tell it to save here.
+  }
+  else if([destination isKindOfClass: [ShapeSelectViewController class]]) {
     
     ShapeSelectViewController* ssvc = (ShapeSelectViewController*)destination;
     [ssvc setParentController:self];
@@ -205,6 +211,13 @@
     ColorChooserViewController* ccvc = (ColorChooserViewController*)destination;
     [ccvc setStartColor: selectedColor];
     [ccvc setParentController:self];
+  }
+}
+
+-(IBAction)deleteSelectedShape:(id)sender {
+  if (selectedShape != nil) {
+    [sketchView removeShape:selectedShape];
+    selectedShape = nil;
   }
 }
 
@@ -241,7 +254,7 @@
 -(void) setSelectedColor:(RGBColor *) selColor {
   selectedColor = selColor;
   
-  if(selectedColor != nil) {
+  if(selectedColor != nil && selectedShape != nil) {
     [selectedShape setShapeColor:selectedColor];
     [sketchView setNeedsDisplay];
   }

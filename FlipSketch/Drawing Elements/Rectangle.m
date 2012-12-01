@@ -107,6 +107,11 @@
     CGContextFillRect(context, rect);
     CGContextStrokePath(context);
   }
+  else if(selected) {
+    CGContextSetStrokeColorWithColor(context, [UIColor greenColor].CGColor);
+    CGContextAddRect(context, rect);
+    CGContextStrokePath(context);
+  }
   else {
     CGContextSetStrokeColorWithColor(context, uiColor.CGColor);
     CGContextAddRect(context, rect);

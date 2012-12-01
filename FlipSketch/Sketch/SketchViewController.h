@@ -45,6 +45,7 @@
 }
 
 -(IBAction)switchFilled:(id)sender;
+-(IBAction)deleteSelectedShape:(id)sender;
 
 -(void)setCurrShape: (ShapeType) type;
 -(void)setSelectedStrokeWidth: (int) strokeWidth;

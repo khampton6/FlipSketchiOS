@@ -92,11 +92,14 @@
     
     BOOL segmentTouched = [self pointTouchesSegment:point withPoint1:currPt withPoint2:prevPt];
     if(segmentTouched) {
+      NSLog(@"Segment touche");
       return YES;
     }
     
     prevPt = currPt;
   }
+  
+  NSLog(@"Didn't find brush");
   return NO;
 }
 
