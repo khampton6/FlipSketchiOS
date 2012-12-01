@@ -89,6 +89,9 @@
   NSArray        *transformations =[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:0] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:0] objectForKey:@"trans"];
   //NSLog(@"sketches: %@", sketches);
 
+  
+  allSketches = [[NSMutableArray alloc] init];
+  
   for (NSString *theSketches in sketches) {
   
     
@@ -113,9 +116,9 @@
     
     NSLog(@"the size of allSketches is %d", [allSketches count]);
     
-    [[allSketches alloc] initWithObject:[[Sketch alloc] initWithName:theName withDesc:theDesc withSID:theId]];
+    //allSketches = [[allSketches alloc] initWithObject:[[Sketch alloc] initWithName:theName withDesc:theDesc withSID:theId]];
     
-    //[allSketches addObject:[[Sketch alloc] initWithName:theName withDesc:theDesc withSID:theId]];
+    [allSketches addObject:[[Sketch alloc] initWithName:theName withDesc:theDesc withSID:theId]];
     
     NSLog(@"the size of allSketches is %d", [allSketches count]);
     

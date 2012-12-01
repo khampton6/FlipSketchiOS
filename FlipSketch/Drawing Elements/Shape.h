@@ -18,6 +18,8 @@ typedef enum {
   brush = 4
 } ShapeType;
 
+//ShapeType type = 2;
+
 @interface Shape : NSObject {
 
   NSMutableDictionary* transformations;
