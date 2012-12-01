@@ -27,6 +27,25 @@
   return self;
 }
 
+-(id) initWithX1: (int)xPos withY1: (int)yPos withX2:(int) xPos2 withY2:(int) yPos2 withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid isFilled: (BOOL) filled withStartingPage:(int) sPage withEndingPage:(int) ePage withTransArray:(NSMutableDictionary *) tArray{
+  
+  self = [super initWithX: xPos withY: yPos withColor:shapeColor withStrokeWidth:strokeWid isFilled:filled withStartingPage:sPage withEndingPage:ePage withTransArray:tArray];
+  
+  if(self) {
+    x2 = xPos2;
+    y2 = yPos2;
+    
+    dirX = 0;
+    dirY = 0;
+    
+    [self createShapePoints];
+  }
+  
+  return self;
+  
+  
+}
+
 
 - (void) createShapePoints {
     ShapePoint* begPoint = [[ShapePoint alloc] initWithX:x withY:y withOwner:self];

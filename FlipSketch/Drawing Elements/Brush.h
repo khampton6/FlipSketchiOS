@@ -16,4 +16,6 @@
 
 - (id)initWithX:(int)xPos withY:(int)yPos withColor:(RGBColor *)shapeColor withStrokeWidth:(int) strokeWid;
 
+- (id)initWithStrokePoints:(NSMutableArray *) sPoints withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid withStartingPage:(int) sPage withEndingPage:(int) ePage withTransArray:(NSMutableDictionary *) tArray;
+
 @end

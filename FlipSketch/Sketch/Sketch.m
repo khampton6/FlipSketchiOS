@@ -20,11 +20,12 @@
     name = aName;
     desc = aDesc;
     sID = aSID;
+    shapesArray = [[NSMutableArray alloc] init];
   }
   
   return self;
 }
-
+/*
 -(id) initWithName:(NSString *) aName withDesc:(NSString *) aDesc withSID:(int) aSID withShape:(NSMutableArray *) theShapes{
   
   self = [self initWithName:(NSString *) aName withDesc:(NSString *) aDesc withSID:(int) aSID];
@@ -32,15 +33,24 @@
   
   return self;
 }
+ */
 
 -(void) addShapeToArray:(Shape *) aShape{
+  //NSLog(@"addingToArray");
+  //NSLog(@" shapeArrSize is %d", shapesArray.count);
   [shapesArray addObject:aShape];
+  //NSLog(@" shapeArrSize is %d", shapesArray.count);
 }
 
 - (NSString *)description
 {
-  NSLog(@"Hey, it got to sketch description!");
+  NSLog(@"Sketch");
+  //NSLog(@" shapeArrSize is %d", shapesArray.count);
   return [NSString stringWithFormat:@"Sketch"];
+}
+
+-(NSMutableArray*) testGetShapes{
+  return shapesArray;
 }
 
 @end

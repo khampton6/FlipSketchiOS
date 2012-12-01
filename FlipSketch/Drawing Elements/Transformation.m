@@ -22,6 +22,17 @@
   return self;
 }
 
+-(id) initWithPageNumber:(int) pageNumber withX:(int) x withY:(int) y isKeyFrame:(BOOL) kFrame{
+  self = [super init];
+  
+  _pageNum = pageNumber;
+  _newX = x;
+  _newY = y;
+  _isKeyFrame = kFrame;
+  
+  return self;
+}
+
 -(void) print {
   NSLog(@"Page #: %d, X: %d Y: %d", _pageNum, _newX, _newY);
 }

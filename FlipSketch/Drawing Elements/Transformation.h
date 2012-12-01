@@ -23,6 +23,9 @@
 @property int newY;
 
 -(id) initWithPageNumber:(int) pageNumber withX:(int) x withY:(int) y;
+
+-(id) initWithPageNumber:(int) pageNumber withX:(int) x withY:(int) y isKeyFrame:(BOOL) kFrame;
+
 + (NSArray*) translateBetweenTransformations: (Transformation*) prev andTransformation:(Transformation* ) current withList:(NSMutableArray*) array;
 -(void) print;
 

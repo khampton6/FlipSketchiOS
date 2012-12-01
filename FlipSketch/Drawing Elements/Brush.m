@@ -24,6 +24,27 @@
   return self;
 }
 
+-(id) initWithStrokePoints:(NSMutableArray *) sPoints withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid withStartingPage:(int) sPage withEndingPage:(int) ePage withTransArray:(NSMutableDictionary *) tArray{
+  
+  self = [super initWithX: [[sPoints objectAtIndex:0]intValue] withY: [[sPoints objectAtIndex:0] intValue] withColor:shapeColor withStrokeWidth:strokeWid isFilled:YES withStartingPage:sPage withEndingPage:ePage withTransArray:tArray];
+
+  if(self) {
+    
+    //TODO: create strokePath
+    /*
+    strokePath = [[UIBezierPath alloc] init];
+    strokePath.lineWidth = strokeWidth;
+    [strokePath moveToPoint:CGPointMake(x, y)];
+    
+    strokePoints = [[NSMutableArray alloc] init];
+    NSValue* pointWrapper = [NSValue valueWithCGPoint: CGPointMake(xPos, yPos)];
+    [strokePoints addObject:pointWrapper];
+     */
+  }
+  return self;
+  
+}
+
 - (void) createShapePoints {
     ShapePoint* begPoint = [[ShapePoint alloc] initWithX:x withY:y withOwner:self];
     
