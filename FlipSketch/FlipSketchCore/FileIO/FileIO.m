@@ -181,9 +181,9 @@
       NSLog(@"theShapeType is %d", theShapeType);
       NSLog(@"theStrokeWidth is %d", theStrokeWidth);
       
-      //NSMutableArray *transArr = [[NSMutableArray alloc] init];
+      NSMutableDictionary *transDict = [[NSMutableDictionary alloc] init];
       
-      /****
+      
       //trans is just pageNum, xPos, yPos
       for (NSString *theTrans in transformations) {
         
@@ -208,12 +208,16 @@
         
         NSLog(@"currTrans is %d",theIsKeyFrame);
         
+        Transformation *currTrans = [[Transformation alloc] initWithPageNumber:thePageNum withX:theXPos withY:theYPos isKeyFrame:theIsKeyFrame];
+        
+        transDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:currTrans, [NSNumber numberWithInt:thePageNum], nil];
+        
         //Transformation *currTrans = [[Transformation alloc] initWithPageNumber:thePageNum withX:theXPos withY:theYPos isKeyFrame:theIsKeyFrame];
         
         //[transArr addObject:currTrans];
         
       }
-      ****/
+      
       
       //if the shape is a rectangle
       //rectangle/oval specific attributes include shapeWidth, shapeHeight, X1, and Y1
@@ -246,16 +250,16 @@
           //NSLog(@"sizeOfShapeArr is %d", [[allSketches objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] ]);
           
           //add the current shape to the current sketch object
-          [[allSketches objectAtIndex: [(NSMutableArray*)sketches indexOfObject:theSketches]]addShapeToArray:[[Rectangle alloc] initWithX: (int)theX1Pos withY: (int)theY1Pos withWidth:(int) theShapeWidth withHeight:(int) theShapeHeight withColor: tColor withStrokeWidth:(int) theStrokeWidth isFilled: (BOOL) theIsShapeFilled withStartingPage:(int) theStartingPage withEndingPage:(int) theEndingPage withTransArray: nil]];
+          [[allSketches objectAtIndex: [(NSMutableArray*)sketches indexOfObject:theSketches]]addShapeToArray:[[Rectangle alloc] initWithX: (int)theX1Pos withY: (int)theY1Pos withWidth:(int) theShapeWidth withHeight:(int) theShapeHeight withColor: tColor withStrokeWidth:(int) theStrokeWidth isFilled: (BOOL) theIsShapeFilled withStartingPage:(int) theStartingPage withEndingPage:(int) theEndingPage withTransArray: transDict]];
           
-          NSLog(@"IS FUCK RECTANGLE");
+          NSLog(@"IS SHAPE RECTANGLE");
           
           
         }
         else{
-          [[allSketches objectAtIndex: [(NSMutableArray*)sketches indexOfObject:theSketches]]addShapeToArray:[[Oval alloc] initWithX: (int)theX1Pos withY: (int)theY1Pos withWidth:(int) theShapeWidth withHeight:(int) theShapeHeight withColor: tColor withStrokeWidth:(int) theStrokeWidth isFilled: (BOOL) theIsShapeFilled withStartingPage:(int) theStartingPage withEndingPage:(int) theEndingPage withTransArray: nil]];
+          [[allSketches objectAtIndex: [(NSMutableArray*)sketches indexOfObject:theSketches]]addShapeToArray:[[Oval alloc] initWithX: (int)theX1Pos withY: (int)theY1Pos withWidth:(int) theShapeWidth withHeight:(int) theShapeHeight withColor: tColor withStrokeWidth:(int) theStrokeWidth isFilled: (BOOL) theIsShapeFilled withStartingPage:(int) theStartingPage withEndingPage:(int) theEndingPage withTransArray: transDict]];
           
-          NSLog(@"IS FUCK Oval");
+          NSLog(@"IS SHAPE Oval");
         }
         
         //NSLog(@"current Index is %d", [(NSMutableArray*)sketches indexOfObject:theSketches]);
@@ -282,7 +286,7 @@
       //if the shape is a line
       //rectangle specific attributes include X1, Y1, X2, and Y2
       else if(theShapeType  ==2){
-        NSLog(@"IS FUCK LINE");
+        NSLog(@"IS SHAPE LINE");
         
         
         int theX1Pos = [[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"x1"] intValue ];
@@ -294,18 +298,18 @@
         
         int theY2Pos = (int)[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"y2"];
         
-        [[allSketches objectAtIndex: [(NSMutableArray*)sketches indexOfObject:theSketches]]addShapeToArray:[[Line alloc] initWithX1:theX1Pos withY1:theY1Pos withX2:theX2Pos withY2:theY2Pos withColor:tColor withStrokeWidth:theStrokeWidth isFilled:theIsShapeFilled withStartingPage:theStartingPage withEndingPage:theEndingPage withTransArray:nil]];
+        [[allSketches objectAtIndex: [(NSMutableArray*)sketches indexOfObject:theSketches]]addShapeToArray:[[Line alloc] initWithX1:theX1Pos withY1:theY1Pos withX2:theX2Pos withY2:theY2Pos withColor:tColor withStrokeWidth:theStrokeWidth isFilled:theIsShapeFilled withStartingPage:theStartingPage withEndingPage:theEndingPage withTransArray:transDict]];
         
       }
       
       //if the shape is a brush
       //brush specific attributes include strokePoints
       else if(theShapeType  ==3){
-        NSLog(@"IS FUCK BRUSH");
+        NSLog(@"IS SHAPE BRUSH");
         
         NSMutableArray *theStrokePoints = [[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"strokePoints"];
         
-        [[allSketches objectAtIndex: [(NSMutableArray*)sketches indexOfObject:theSketches]]addShapeToArray:[[Brush alloc] initWithStrokePoints:theStrokePoints withColor:tColor withStrokeWidth:theStrokeWidth withStartingPage:theStartingPage withEndingPage:theEndingPage withTransArray:nil]];
+        [[allSketches objectAtIndex: [(NSMutableArray*)sketches indexOfObject:theSketches]]addShapeToArray:[[Brush alloc] initWithStrokePoints:theStrokePoints withColor:tColor withStrokeWidth:theStrokeWidth withStartingPage:theStartingPage withEndingPage:theEndingPage withTransArray:transDict]];
         
       }
       
