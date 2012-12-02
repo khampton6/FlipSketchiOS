@@ -24,9 +24,9 @@
   return self;
 }
 
--(id) initWithStrokePoints:(NSMutableArray *) sPoints withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid withStartingPage:(int) sPage withEndingPage:(int) ePage withTransArray:(NSMutableDictionary *) tArray{
+-(id) initWithStrokePoints:(NSMutableArray *) sPoints withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid withStartingPage:(int) sPage withEndingPage:(int) ePage withTransArray:(NSMutableDictionary *) tArray withShapeType:(int) shapeType{
   
-  self = [super initWithX: [[sPoints objectAtIndex:0]intValue] withY: [[sPoints objectAtIndex:0] intValue] withColor:shapeColor withStrokeWidth:strokeWid isFilled:YES withStartingPage:sPage withEndingPage:ePage withTransArray:tArray];
+  self = [super initWithX: [[sPoints objectAtIndex:0]intValue] withY: [[sPoints objectAtIndex:0] intValue] withColor:shapeColor withStrokeWidth:strokeWid isFilled:YES withStartingPage:sPage withEndingPage:ePage withTransArray:tArray withShapeType:(int) shapeType];
 
   if(self) {
     
