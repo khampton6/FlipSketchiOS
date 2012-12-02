@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C3006" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
@@ -116,7 +116,7 @@
                                     <constraint firstItem="VYm-JL-xOB" firstAttribute="leading" secondItem="lOU-ot-CA5" secondAttribute="leading" type="default" id="wFF-yg-MdE"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e39-mb-Y3n">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e39-mb-Y3n" customClass="PreviewPlayer">
                                 <color key="backgroundColor" red="0.43529415130615234" green="0.46666669845581055" blue="0.49411767721176147" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                         </subviews>
@@ -506,11 +506,17 @@
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
+        <class className="PreviewPlayer" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PreviewPlayer.h"/>
+        </class>
         <class className="PreviewView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PreviewView.h"/>
         </class>
         <class className="ShapeSelectViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ShapeSelectViewController.h"/>
+        </class>
+        <class className="Sketch" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Sketch.h"/>
         </class>
         <class className="SketchListView" superclassName="UIScrollView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SketchListView.h"/>
@@ -551,6 +557,7 @@
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="pagesLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="previewTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="selectedSketch" candidateClass="Sketch"/>
                 <relationship kind="outlet" name="sketchList" candidateClass="SketchListView"/>
             </relationships>
         </class>

@@ -38,6 +38,7 @@
 		AA68050C161B95AB005C0D86 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA68050B161B95AB005C0D86 /* Default-568h@2x.png */; };
 		AA68050F161B95AB005C0D86 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA68050D161B95AB005C0D86 /* MainStoryboard.storyboard */; };
 		AA680512161B95AB005C0D86 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA680511161B95AB005C0D86 /* ViewController.m */; };
+		AA69D9A9166B074B00C7D295 /* PreviewPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA69D9A8166B074B00C7D295 /* PreviewPlayer.m */; };
 		AA94E45E1620B474000CDFBA /* SketchListView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA94E45D1620B474000CDFBA /* SketchListView.m */; };
 		AAC5B79416458BB500BB2362 /* RGBColor.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC5B79316458BB500BB2362 /* RGBColor.m */; };
 		AAC5B7981645975400BB2362 /* PreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC5B7971645975400BB2362 /* PreviewView.m */; };
@@ -106,6 +107,8 @@
 		AA68050E161B95AB005C0D86 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		AA680510161B95AB005C0D86 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		AA680511161B95AB005C0D86 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AA69D9A7166B074B00C7D295 /* PreviewPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreviewPlayer.h; path = StartScreen/PreviewPlayer.h; sourceTree = "<group>"; };
+		AA69D9A8166B074B00C7D295 /* PreviewPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreviewPlayer.m; path = StartScreen/PreviewPlayer.m; sourceTree = "<group>"; };
 		AA94E45C1620B474000CDFBA /* SketchListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SketchListView.h; path = StartScreen/SketchListView.h; sourceTree = "<group>"; };
 		AA94E45D1620B474000CDFBA /* SketchListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SketchListView.m; path = StartScreen/SketchListView.m; sourceTree = "<group>"; };
 		AAC5B79216458BB500BB2362 /* RGBColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RGBColor.h; path = FlipSketchCore/RGBColor.h; sourceTree = "<group>"; };
@@ -277,6 +280,8 @@
 				AA94E45D1620B474000CDFBA /* SketchListView.m */,
 				AA459FEA162874F600ADC992 /* FlipSketchPreviewView.h */,
 				AA459FEB162874F600ADC992 /* FlipSketchPreviewView.m */,
+				AA69D9A7166B074B00C7D295 /* PreviewPlayer.h */,
+				AA69D9A8166B074B00C7D295 /* PreviewPlayer.m */,
 			);
 			name = StartScreen;
 			sourceTree = "<group>";
@@ -443,6 +448,7 @@
 				AAF5E4EC1659969800194DA5 /* TimeLineView.m in Sources */,
 				AAF5E4F01659983800194DA5 /* TimeLineViewController.m in Sources */,
 				14A7A6A1166535080095020A /* Sketch.m in Sources */,
+				AA69D9A9166B074B00C7D295 /* PreviewPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
