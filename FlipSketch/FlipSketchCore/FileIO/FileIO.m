@@ -334,8 +334,8 @@
   
   NSNumber *totPages = [NSNumber numberWithInt:10];
   
-  NSNumber *x1 = [NSNumber numberWithInt:10];
-  NSNumber *y1 = [NSNumber numberWithInt:11];
+  NSNumber *x1 = [NSNumber numberWithInt:100];
+  NSNumber *y1 = [NSNumber numberWithInt:110];
   NSNumber *x2 = [NSNumber numberWithInt:20];
   NSNumber *y2 = [NSNumber numberWithInt:21];
   
@@ -349,8 +349,8 @@
   
   NSNumber *sWidth = [NSNumber numberWithInt:1];
   
-  NSNumber *shapeWidth = [NSNumber numberWithInt:5];
-  NSNumber *shapeHeight = [NSNumber numberWithInt:5];
+  NSNumber *shapeWidth = [NSNumber numberWithInt:50];
+  NSNumber *shapeHeight = [NSNumber numberWithInt:50];
   
   NSDictionary *transData = [NSDictionary dictionaryWithObjectsAndKeys:tX, @"xPos", tY, @"yPos", tPageNum, @"pageNum", tIsKeyFrame, @"isKeyFrame", nil];
   NSMutableArray *transDataArray = [[NSMutableArray alloc] initWithObjects:transData, nil];
@@ -382,8 +382,8 @@
   /***SECOND OBJECT; OVAL ****/
   NSNumber *totPagesb = [NSNumber numberWithInt:12];
   
-  NSNumber *x1b = [NSNumber numberWithInt:10];
-  NSNumber *y1b = [NSNumber numberWithInt:11];
+  NSNumber *x1b = [NSNumber numberWithInt:100];
+  NSNumber *y1b = [NSNumber numberWithInt:110];
   NSNumber *x2b = [NSNumber numberWithInt:20];
   NSNumber *y2b = [NSNumber numberWithInt:21];
   
@@ -397,8 +397,8 @@
   
   NSNumber *sWidthb = [NSNumber numberWithInt:5];
   
-  NSNumber *shapeWidthb = [NSNumber numberWithInt:3];
-  NSNumber *shapeHeightb = [NSNumber numberWithInt:3];
+  NSNumber *shapeWidthb = [NSNumber numberWithInt:50];
+  NSNumber *shapeHeightb = [NSNumber numberWithInt:50];
   
   NSDictionary *transDatab = [NSDictionary dictionaryWithObjectsAndKeys:tXb, @"xPos", tYb, @"yPos", tPageNumb, @"pageNum", tIsKeyFrameb, @"isKeyFrame", nil];
   
@@ -423,8 +423,8 @@
   /***SECOND OBJECT; LINE ****/
   NSNumber *totPagesc = [NSNumber numberWithInt:15];
   
-  NSNumber *x1c = [NSNumber numberWithInt:10];
-  NSNumber *y1c = [NSNumber numberWithInt:11];
+  NSNumber *x1c = [NSNumber numberWithInt:100];
+  NSNumber *y1c = [NSNumber numberWithInt:110];
   NSNumber *x2c = [NSNumber numberWithInt:20];
   NSNumber *y2c = [NSNumber numberWithInt:21];
   
@@ -438,8 +438,8 @@
   
   NSNumber *sWidthc = [NSNumber numberWithInt:5];
   
-  NSNumber *shapeWidthc = [NSNumber numberWithInt:3];
-  NSNumber *shapeHeightc = [NSNumber numberWithInt:3];
+  NSNumber *shapeWidthc = [NSNumber numberWithInt:50];
+  NSNumber *shapeHeightc = [NSNumber numberWithInt:50];
   
   NSDictionary *transDatac = [NSDictionary dictionaryWithObjectsAndKeys:tXc, @"xPos", tYc, @"yPos", tPageNumc, @"pageNum", tIsKeyFramec, @"isKeyFrame", nil];
   
@@ -462,8 +462,8 @@
   /***SECOND OBJECT; BRUSH ****/
   NSNumber *totPagesd = [NSNumber numberWithInt:20];
   
-  NSNumber *x1d = [NSNumber numberWithInt:10];
-  NSNumber *y1d = [NSNumber numberWithInt:11];
+  NSNumber *x1d = [NSNumber numberWithInt:100];
+  NSNumber *y1d = [NSNumber numberWithInt:110];
   NSNumber *x2d = [NSNumber numberWithInt:20];
   NSNumber *y2d = [NSNumber numberWithInt:21];
   
@@ -477,8 +477,8 @@
   
   NSNumber *sWidthd = [NSNumber numberWithInt:5];
   
-  NSNumber *shapeWidthd = [NSNumber numberWithInt:3];
-  NSNumber *shapeHeightd = [NSNumber numberWithInt:3];
+  NSNumber *shapeWidthd = [NSNumber numberWithInt:50];
+  NSNumber *shapeHeightd = [NSNumber numberWithInt:50];
   
   NSDictionary *transDatad = [NSDictionary dictionaryWithObjectsAndKeys:tXd, @"xPos", tYd, @"yPos", tPageNumd, @"pageNum", tIsKeyFramed, @"isKeyFrame", nil];
   

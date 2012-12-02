@@ -58,6 +58,7 @@
     _endPage = ePage;
     
     transformations = [[NSMutableDictionary alloc] init];
+    [self setStartPage:0];
   }
   
   
