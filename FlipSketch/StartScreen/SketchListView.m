@@ -31,18 +31,21 @@ const int SKETCHNODESPACINGX = 40;
 -(void) loadSketches:(NSMutableArray *)slist {
   sketchPreviews = [[NSMutableArray alloc] initWithCapacity:[slist count]+1];
   
-  //Need to resize view
-  int selfWidth = SKETCHNODEWIDTH * [slist count] + 1 + SKETCHNODESPACINGX;
-  int selfHeight = SKETCHNODEHEIGHT;
-  [self setContentSize:CGSizeMake(selfWidth, selfHeight)];
-  
   //Add represent tiles
   int startX = 10;
   int startY = 10;
-
   CGRect frame = CGRectMake(startX, startY, SKETCHNODEWIDTH, SKETCHNODEHEIGHT);
-  FlipSketchPreviewView* addNew = [FlipSketchPreviewView createNewPreviewView: frame];
+  
+  //Need to resize view
+  int selfWidth = SKETCHNODEWIDTH * ([slist count] + 2) + SKETCHNODESPACINGX;
+  int selfHeight = SKETCHNODEHEIGHT;
+  [self setContentSize:CGSizeMake(selfWidth, selfHeight)];
+
+  FlipSketchPreviewView* addNew;
+
+  addNew = [FlipSketchPreviewView createNewPreviewView: frame];
   [self addSubview:addNew];
+
   
   //FlipSketch* addNewSketch = [addNew sketch];
   Sketch* addNewSketch = [addNew sketch];
@@ -50,6 +53,7 @@ const int SKETCHNODESPACINGX = 40;
   
   [parentController setSketch: addNewSketch];
   [addNew setSelected: YES];
+  
   selected = 0;
 
   for(int i = 0; i < [slist count]; i++) {

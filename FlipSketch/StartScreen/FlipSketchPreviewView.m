@@ -40,11 +40,10 @@
   NSMutableArray* shapes = [NSMutableArray arrayWithObject:rect];
   [sketch setShapesArray:shapes];
   
-  /*
-  [sketch setName:@"New Sketch"];
+  [sketch setSketchName:@"New Sketch"];
   [sketch setDesc:@"Press the Start Sketching button below to start sketching!"];
   [sketch setTotalPages:0];
-   */
+  
   [preview setSketch:sketch];
   
   UIImage* image = [FlipSketchIO readNewSketchImage];
@@ -71,33 +70,22 @@
 + (id) createNewPreviewView: (CGRect) frame withSketch: (Sketch*) aSketch {
   
   FlipSketchPreviewView* preview = [[FlipSketchPreviewView alloc] initWithFrame:frame];
-  
-  //FlipSketch* sketch = [[FlipSketch alloc] init];
-  //Sketch* sketch = [[Sketch alloc]init];
-  /*
-   [sketch setName:@"New Sketch"];
-   [sketch setDesc:@"Press the Start Sketching button below to start sketching!"];
-   [sketch setTotalPages:0];
-   */
+
   [preview setSketch:aSketch];
-  
-  UIImage* image = [FlipSketchIO readNewSketchImage];
   
   CGSize size = frame.size;
   CGFloat width = size.width;
   CGFloat height = size.height;
   
-  CGSize imgSize = image.size;
-  CGFloat imgWidth = imgSize.width;
-  CGFloat imgHeight = imgSize.height;
   
-  CGFloat newX = (width - imgWidth) / 2;
-  CGFloat newY = (height - imgHeight) / 2;
-  
-  
-  CGRect centeredRect = CGRectMake(newX, newY, imgWidth, imgHeight);
-  
-  [preview setPreviewStub:image withFrame:centeredRect];
+  NSString* text = [aSketch sketchName];
+  UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+  [label setText:text];
+  [label setTextAlignment: NSTextAlignmentCenter];
+  UIColor* color = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+  [label setBackgroundColor:color];
+  [label setTextColor:[UIColor whiteColor]];
+  [preview addSubview:label];
   
   return preview;
 }
