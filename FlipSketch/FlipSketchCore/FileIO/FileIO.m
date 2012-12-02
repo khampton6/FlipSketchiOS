@@ -514,7 +514,6 @@
   NSString *theSketchName = [aSketch sketchName];
   NSString *theSketchDesc = [aSketch desc];
   
-  NSString 
   
   
   NSMutableArray *points = [NSMutableArray array];
