@@ -18,6 +18,7 @@
 #import "TimeLineViewController.h"
 #import "Timeline.h"
 #import "ViewController.h"
+#import "Sketch.h"
 
 @interface SketchViewController ()
 
@@ -74,6 +75,10 @@
   [addTapGesture release];
   
   [sketchView setShapes:startShapes];
+  int pages = [loadedSketch totalPages];
+  for(int i = 0; i < pages; i++) {
+    [self addPageImage:nil];
+  }
   
   [sketchView setNeedsDisplay];
 }
@@ -410,6 +415,10 @@
     [self goToPage:returnPage];
     playing = NO;
   }
+}
+
+-(void) loadSketch:(Sketch*) newSketch {
+  loadedSketch = newSketch;
 }
 
 -(void) setShapes:(NSMutableArray*) shapes {

@@ -59,6 +59,7 @@
     NSLog(@"Selected Sketch is there!");
     NSArray* shapes = [selectedSketch shapesArray];
     [svc setShapes:shapes];
+    [svc loadSketch:selectedSketch];
     Shape* shape = [shapes objectAtIndex:0];
     [shape setXPos:200];
     [shape setYPos:200];

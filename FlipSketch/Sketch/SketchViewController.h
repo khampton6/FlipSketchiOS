@@ -16,6 +16,7 @@
 @class TimeLineView;
 @class TimeLineViewController;
 @class Timeline;
+@class Sketch;
 
 @interface SketchViewController : UIViewController {
   ShapeType currShape;
@@ -31,6 +32,7 @@
   RGBColor* selectedColor;
   BOOL selectedFilled;
   
+  Sketch* loadedSketch;
   NSMutableArray* startShapes;
   
   int dragPoints;
@@ -67,6 +69,7 @@
 -(void) updatePageLabel:(int) newPage;
 -(void) goToPage:(int) page;
 
+-(void) loadSketch:(Sketch*) newSketch;
 -(void) setShapes:(NSArray*) shapes;
 
 @property (nonatomic, retain) RGBColor* selectedColor ;

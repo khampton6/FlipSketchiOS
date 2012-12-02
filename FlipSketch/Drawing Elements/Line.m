@@ -36,8 +36,8 @@
     x2 = xPos2;
     y2 = yPos2;
     
-    dirX = 0;
-    dirY = 0;
+    dirX = x - x2;
+    dirY = y - y2;
     
     [self createShapePoints];
   }
