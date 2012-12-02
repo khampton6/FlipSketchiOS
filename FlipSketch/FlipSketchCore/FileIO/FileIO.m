@@ -246,7 +246,7 @@
         
         //[[Rectangle alloc] initWithX: (int)theX1Pos withY: (int)theY1Pos withWidth:(int) theShapeWidth withHeight:(int) theShapeHeight withColor: tColor withStrokeWidth:(int) theStrokeWidth isFilled: (BOOL) YES withStartingPage:(int) theStartingPage withEndingPage:(int) theEndingPage withTransArray: nil];
         
-        if(theShapeType == 1){
+        if(theShapeType == 0){
           
           //NSLog(@"sizeOfShapeArr is %d", [[allSketches objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] ]);
           
@@ -299,7 +299,7 @@
         
         int theY2Pos = [[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"y2"] intValue];
         
-        NSLog(@" the poses are %d %d %d %d ", theX1Pos, theY1Pos, theX2Pos, theY2Pos);
+        //NSLog(@" the poses are %d %d %d %d ", theX1Pos, theY1Pos, theX2Pos, theY2Pos);
         
         [[allSketches objectAtIndex: [(NSMutableArray*)sketches indexOfObject:theSketches]]addShapeToArray:[[Line alloc] initWithX1:theX1Pos withY1:theY1Pos withX2:theX2Pos withY2:theY2Pos withColor:tColor withStrokeWidth:theStrokeWidth isFilled:theIsShapeFilled withStartingPage:theStartingPage withEndingPage:theEndingPage withTransArray:transDict]];
         
