@@ -148,11 +148,11 @@
       NSInteger index1 = 1;
       NSInteger index2 = 2;
       
-      //NSLog(@"%@", [theColor objectAtIndex:index0]);
       
-      int r = (int)[theColor objectAtIndex:index0];
-      int g = (int)[theColor objectAtIndex:index1];
-      int b = (int)[theColor objectAtIndex:index2];
+      int r = [[theColor objectAtIndex:index0] intValue];
+      int g = [[theColor objectAtIndex:index1] intValue];
+      int b = [[theColor objectAtIndex:index2] intValue];
+      
       
       
       RGBColor* tColor = [[RGBColor alloc] initWithR:r withG:g withB:b];
@@ -166,16 +166,14 @@
       
       NSString *thePoints = [[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"points"];
       
-      ShapeType theShapeType = (ShapeType)[[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"shapeType"] intValue];
+      int theShapeType = [[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"shapeType"] intValue];
       
       int theStrokeWidth = [[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"strokeWidth"] intValue];
       
       
-      
-      
-      
       //NSLog(@"theShapes is %@", theShapes);
-      NSLog(@"theColor is %@", theColor);
+      
+      NSLog(@"theColor is %@", tColor);
       NSLog(@"theStartingPage is %d", theStartingPage);
       NSLog(@"theEndingpage is %d", theEndingPage);
       NSLog(@"theIsShapeFilled is %d", theIsShapeFilled);
@@ -185,6 +183,7 @@
       
       //NSMutableArray *transArr = [[NSMutableArray alloc] init];
       
+      /****
       //trans is just pageNum, xPos, yPos
       for (NSString *theTrans in transformations) {
         
@@ -214,11 +213,12 @@
         //[transArr addObject:currTrans];
         
       }
-      
+      ****/
       
       //if the shape is a rectangle
       //rectangle/oval specific attributes include shapeWidth, shapeHeight, X1, and Y1
-      if(theShapeType ==rect || theShapeType ==oval){
+      if(theShapeType ==0 || theShapeType ==1){
+        
         
         int theShapeWidth = [[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"shapeWidth"] intValue];
         
@@ -228,33 +228,34 @@
         
         int theY1Pos = [[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"y1"] intValue ];
         
-        /*
-         int theX2Pos = (int)[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"x2"];
-         
-         int theY2Pos = (int)[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"y2"];
-         */
+        
         
         NSLog(@"theShapeWidth is %d", theShapeWidth);
         NSLog(@"theShapeHeight is %d", theShapeHeight);
         
         NSLog(@"theX1 is %d", theX1Pos);
         NSLog(@"theY1 is %d", theY1Pos);
-        /*
-         NSLog(@"theX2 is %@", theX2Pos);
-         NSLog(@"theY2 is %@", theY2Pos);
-         */
+        
         
         //[[allSketches objectAtIndex: [(NSMutableArray*)sketches indexOfObject:theSketches]]addShapeToArray:<#(Shape *)#>];
         
         //[[Rectangle alloc] initWithX: (int)theX1Pos withY: (int)theY1Pos withWidth:(int) theShapeWidth withHeight:(int) theShapeHeight withColor: tColor withStrokeWidth:(int) theStrokeWidth isFilled: (BOOL) YES withStartingPage:(int) theStartingPage withEndingPage:(int) theEndingPage withTransArray: nil];
         
-        if(theShapeType == rect){
+        if(theShapeType == 1){
+          
+          //NSLog(@"sizeOfShapeArr is %d", [[allSketches objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] ]);
           
           //add the current shape to the current sketch object
           [[allSketches objectAtIndex: [(NSMutableArray*)sketches indexOfObject:theSketches]]addShapeToArray:[[Rectangle alloc] initWithX: (int)theX1Pos withY: (int)theY1Pos withWidth:(int) theShapeWidth withHeight:(int) theShapeHeight withColor: tColor withStrokeWidth:(int) theStrokeWidth isFilled: (BOOL) theIsShapeFilled withStartingPage:(int) theStartingPage withEndingPage:(int) theEndingPage withTransArray: nil]];
+          
+          NSLog(@"IS FUCK RECTANGLE");
+          
+          
         }
         else{
           [[allSketches objectAtIndex: [(NSMutableArray*)sketches indexOfObject:theSketches]]addShapeToArray:[[Oval alloc] initWithX: (int)theX1Pos withY: (int)theY1Pos withWidth:(int) theShapeWidth withHeight:(int) theShapeHeight withColor: tColor withStrokeWidth:(int) theStrokeWidth isFilled: (BOOL) theIsShapeFilled withStartingPage:(int) theStartingPage withEndingPage:(int) theEndingPage withTransArray: nil]];
+          
+          NSLog(@"IS FUCK Oval");
         }
         
         //NSLog(@"current Index is %d", [(NSMutableArray*)sketches indexOfObject:theSketches]);
@@ -264,21 +265,24 @@
         
         //NSMutableArray *tempShapes = [[allSketches objectAtIndex:0] getShapes];
         
-        /**** just testing to ensure the object is created correctly ****
-         NSMutableArray *test = [[allSketches objectAtIndex:0]  testGetShapes];
+        /*just testing to ensure the object is created correctly ****
+         NSMutableArray *test = [[allSketches objectAtIndex:1]  testGetShapes];
          
          NSString *testDesc = [[test objectAtIndex:0] description];
          
          NSLog(@" testIs %@", testDesc);
-         ****/
+         /****/
+        
+        //NSLog(@" allSketches is %@", allSketches);
+        
         /////////NSLog(@"The description is %@", [allSketches objectAtIndex:0]);
         
       }
       
       //if the shape is a line
       //rectangle specific attributes include X1, Y1, X2, and Y2
-      else if(theShapeType  ==line){
-        NSLog(@"IT'S line!");
+      else if(theShapeType  ==2){
+        NSLog(@"IS FUCK LINE");
         
         
         int theX1Pos = [[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"x1"] intValue ];
@@ -295,9 +299,9 @@
       }
       
       //if the shape is a brush
-      //brgush specific attributes include strokePoints
-      else if(theShapeType  ==brush){
-        NSLog(@"IT'S brush!");
+      //brush specific attributes include strokePoints
+      else if(theShapeType  ==3){
+        NSLog(@"IS FUCK BRUSH");
         
         NSMutableArray *theStrokePoints = [[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"strokePoints"];
         
