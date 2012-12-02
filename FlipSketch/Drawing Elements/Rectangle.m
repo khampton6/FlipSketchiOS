@@ -42,8 +42,8 @@
   self = [super initWithX: (int)xPos withY: (int)yPos withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid isFilled: (BOOL) filled withStartingPage:(int) sPage withEndingPage:(int) ePage withTransArray:(NSMutableDictionary *) tArray];
   
   if(self){
-    self.width = 1;
-    self.height = 1;
+    self.width = shapeWidth;
+    self.height = shapeHeight;
   }
   
   return self;
