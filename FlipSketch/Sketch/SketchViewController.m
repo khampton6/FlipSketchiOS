@@ -72,6 +72,10 @@
   [tapGesture release];
   [drag release];
   [addTapGesture release];
+  
+  [sketchView setShapes:startShapes];
+  
+  [sketchView setNeedsDisplay];
 }
 
 - (void) touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event {
@@ -410,6 +414,7 @@
 
 -(void) setShapes:(NSMutableArray*) shapes {
   [sketchView setShapes:shapes];
+  startShapes = shapes;
   [sketchView setNeedsDisplay];
 }
 

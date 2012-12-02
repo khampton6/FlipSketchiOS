@@ -31,6 +31,8 @@
   RGBColor* selectedColor;
   BOOL selectedFilled;
   
+  NSMutableArray* startShapes;
+  
   int dragPoints;
   
   CGPoint dragPt;

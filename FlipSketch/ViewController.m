@@ -60,6 +60,8 @@
     NSArray* shapes = [selectedSketch shapesArray];
     [svc setShapes:shapes];
     Shape* shape = [shapes objectAtIndex:0];
+    [shape setXPos:200];
+    [shape setYPos:200];
     NSLog(@"Number shapes: %d", [shapes count]);
   }
 }
