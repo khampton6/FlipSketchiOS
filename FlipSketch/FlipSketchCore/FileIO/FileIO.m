@@ -147,13 +147,13 @@
       NSInteger index0 = 0;
       NSInteger index1 = 1;
       NSInteger index2 = 2;
+    
+      float r = [[theColor objectAtIndex:index0] floatValue];
+      float g = [[theColor objectAtIndex:index1] floatValue];
+      float b = [[theColor objectAtIndex:index2] floatValue];
       
-      
-      int r = [[theColor objectAtIndex:index0] intValue];
-      int g = [[theColor objectAtIndex:index1] intValue];
-      int b = [[theColor objectAtIndex:index2] intValue];
-      
-      
+      NSLog(@" the cols are %f%f%f", r,g,b);
+      NSLog(@" the cols array is %@", theColor);
       
       RGBColor* tColor = [[RGBColor alloc] initWithR:r withG:g withB:b];
       
@@ -163,6 +163,7 @@
       int theEndingPage = [[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"endingPage"] intValue];
       
       BOOL theIsShapeFilled = [[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"isShapeFilled"] boolValue];
+      
       
       NSString *thePoints = [[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"points"];
       
@@ -250,14 +251,14 @@
           //NSLog(@"sizeOfShapeArr is %d", [[allSketches objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] ]);
           
           //add the current shape to the current sketch object
-          [[allSketches objectAtIndex: [(NSMutableArray*)sketches indexOfObject:theSketches]]addShapeToArray:[[Rectangle alloc] initWithX: (int)theX1Pos withY: (int)theY1Pos withWidth:(int) theShapeWidth withHeight:(int) theShapeHeight withColor: tColor withStrokeWidth:(int) theStrokeWidth isFilled: (BOOL) theIsShapeFilled withStartingPage:(int) theStartingPage withEndingPage:(int) theEndingPage withTransArray: transDict]];
+          [[allSketches objectAtIndex: [(NSMutableArray*)sketches indexOfObject:theSketches]]addShapeToArray:[[Rectangle alloc] initWithX: (int)theX1Pos withY: (int)theY1Pos withWidth:(int) theShapeWidth withHeight:(int) theShapeHeight withColor: tColor withStrokeWidth: theStrokeWidth isFilled: theIsShapeFilled withStartingPage:(int) theStartingPage withEndingPage:(int) theEndingPage withTransArray: transDict]];
           
           NSLog(@"IS SHAPE RECTANGLE");
           
           
         }
         else{
-          [[allSketches objectAtIndex: [(NSMutableArray*)sketches indexOfObject:theSketches]]addShapeToArray:[[Oval alloc] initWithX: (int)theX1Pos withY: (int)theY1Pos withWidth:(int) theShapeWidth withHeight:(int) theShapeHeight withColor: tColor withStrokeWidth:(int) theStrokeWidth isFilled: (BOOL) theIsShapeFilled withStartingPage:(int) theStartingPage withEndingPage:(int) theEndingPage withTransArray: transDict]];
+          [[allSketches objectAtIndex: [(NSMutableArray*)sketches indexOfObject:theSketches]]addShapeToArray:[[Oval alloc] initWithX: (int)theX1Pos withY: (int)theY1Pos withWidth:(int) theShapeWidth withHeight:(int) theShapeHeight withColor: tColor withStrokeWidth: theStrokeWidth isFilled: theIsShapeFilled withStartingPage:(int) theStartingPage withEndingPage:(int) theEndingPage withTransArray: transDict]];
           
           NSLog(@"IS SHAPE Oval");
         }
@@ -294,9 +295,11 @@
         int theY1Pos = [[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"y1"] intValue ];
         
         
-        int theX2Pos = (int)[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"x2"];
+        int theX2Pos = [[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"x2"] intValue];
         
-        int theY2Pos = (int)[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"y2"];
+        int theY2Pos = [[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"y2"] intValue];
+        
+        NSLog(@" the poses are %d %d %d %d ", theX1Pos, theY1Pos, theX2Pos, theY2Pos);
         
         [[allSketches objectAtIndex: [(NSMutableArray*)sketches indexOfObject:theSketches]]addShapeToArray:[[Line alloc] initWithX1:theX1Pos withY1:theY1Pos withX2:theX2Pos withY2:theY2Pos withColor:tColor withStrokeWidth:theStrokeWidth isFilled:theIsShapeFilled withStartingPage:theStartingPage withEndingPage:theEndingPage withTransArray:transDict]];
         
@@ -330,7 +333,7 @@
   
   NSMutableArray *colorVals = [NSMutableArray array];
   for (NSInteger i = 0; i < 3; i++)
-    [colorVals addObject:[NSNumber numberWithInteger:(i+25)]];
+    [colorVals addObject:[NSNumber numberWithFloat:((i+1.0f)/5.0f)]];
   
   NSNumber *totPages = [NSNumber numberWithInt:10];
   
@@ -420,7 +423,7 @@
   
   
   
-  /***SECOND OBJECT; LINE ****/
+  /***THIRD OBJECT; LINE ****/
   NSNumber *totPagesc = [NSNumber numberWithInt:15];
   
   NSNumber *x1c = [NSNumber numberWithInt:100];

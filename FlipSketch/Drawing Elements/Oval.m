@@ -37,6 +37,7 @@
 }
 
 -(id) initWithX: (int)xPos withY: (int)yPos withWidth:(int) shapeWidth withHeight:(int) shapeHeight withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid isFilled: (BOOL) filled withStartingPage:(int) sPage withEndingPage:(int) ePage withTransArray:(NSMutableDictionary *) tArray{
+  
   self = [super initWithX: (int)xPos withY: (int)yPos withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid isFilled: (BOOL) filled withStartingPage:(int) sPage withEndingPage:(int) ePage withTransArray:(NSMutableDictionary *) tArray];
   
   if(self){
