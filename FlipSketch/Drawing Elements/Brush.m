@@ -30,16 +30,22 @@
 
   if(self) {
     
-    //TODO: create strokePath
-    /*
+    CGPoint firstPt = CGPointMake(x, y);
+    
     strokePath = [[UIBezierPath alloc] init];
     strokePath.lineWidth = strokeWidth;
-    [strokePath moveToPoint:CGPointMake(x, y)];
+    [strokePath moveToPoint:firstPt];
     
     strokePoints = [[NSMutableArray alloc] init];
-    NSValue* pointWrapper = [NSValue valueWithCGPoint: CGPointMake(xPos, yPos)];
-    [strokePoints addObject:pointWrapper];
-     */
+    NSValue* firstPtValue = [NSValue valueWithCGPoint:firstPt];
+    [strokePoints addObject:firstPtValue];
+    
+    for(int i = 0; i < [sPoints count]; i++) {
+      NSValue* valueWrapper = [sPoints objectAtIndex:i];
+      CGPoint pt = [valueWrapper CGPointValue];
+      [strokePath addLineToPoint:pt];
+      [strokePoints addObject:valueWrapper];
+    }
   }
   return self;
   
