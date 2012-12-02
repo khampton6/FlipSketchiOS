@@ -51,6 +51,8 @@
   [pagesLabel setText: pagesStr];
   
   [previewTextView setText: [sketch desc]];
+  [player setSketch:sketch];
+  
 }
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

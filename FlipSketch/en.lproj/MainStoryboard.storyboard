@@ -116,24 +116,31 @@
                                     <constraint firstItem="VYm-JL-xOB" firstAttribute="leading" secondItem="lOU-ot-CA5" secondAttribute="leading" type="default" id="wFF-yg-MdE"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e39-mb-Y3n" customClass="PreviewPlayer">
-                                <color key="backgroundColor" red="0.43529415130615234" green="0.46666669845581055" blue="0.49411767721176147" alpha="1" colorSpace="deviceRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQN-UX-9fy">
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vTa-Gl-WBL" customClass="PreviewPlayer">
+                                <color key="backgroundColor" red="0.43529415129999999" green="0.46666669849999998" blue="0.49411767719999999" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="e39-mb-Y3n" secondAttribute="bottom" constant="170" id="7a3-yF-m7c"/>
+                            <constraint firstItem="vTa-Gl-WBL" firstAttribute="centerX" secondItem="iQN-UX-9fy" secondAttribute="centerX" type="default" id="3DT-A0-v5a"/>
                             <constraint firstAttribute="bottom" secondItem="IK5-rV-G5U" secondAttribute="bottom" constant="-2" id="7f2-qq-Zh1"/>
+                            <constraint firstItem="iQN-UX-9fy" firstAttribute="leading" secondItem="5" secondAttribute="leading" constant="253" id="9S8-qP-lZP"/>
                             <constraint firstItem="IK5-rV-G5U" firstAttribute="top" secondItem="5" secondAttribute="top" constant="620" id="Abu-Dd-meW"/>
-                            <constraint firstItem="e39-mb-Y3n" firstAttribute="leading" secondItem="5" secondAttribute="leading" constant="266" id="IV4-N0-8Nl"/>
+                            <constraint firstAttribute="bottom" secondItem="vTa-Gl-WBL" secondAttribute="bottom" constant="157" id="Kbc-Ee-X0v"/>
                             <constraint firstItem="IK5-rV-G5U" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="default" id="LQu-H5-gyo"/>
+                            <constraint firstAttribute="trailing" secondItem="iQN-UX-9fy" secondAttribute="trailing" constant="25" id="NQU-go-eR1"/>
+                            <constraint firstAttribute="bottom" secondItem="iQN-UX-9fy" secondAttribute="bottom" constant="150" id="Nyp-mx-C7Y"/>
                             <constraint firstItem="IK5-rV-G5U" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="default" id="OsL-cC-4Tt"/>
-                            <constraint firstAttribute="trailing" secondItem="e39-mb-Y3n" secondAttribute="trailing" constant="26" id="ZSb-Bk-w40"/>
+                            <constraint firstItem="iQN-UX-9fy" firstAttribute="top" secondItem="5" secondAttribute="top" constant="79" id="ZAy-gr-Isf"/>
                             <constraint firstAttribute="bottom" secondItem="gzb-cn-CtN" secondAttribute="bottom" constant="128" id="ZtB-a0-TlH"/>
-                            <constraint firstItem="e39-mb-Y3n" firstAttribute="top" secondItem="5" secondAttribute="top" constant="74" id="aG3-gL-WP3"/>
                             <constraint firstAttribute="bottom" secondItem="eBY-XV-bXn" secondAttribute="bottom" constant="708" id="aue-t1-YmA"/>
                             <constraint firstItem="eBY-XV-bXn" firstAttribute="top" secondItem="5" secondAttribute="top" type="default" id="bgD-ap-Lfj"/>
                             <constraint firstItem="eBY-XV-bXn" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="default" id="ikm-wa-Be2"/>
+                            <constraint firstItem="vTa-Gl-WBL" firstAttribute="top" secondItem="5" secondAttribute="top" constant="87" id="k3M-Sl-nq0"/>
+                            <constraint firstItem="vTa-Gl-WBL" firstAttribute="leading" secondItem="5" secondAttribute="leading" constant="260" id="kAs-KH-yOG"/>
                             <constraint firstItem="gzb-cn-CtN" firstAttribute="leading" secondItem="5" secondAttribute="leading" type="default" id="lr8-fS-uqJ"/>
                             <constraint firstItem="eBY-XV-bXn" firstAttribute="trailing" secondItem="5" secondAttribute="trailing" type="default" id="nUW-GU-KAy"/>
                             <constraint firstItem="gzb-cn-CtN" firstAttribute="top" secondItem="5" secondAttribute="top" constant="40" id="zql-lF-ile"/>
@@ -145,6 +152,7 @@
                     <connections>
                         <outlet property="nameLabel" destination="u15-hG-AkD" id="JXT-Hp-pRv"/>
                         <outlet property="pagesLabel" destination="q77-jp-ra9" id="2cz-oj-9AA"/>
+                        <outlet property="player" destination="vTa-Gl-WBL" id="qAY-EY-bYO"/>
                         <outlet property="previewTextView" destination="4hn-a3-QTL" id="W6j-5a-alB"/>
                         <outlet property="sketchList" destination="IK5-rV-G5U" id="UD5-WL-wsW"/>
                     </connections>
@@ -556,6 +564,7 @@
             <relationships>
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="pagesLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="player" candidateClass="PreviewPlayer"/>
                 <relationship kind="outlet" name="previewTextView" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="selectedSketch" candidateClass="Sketch"/>
                 <relationship kind="outlet" name="sketchList" candidateClass="SketchListView"/>

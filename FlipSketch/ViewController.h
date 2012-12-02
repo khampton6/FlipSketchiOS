@@ -11,6 +11,7 @@
 #import "FileIO.h"
 #import "SketchView.h"
 #import "Sketch.h"
+#import "PreviewPlayer.h"
 
 
 @class SketchListView;
@@ -21,6 +22,7 @@
   IBOutlet UILabel* nameLabel;
   IBOutlet UILabel* pagesLabel;
   IBOutlet Sketch* selectedSketch;
+  IBOutlet PreviewPlayer* player;
 }
 
 @property (nonatomic, retain) NSMutableArray* flipSketches;

@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PreviewPlayer : UIView
+@class Sketch;
+
+@interface PreviewPlayer : UIView {
+  Sketch* sketch;
+  
+  NSTimer* playerTimer;
+  
+  int currPage;
+  int maxPages;
+}
+
+-(void) setSketch:(Sketch*) newSketch;
+-(void) tick: (NSTimer*) timer;
 
 @end
