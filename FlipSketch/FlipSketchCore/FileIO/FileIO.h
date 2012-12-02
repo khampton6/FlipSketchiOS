@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Sketch.h"
 
 @interface FileIO : NSObject
 
@@ -22,6 +23,7 @@
 
 - (NSData*)addSketchToJSON:(NSString *)name withDescription: (NSString*)desc withID: (int)theID withShapeArray: (NSMutableArray*)shapesArr;
 
+-(void)saveSketch:(Sketch*) aSketch;
 //-create
 
 @end

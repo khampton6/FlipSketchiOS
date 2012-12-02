@@ -28,10 +28,13 @@
   _temp = [[NSMutableArray alloc] init];
 
   [super viewDidLoad];
-  
+  /*
   NSData *dataToSave = [_fIO addSketchToJSON:@"named" withDescription:@"desc" withID:1 withShapeArray:_temp];
   
   [_fIO saveData:dataToSave];
+  */
+  
+  [_fIO saveSketch:nil];
   
   flipSketches = [_fIO loadData];
 

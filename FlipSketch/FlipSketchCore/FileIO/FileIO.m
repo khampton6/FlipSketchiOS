@@ -350,18 +350,13 @@
   NSNumber *sPage = [NSNumber numberWithInt:0];
   NSNumber *ePage = [NSNumber numberWithInt:2];
   
-  NSNumber *sWidth = [NSNumber numberWithInt:1];
+  NSNumber *sWidth = [NSNumber numberWithInt:5];
   
   NSNumber *shapeWidth = [NSNumber numberWithInt:50];
   NSNumber *shapeHeight = [NSNumber numberWithInt:50];
   
   NSDictionary *transData = [NSDictionary dictionaryWithObjectsAndKeys:tX, @"xPos", tY, @"yPos", tPageNum, @"pageNum", tIsKeyFrame, @"isKeyFrame", nil];
   NSMutableArray *transDataArray = [[NSMutableArray alloc] initWithObjects:transData, nil];
-  
-  /*
-  thePath.lineWidth = strokeWidth;
-  [thePath moveToPoint:CGPointMake(x, y)];
-   */
   
   NSMutableArray *strokePoints = [NSMutableArray array];
   for (NSInteger i = 0; i < 2; i++)
@@ -513,8 +508,77 @@
 
 }
 
--(void) createTestObjects{
+-(void) saveSketch:(Sketch *)aSketch{
   
+  
+  NSString *theSketchName = [aSketch sketchName];
+  NSString *theSketchDesc = [aSketch desc];
+  
+  g
+  
+  
+  NSMutableArray *points = [NSMutableArray array];
+  for (NSInteger i = 0; i < 4; i++)
+    [points addObject:[NSNumber numberWithInteger:i]];
+  
+  NSMutableArray *colorVals = [NSMutableArray array];
+  for (NSInteger i = 0; i < 3; i++)
+    [colorVals addObject:[NSNumber numberWithFloat:((i+1.0f)/5.0f)]];
+  
+  NSNumber *totPages = [NSNumber numberWithInt:10];
+  
+  NSNumber *x1 = [NSNumber numberWithInt:100];
+  NSNumber *y1 = [NSNumber numberWithInt:110];
+  NSNumber *x2 = [NSNumber numberWithInt:20];
+  NSNumber *y2 = [NSNumber numberWithInt:21];
+  
+  NSNumber *tX = [NSNumber numberWithInt:40];
+  NSNumber *tY = [NSNumber numberWithInt:41];
+  NSNumber *tPageNum = [NSNumber numberWithInt:1];
+  NSString *tIsKeyFrame = @"YES";
+  
+  NSNumber *sPage = [NSNumber numberWithInt:0];
+  NSNumber *ePage = [NSNumber numberWithInt:2];
+  
+  NSNumber *sWidth = [NSNumber numberWithInt:5];
+  
+  NSNumber *shapeWidth = [NSNumber numberWithInt:50];
+  NSNumber *shapeHeight = [NSNumber numberWithInt:50];
+  
+  
+  
+  
+  
+  
+  
+  NSDictionary *transData = [NSDictionary dictionaryWithObjectsAndKeys:tX, @"xPos", tY, @"yPos", tPageNum, @"pageNum", tIsKeyFrame, @"isKeyFrame", nil];
+  NSMutableArray *transDataArray = [[NSMutableArray alloc] initWithObjects:transData, nil];
+  
+  NSMutableArray *strokePoints = [NSMutableArray array];
+  for (NSInteger i = 0; i < 2; i++)
+    [strokePoints addObject:[NSNumber numberWithInteger:i]];
+  
+  NSDictionary *shapeData = [NSDictionary dictionaryWithObjectsAndKeys:@"0", @"shapeType", points, @"points", x1, @"x1", y1, @"y1", x2, @"x2", y2, @"y2", colorVals, @"color", @"YES", @"isShapeFilled", transDataArray, @"trans", sPage, @"startingPage", ePage, @"endingPage", sWidth, @"strokeWidth", shapeWidth, @"shapeWidth", shapeHeight, @"shapeHeight", strokePoints, @"strokePoints", nil];
+  
+  NSMutableArray *shapeDataArray = [[NSMutableArray alloc] initWithObjects:shapeData, nil];
+  
+  NSDictionary *sketchData = [NSDictionary dictionaryWithObjectsAndKeys:@"sketch A", @"name", @"thisNewDesc", @"desc", @"1", @"id", shapeDataArray, @"shapesData", totPages, @"totalNumOfPages", nil];
+  
+  NSMutableArray *sketchDataArray = [[NSMutableArray alloc] initWithObjects:sketchData, nil];
+  
+  NSDictionary *sketches = [[NSDictionary alloc] initWithObjectsAndKeys:sketchDataArray, @"sketch", nil];
+  
+  NSMutableArray *sketchesArray = [[NSMutableArray alloc] initWithObjects:sketches, nil];
+  
+  NSDictionary *sketchesWrapper = [[NSDictionary alloc] initWithObjectsAndKeys:sketchesArray, @"sketches", nil];
+  
+  NSError *writeError = nil;
+  NSData *jsonData = [NSJSONSerialization dataWithJSONObject:sketchesWrapper options:NSJSONWritingPrettyPrinted error:&writeError];
+  
+  
+  
+  
+  [self saveData: jsonData];
 }
 
 @end
