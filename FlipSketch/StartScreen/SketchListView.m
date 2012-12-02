@@ -95,7 +95,6 @@ const int SKETCHNODESPACINGX = 40;
     [parentController setSketch: selectedSketch];	
     [[sketchPreviews objectAtIndex:selected] setSelected:YES];
   }
-  
 }
 
 

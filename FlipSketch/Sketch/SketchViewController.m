@@ -408,4 +408,9 @@
   }
 }
 
+-(void) setShapes:(NSMutableArray*) shapes {
+  [sketchView setShapes:shapes];
+  [sketchView setNeedsDisplay];
+}
+
 @end

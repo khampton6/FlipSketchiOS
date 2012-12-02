@@ -20,4 +20,5 @@
 -(void) cancelDraggedShape;
 -(NSArray*) getShapes;
 -(void) removeShape: (Shape*) shape;
+-(void) setShapes:(NSMutableArray* ) shapes;
 @end

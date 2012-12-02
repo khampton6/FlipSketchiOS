@@ -10,6 +10,7 @@
 #import "SketchListView.h"
 #import "FileIO.h"
 #import "Sketch.h"
+#import "SketchViewController.h"
 
 @interface ViewController ()
 
@@ -39,32 +40,28 @@
 
 -(void) setSketch:(Sketch*) sketch {
   
-  if(sketch == nil) {
-    NSLog(@"I AM SO NIL");
-    return;
-  }
+  selectedSketch = sketch;
   
-  NSObject* obj = [sketch sketchName];
-  NSString* type = NSStringFromClass([obj class]);
-  NSLog(@"Type: %@", type);
-  
-  NSString* name = [sketch sketchName];
-  if(name == NULL || name == nil) {
-    NSLog(@"ARRRRGH");
-  }
-  
-  [sketch shapesArray];
-  
-//  [nameLabel setText:@"Llamas"];
-  //[sketch setSketchName:@"Llamas"];
-
-  NSLog(@"String: %@", [sketch sketchName]);
   [nameLabel setText:[sketch sketchName]];
   
   NSString* pagesStr = [NSString stringWithFormat:@"%d", [sketch totalPages]];
   [pagesLabel setText: pagesStr];
   
   [previewTextView setText: [sketch desc]];
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+  NSLog(@"Segue-ing");
+  
+  SketchViewController* svc = (SketchViewController*)[segue destinationViewController];
+  
+  if(selectedSketch) {
+    NSLog(@"Selected Sketch is there!");
+    NSArray* shapes = [selectedSketch shapesArray];
+    [svc setShapes:shapes];
+    Shape* shape = [shapes objectAtIndex:0];
+    NSLog(@"Number shapes: %d", [shapes count]);
+  }
 }
 
 - (void)didReceiveMemoryWarning

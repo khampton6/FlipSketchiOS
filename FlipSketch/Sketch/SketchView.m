@@ -77,4 +77,8 @@
   [draggedShape drawWithContext:context onPage:page];
 }
 
+-(void) setShapes:(NSMutableArray* ) nShapes {
+  shapes = nShapes;
+}
+
 @end

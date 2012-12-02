@@ -20,6 +20,7 @@
   IBOutlet UITextView* previewTextView;
   IBOutlet UILabel* nameLabel;
   IBOutlet UILabel* pagesLabel;
+  IBOutlet Sketch* selectedSketch;
 }
 
 @property (nonatomic, retain) NSMutableArray* flipSketches;

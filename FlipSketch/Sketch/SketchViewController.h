@@ -65,6 +65,7 @@
 -(void) updatePageLabel:(int) newPage;
 -(void) goToPage:(int) page;
 
+-(void) setShapes:(NSArray*) shapes;
 
 @property (nonatomic, retain) RGBColor* selectedColor ;
 @property BOOL selectMode;

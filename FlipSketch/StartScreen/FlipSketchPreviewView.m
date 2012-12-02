@@ -9,6 +9,7 @@
 #import "FlipSketchPreviewView.h"
 #import "FlipSketchIO.h"
 #import "Sketch.h"
+#import "Rectangle.h"
 
 @implementation FlipSketchPreviewView
 
@@ -29,6 +30,16 @@
   
   //FlipSketch* sketch = [[FlipSketch alloc] init];
   Sketch* sketch = [[Sketch alloc]init];
+  [sketch setTotalPages:11];
+  RGBColor* shapeColor = [[RGBColor alloc] initWithR:255 withG:0 withB:0];
+  Rectangle* rect = [[Rectangle alloc] initWithX:10 withY:10 withColor:shapeColor withStrokeWidth:5 isFilled:YES];
+  [rect setHeight:10];
+  [rect setWidth:50];
+  [rect setStartPage:0];
+  [rect moveShapeWithDirX:200 withDirY:200 withPageNumber:10];
+  NSMutableArray* shapes = [NSMutableArray arrayWithObject:rect];
+  [sketch setShapesArray:shapes];
+  
   /*
   [sketch setName:@"New Sketch"];
   [sketch setDesc:@"Press the Start Sketching button below to start sketching!"];
