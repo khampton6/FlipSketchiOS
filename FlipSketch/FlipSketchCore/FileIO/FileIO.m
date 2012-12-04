@@ -344,8 +344,6 @@
     
   }
   
-  
-  
   return allSketches;
 }
 
@@ -532,7 +530,16 @@
   
 }
 
+
+
 -(void) saveSketch:(Sketch *)aSketch{
+  
+  
+  /************************************************************************************************************************/
+    /************************************************************************************************************************/
+  
+  
+  
   //just prepopulating the stuff 
   
   /*
@@ -552,7 +559,7 @@
    NSDictionary *shapeData;
    */
   
-  
+  allSketches = [self loadData];
   
   NSMutableArray *shapeDataArray;
   
@@ -562,26 +569,14 @@
   
   NSDictionary *sketches;
   
-  //NSMutableArray *sketchesArray;
-  
   NSDictionary *sketchesWrapper;
   
   NSError *writeError;
   
   NSData *jsonData = nil;
   
-  
-  
   NSString *theSketchName = [aSketch sketchName];
   NSString *theSketchDesc = [aSketch desc];
-  
-  /*
-   NSString* string = [NSString stringWithFormat:@"Llama has %d thingies and is named %@", 1, @"Bob"];
-   
-   NSString* intStr = [NSString stringWithFormat:@"%d", 1];
-   */
-  
-  //[aSketch  sID]
   
   NSNumber *theSID = [NSNumber numberWithInteger:[aSketch sID]];
   
@@ -590,34 +585,10 @@
   shapeDataArray = [[NSMutableArray alloc] init];
   
   for (Shape *allTheShapes in [aSketch shapesArray]) {
-    /*
-     //int theShapeType = [allTheShapes ]
-     
-     NSMutableDictionary* theTransDict = [allTheShapes transformations];
-     
-     NSArray* keys = [theTransDict allKeys];
-     
-     //transData = [NSDictionary dictionaryWithObjectsAndKeys:tX, @"xPos", tY, @"yPos", tPageNum, @"pageNum", tIsKeyFrame, @"isKeyFrame", nil];
-     transDataArray = [[NSMutableArray alloc] init];
-     
-     for (int i = 0; i < [keys count]; i++) {
-     NSNumber* key = [keys objectAtIndex:i];
-     Transformation* transValue = [theTransDict objectForKey:key];
-     
-     transData = [NSDictionary dictionaryWithObjectsAndKeys: transValue, key, nil];
-     
-     }
-     
-     [transDataArray addObject:transData];
-     
-     */
     
     //if rect or oval
     //rectangle/oval specific attributes include shapeWidth, shapeHeight, X1, and Y1
     if([allTheShapes shapeType] == 0 || [allTheShapes shapeType] == 1){
-      
-      //shapeData = [allTheShapes getJSONData];
-      
       [shapeDataArray addObject:[allTheShapes getJSONData]];
       
     }
@@ -631,73 +602,8 @@
     else{
       [shapeDataArray addObject:[allTheShapes getJSONData]];
     }
-    //strokePoints = [allTheShapes str];
     
   }
-  
-  /*****
-   NSMutableArray *points = [NSMutableArray array];
-   for (NSInteger i = 0; i < 4; i++)
-   [points addObject:[NSNumber numberWithInteger:i]];
-   
-   NSMutableArray *colorVals = [NSMutableArray array];
-   for (NSInteger i = 0; i < 3; i++)
-   [colorVals addObject:[NSNumber numberWithFloat:((i+1.0f)/5.0f)]];
-   
-   NSNumber *totPages = [NSNumber numberWithInt:10];
-   
-   NSNumber *x1 = [NSNumber numberWithInt:100];
-   NSNumber *y1 = [NSNumber numberWithInt:110];
-   NSNumber *x2 = [NSNumber numberWithInt:20];
-   NSNumber *y2 = [NSNumber numberWithInt:21];
-   
-   NSNumber *tX = [NSNumber numberWithInt:40];
-   NSNumber *tY = [NSNumber numberWithInt:41];
-   NSNumber *tPageNum = [NSNumber numberWithInt:1];
-   NSString *tIsKeyFrame = @"YES";
-   
-   NSNumber *sPage = [NSNumber numberWithInt:0];
-   NSNumber *ePage = [NSNumber numberWithInt:2];
-   
-   NSNumber *sWidth = [NSNumber numberWithInt:5];
-   
-   NSNumber *shapeWidth = [NSNumber numberWithInt:50];
-   NSNumber *shapeHeight = [NSNumber numberWithInt:50];
-   
-   ****/
-  
-  
-  
-  
-  
-  //transData = [NSDictionary dictionaryWithObjectsAndKeys:tX, @"xPos", tY, @"yPos", tPageNum, @"pageNum", tIsKeyFrame, @"isKeyFrame", nil];
-  //transDataArray = [[NSMutableArray alloc] initWithObjects:transData, nil];
-  
-  /*
-   strokePoints = [NSMutableArray array];
-   for (NSInteger i = 0; i < 2; i++)
-   [strokePoints addObject:[NSNumber numberWithInteger:i]];
-   
-   shapeData = [NSDictionary dictionaryWithObjectsAndKeys:@"0", @"shapeType", points, @"points", x1, @"x1", y1, @"y1", x2, @"x2", y2, @"y2", colorVals, @"color", @"YES", @"isShapeFilled", transDataArray, @"trans", sPage, @"startingPage", ePage, @"endingPage", sWidth, @"strokeWidth", shapeWidth, @"shapeWidth", shapeHeight, @"shapeHeight", strokePoints, @"strokePoints", nil];
-   
-   shapeDataArray = [[NSMutableArray alloc] initWithObjects:shapeData, nil];
-   
-   sketchData = [NSDictionary dictionaryWithObjectsAndKeys:@"sketch A", @"name", @"thisNewDesc", @"desc", @"1", @"id", shapeDataArray, @"shapesData", totPages, @"totalNumOfPages", nil];
-   
-   sketchDataArray = [[NSMutableArray alloc] initWithObjects:sketchData, nil];
-   
-   sketches = [[NSDictionary alloc] initWithObjectsAndKeys:sketchDataArray, @"sketch", nil];
-   
-   sketchesArray = [[NSMutableArray alloc] initWithObjects:sketches, nil];
-   
-   sketchesWrapper = [[NSDictionary alloc] initWithObjectsAndKeys:sketchesArray, @"sketches", nil];
-   
-   writeError = nil;
-   jsonData = [NSJSONSerialization dataWithJSONObject:sketchesWrapper options:NSJSONWritingPrettyPrinted error:&writeError];
-   
-   */
-  
-  //shapeDataArray = [[NSMutableArray alloc] initWithObjects:shapeData, nil];
   
   sketchData = [NSDictionary dictionaryWithObjectsAndKeys:theSketchName, @"name", theSketchDesc, @"desc", theSID, @"id", shapeDataArray, @"shapesData", theNumOfPages, @"totalNumOfPages", nil];
   
@@ -705,13 +611,15 @@
   
   sketches = [[NSDictionary alloc] initWithObjectsAndKeys:sketchDataArray, @"sketch", nil];
   
-  //sketchesArray = [[NSMutableArray alloc] initWithObjects:sketches, nil];
+  NSLog(@"zzz allSketches before is %@", allSketches);
   
+  //[allSketches addObject:sketches];
+  allSketches = [[NSMutableArray alloc] init];
   [allSketches addObject:sketches];
   
   sketchesWrapper = [[NSDictionary alloc] initWithObjectsAndKeys:allSketches, @"sketches", nil];
   
-  NSLog(@"allSketches is %@", allSketches);
+  NSLog(@"zzz allSketches is %@", allSketches);
   
   writeError = nil;
   jsonData = [NSJSONSerialization dataWithJSONObject:sketchesWrapper options:NSJSONWritingPrettyPrinted error:&writeError];

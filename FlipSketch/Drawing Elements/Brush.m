@@ -38,31 +38,19 @@
     strokePoints = [[NSMutableArray alloc] init];
     
     NSValue* firstPtValue = [NSValue valueWithCGPoint:firstPt];
-        [strokePoints addObject:firstPtValue];
+    [strokePoints addObject:firstPtValue];
     
-    /*
-     NSValue* tempPoint = [strokePoints objectAtIndex:i];
-     CGPoint point = [tempPoint CGPointValue];
-     
-     NSNumber* xOfPoint = [NSNumber numberWithInt:point.x];
-     NSNumber* yOfPoint = [NSNumber numberWithInt:point.y];
-     */
-    
-        for(int i = 0; i < [sPoints count]; i=i+2) {
+    for(int i = 0; i < [sPoints count]; i+=2) {
           
-          CGFloat *xP = [sPoints objectAtIndex:i];
-          CGFloat *yP = [sPoints objectAtIndex:i+1];
+      float xread = [[sPoints objectAtIndex:i] floatValue];
+      float yread = [[sPoints objectAtIndex:i+1] floatValue];
           
-          //CGPoint tPoint = CGPointMake(xP, yP);
-          
-            //NSNumber* xOfPoint = [NSNumber numberWithInt:[sPoints objectAtIndex:i]];
-            //NSNumber* yOfPoint = [NSNumber numberWithInt:point.y];
-          
-            NSValue* valueWrapper = [sPoints objectAtIndex:i];
-            CGPoint pt = [valueWrapper CGPointValue];
-            [strokePath addLineToPoint:pt];
-            [strokePoints addObject:valueWrapper];
-        }
+      CGPoint pt = CGPointMake(xread, yread);
+      NSValue* valueWrapper = [NSValue valueWithCGPoint:pt];
+      
+      [strokePath addLineToPoint:pt];
+      [strokePoints addObject:valueWrapper];
+    }
   
   }
   return self;
