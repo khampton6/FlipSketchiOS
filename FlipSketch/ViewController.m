@@ -22,19 +22,16 @@
 
 - (void)viewDidLoad
 {
-  
+  [_fIO retain];
   _fIO = [[FileIO alloc] init];
   
-  _temp = [[NSMutableArray alloc] init];
+  
 
   [super viewDidLoad];
-  /*
-  NSData *dataToSave = [_fIO addSketchToJSON:@"named" withDescription:@"desc" withID:1 withShapeArray:_temp];
   
-  [_fIO saveData:dataToSave];
-  */
   
-  [_fIO saveSketch:nil];
+  //use below to nullify the sketches array
+  //[_fIO saveSketch:nil];
   
   flipSketches = [_fIO loadData];
 
@@ -59,6 +56,9 @@
   NSLog(@"Segue-ing");
   
   SketchViewController* svc = (SketchViewController*)[segue destinationViewController];
+  
+  //[svc setfIO:_fIO];
+  [svc setFIO:_fIO];
   
   if(selectedSketch) {
     NSLog(@"Selected Sketch is there!");

@@ -26,26 +26,44 @@
 
 -(id) initWithStrokePoints:(NSMutableArray *) sPoints withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid withStartingPage:(int) sPage withEndingPage:(int) ePage withTransArray:(NSMutableDictionary *) tArray withShapeType:(int) shapeType{
   
-  self = [super initWithX: [[sPoints objectAtIndex:0]intValue] withY: [[sPoints objectAtIndex:0] intValue] withColor:shapeColor withStrokeWidth:strokeWid isFilled:YES withStartingPage:sPage withEndingPage:ePage withTransArray:tArray withShapeType:(int) shapeType];
+  self = [super initWithX: [[sPoints objectAtIndex:0]intValue] withY: [[sPoints objectAtIndex:1] intValue] withColor:shapeColor withStrokeWidth:strokeWid isFilled:YES withStartingPage:sPage withEndingPage:ePage withTransArray:tArray withShapeType:(int) shapeType];
 
   if(self) {
     
     CGPoint firstPt = CGPointMake(x, y);
-    
     strokePath = [[UIBezierPath alloc] init];
     strokePath.lineWidth = strokeWidth;
     [strokePath moveToPoint:firstPt];
     
     strokePoints = [[NSMutableArray alloc] init];
-    NSValue* firstPtValue = [NSValue valueWithCGPoint:firstPt];
-    [strokePoints addObject:firstPtValue];
     
-    for(int i = 0; i < [sPoints count]; i++) {
-      NSValue* valueWrapper = [sPoints objectAtIndex:i];
-      CGPoint pt = [valueWrapper CGPointValue];
-      [strokePath addLineToPoint:pt];
-      [strokePoints addObject:valueWrapper];
-    }
+    NSValue* firstPtValue = [NSValue valueWithCGPoint:firstPt];
+        [strokePoints addObject:firstPtValue];
+    
+    /*
+     NSValue* tempPoint = [strokePoints objectAtIndex:i];
+     CGPoint point = [tempPoint CGPointValue];
+     
+     NSNumber* xOfPoint = [NSNumber numberWithInt:point.x];
+     NSNumber* yOfPoint = [NSNumber numberWithInt:point.y];
+     */
+    
+        for(int i = 0; i < [sPoints count]; i=i+2) {
+          
+          CGFloat *xP = [sPoints objectAtIndex:i];
+          CGFloat *yP = [sPoints objectAtIndex:i+1];
+          
+          //CGPoint tPoint = CGPointMake(xP, yP);
+          
+            //NSNumber* xOfPoint = [NSNumber numberWithInt:[sPoints objectAtIndex:i]];
+            //NSNumber* yOfPoint = [NSNumber numberWithInt:point.y];
+          
+            NSValue* valueWrapper = [sPoints objectAtIndex:i];
+            CGPoint pt = [valueWrapper CGPointValue];
+            [strokePath addLineToPoint:pt];
+            [strokePoints addObject:valueWrapper];
+        }
+  
   }
   return self;
   
@@ -143,6 +161,80 @@
 - (NSString *)description
 {
   return [NSString stringWithFormat:@"Brush"];
+}
+
+- (NSDictionary*) getJSONData{
+  
+  NSDictionary *transData = [[NSDictionary alloc]init];
+  
+  NSMutableArray *transDataArray;
+  
+  NSMutableDictionary* theTransDict = [self transformations];
+  
+  NSArray* keys = [theTransDict allKeys];
+  
+  transDataArray = [[NSMutableArray alloc] init];
+  
+  for (int i = 0; i < [keys count]; i++) {
+    NSNumber* key = [keys objectAtIndex:i];
+    Transformation* transValue = [theTransDict objectForKey:key];
+    
+    NSNumber* xNum = [NSNumber numberWithInt:[transValue newX]];
+    NSNumber* yNum = [NSNumber numberWithInt:[transValue newY]];
+    NSNumber* pageNum = [NSNumber numberWithInt:[transValue pageNum]];
+    
+    transData = [NSDictionary dictionaryWithObjectsAndKeys: xNum, @"xPos", yNum, @"yPos", pageNum, @"pageNum", nil];
+    
+  }
+  
+  [transDataArray addObject:transData];
+  
+  NSDictionary* transDatab = [NSDictionary dictionaryWithObjectsAndKeys:@"2", @"xPos", @"4", @"yPos", @"0", @"pageNum", @"NO", @"isKeyFrame", nil];
+  NSMutableArray* transDataArrayb = [[NSMutableArray alloc] initWithObjects:transDatab, nil];
+  
+  NSNumber *x1 = [NSNumber numberWithInt:x];
+  NSNumber *y1 = [NSNumber numberWithInt:y];
+  
+  
+  float r = [rgbColor getR];
+  float g = [rgbColor getG];
+  float b = [rgbColor getB];
+  
+  NSMutableArray* tColor = [[NSMutableArray alloc] initWithObjects:[NSNumber numberWithFloat:r], [NSNumber numberWithFloat:g], [NSNumber numberWithFloat:b], nil];
+  
+  NSString *iFilled;
+  
+  if(isFilled == 0){
+    iFilled = @"NO";
+  }
+  else{
+    iFilled = @"YES";
+  }
+  
+  NSNumber *sPage = [NSNumber numberWithInt:_startPage];
+  NSNumber *ePage = [NSNumber numberWithInt:_stopPage];
+  
+  NSNumber *sWidth = [NSNumber numberWithInt:strokeWidth];
+  
+  NSMutableArray *sPoints = [[NSMutableArray alloc]init];
+  
+  for(int i = 0; i<strokePoints.count; i++){
+    
+    NSValue* tempPoint = [strokePoints objectAtIndex:i];
+    CGPoint point = [tempPoint CGPointValue];
+    
+    NSNumber* xOfPoint = [NSNumber numberWithInt:point.x];
+    NSNumber* yOfPoint = [NSNumber numberWithInt:point.y];
+    
+    [sPoints addObject: xOfPoint];
+    [sPoints addObject: yOfPoint];
+  }
+  
+  NSDictionary* shapeData = [NSDictionary dictionaryWithObjectsAndKeys:@"3", @"shapeType", x1, @"x1", y1, @"y1", tColor, @"color", iFilled, @"isShapeFilled", transDataArray, @"trans", sPage, @"startingPage", ePage, @"endingPage", sWidth, @"strokeWidth", sPoints, @"strokePoints", nil];
+  
+  
+  return shapeData;
+  
 }
 
 @end

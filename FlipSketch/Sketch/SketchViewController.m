@@ -19,6 +19,7 @@
 #import "Timeline.h"
 #import "ViewController.h"
 #import "Sketch.h"
+#import "FileIO.h"
 
 @interface SketchViewController ()
 
@@ -26,7 +27,7 @@
 
 @implementation SketchViewController
 
-@synthesize selectedColor, selectMode, timeline;
+@synthesize selectedColor, selectMode, timeline, fIO;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -212,6 +213,9 @@
   
   if([destination isKindOfClass: [ViewController class]]) {
     //Tell it to save here.
+    //[fIO saveSketch:_currSketch];
+    [fIO saveSketch:loadedSketch];
+    
 
   }
   else if([destination isKindOfClass: [ShapeSelectViewController class]]) {
@@ -419,6 +423,7 @@
 }
 
 -(void) loadSketch:(Sketch*) newSketch {
+  [loadedSketch retain];
   loadedSketch = newSketch;
 }
 

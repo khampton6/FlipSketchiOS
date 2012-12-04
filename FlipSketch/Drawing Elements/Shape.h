@@ -64,4 +64,6 @@ typedef enum {
 -(Transformation*) findPrevTransform:(int) pageNum;
 
 - (NSMutableDictionary*) transformations;
+
+- (NSDictionary*) getJSONData;
 @end

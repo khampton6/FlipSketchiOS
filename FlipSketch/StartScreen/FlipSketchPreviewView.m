@@ -17,11 +17,11 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-      [self setBackgroundColor:[UIColor colorWithRed:(116/255.0) green:(125/255.0) blue:(132/255.0) alpha:1]];
-    }
-    return self;
+  self = [super initWithFrame:frame];
+  if (self) {
+    [self setBackgroundColor:[UIColor colorWithRed:(116/255.0) green:(125/255.0) blue:(132/255.0) alpha:1]];
+  }
+  return self;
 }
 
 + (id) createNewPreviewView: (CGRect) frame {
@@ -30,13 +30,27 @@
   
   //FlipSketch* sketch = [[FlipSketch alloc] init];
   Sketch* sketch = [[Sketch alloc]init];
+  /*
+   [sketch setTotalPages:11];
+   RGBColor* shapeColor = [[RGBColor alloc] initWithR:255 withG:0 withB:0];
+   Rectangle* rect = [[Rectangle alloc] initWithX:10 withY:10 withColor:shapeColor withStrokeWidth:5 isFilled:YES];
+   [rect setHeight:10];
+   [rect setWidth:50];
+   [rect setStartPage:0];
+   [rect moveShapeWithDirX:200 withDirY:200 withPageNumber:10];
+   NSMutableArray* shapes = [NSMutableArray arrayWithObject:rect];
+   [sketch setShapesArray:shapes];
+   */
+  
   [sketch setTotalPages:11];
   RGBColor* shapeColor = [[RGBColor alloc] initWithR:255 withG:0 withB:0];
-  Rectangle* rect = [[Rectangle alloc] initWithX:10 withY:10 withColor:shapeColor withStrokeWidth:5 isFilled:YES];
-  [rect setHeight:10];
-  [rect setWidth:50];
-  [rect setStartPage:0];
-  [rect moveShapeWithDirX:200 withDirY:200 withPageNumber:10];
+  Rectangle* rect = [[Rectangle alloc]init];
+  /*
+   [rect setHeight:10];
+   [rect setWidth:50];
+   [rect setStartPage:0];
+   [rect moveShapeWithDirX:200 withDirY:200 withPageNumber:10];
+   */
   NSMutableArray* shapes = [NSMutableArray arrayWithObject:rect];
   [sketch setShapesArray:shapes];
   
@@ -59,7 +73,7 @@
   CGFloat newX = (width - imgWidth) / 2;
   CGFloat newY = (height - imgHeight) / 2;
   
-
+  
   CGRect centeredRect = CGRectMake(newX, newY, imgWidth, imgHeight);
   
   [preview setPreviewStub:image withFrame:centeredRect];
@@ -70,7 +84,7 @@
 + (id) createNewPreviewView: (CGRect) frame withSketch: (Sketch*) aSketch {
   
   FlipSketchPreviewView* preview = [[FlipSketchPreviewView alloc] initWithFrame:frame];
-
+  
   [preview setSketch:aSketch];
   
   CGSize size = frame.size;
@@ -92,7 +106,7 @@
 
 - (void) setPreviewStub: (UIImage*) image withFrame:(CGRect) rect {
   imageStub = image;
-
+  
   UIImageView* stubView = [[UIImageView alloc] initWithImage:imageStub];
   [stubView setFrame:rect];
   [self addSubview:stubView];

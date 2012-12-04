@@ -20,6 +20,13 @@
 @implementation FileIO
 
 @synthesize allSketches;
+
+-(id)init{
+  self = [super init];
+  //allSketches = [[NSMutableArray alloc] init];
+  return self;
+}
+
 - (NSMutableArray *)loadData {
   
   NSLog(@"inLoadData");
@@ -65,7 +72,7 @@
 {
   
   NSLog(@"in Save");
-    
+  
   NSFileManager *filemgr;
   //NSData *databuffer;
   NSString *dataFile;
@@ -92,17 +99,17 @@
   NSArray        *shapesData = [[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:0] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"];
   NSArray        *transformations =[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:0] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:0] objectForKey:@"trans"];
   //NSLog(@"sketches: %@", sketches);
-
+  
   
   allSketches = [[NSMutableArray alloc] init];
   
   for (NSString *theSketches in sketches) {
-  
+    
     
     //NSString *theSketch = [[[JSONObject objectForKey:@"sketches"] objectAtIndex:[sketches indexOfObject:theSketches]] objectForKey:@"sketch"];
     
     NSString *theSketch = [[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"];
-  
+    
     NSString *theDesc = [[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"desc"];
     
     int theId = [[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"id"] intValue];
@@ -131,13 +138,14 @@
     
     //allSketches = [[allSketches alloc] initWithObject:[[Sketch alloc] initWithName:theName withDesc:theDesc withSID:theId]];
     
+    [allSketches retain];
     [allSketches addObject:[[Sketch alloc] initWithName:theName withDesc:theDesc withSID:theId withTotalPages:theTotalPages]];
     
     NSLog(@"the size of allSketches is %d", [allSketches count]);
     
     for (NSString *theShapesData in shapesData) {
       
-
+      
       //NSString *theShapes = [[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[shapesData indexOfObject:theShapesData]];
       
       //NSString *theColor = [[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[shapesData indexOfObject:theShapesData]] objectForKey:@"color"];
@@ -147,7 +155,7 @@
       NSInteger index0 = 0;
       NSInteger index1 = 1;
       NSInteger index2 = 2;
-    
+      
       float r = [[theColor objectAtIndex:index0] floatValue];
       float g = [[theColor objectAtIndex:index1] floatValue];
       float b = [[theColor objectAtIndex:index2] floatValue];
@@ -190,16 +198,16 @@
         
         
         /*
-        NSString *theCurrTrans = [[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:0] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:0] objectForKey:@"trans"] objectAtIndex:0];
-        
-        int thePageNum = [[[[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:0] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:0] objectForKey:@"trans"] objectAtIndex:0] objectForKey:@"pageNum"] intValue];
-        
-        int theXPos = [[[[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:0] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:0] objectForKey:@"trans"] objectAtIndex:0] objectForKey:@"xPos"] intValue];
-        
-        int theYPos = [[[[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:0] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:0] objectForKey:@"trans"] objectAtIndex:0] objectForKey:@"yPos"] intValue];
-        
-        BOOL theIsKeyFrame = [[[[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:0] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:0] objectForKey:@"trans"] objectAtIndex:0] objectForKey:@"isKeyFrame"] boolValue];
-        
+         NSString *theCurrTrans = [[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:0] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:0] objectForKey:@"trans"] objectAtIndex:0];
+         
+         int thePageNum = [[[[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:0] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:0] objectForKey:@"trans"] objectAtIndex:0] objectForKey:@"pageNum"] intValue];
+         
+         int theXPos = [[[[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:0] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:0] objectForKey:@"trans"] objectAtIndex:0] objectForKey:@"xPos"] intValue];
+         
+         int theYPos = [[[[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:0] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:0] objectForKey:@"trans"] objectAtIndex:0] objectForKey:@"yPos"] intValue];
+         
+         BOOL theIsKeyFrame = [[[[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:0] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:0] objectForKey:@"trans"] objectAtIndex:0] objectForKey:@"isKeyFrame"] boolValue];
+         
          */
         
         //NSString *theCurrTrans = [[[[[[[[JSONObject objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"shapesData"]objectAtIndex:[(NSMutableArray*)shapesData indexOfObject:theShapesData]] objectForKey:@"trans"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theTrans]];
@@ -337,7 +345,7 @@
   }
   
   
-
+  
   return allSketches;
 }
 
@@ -427,7 +435,7 @@
   NSMutableArray *sketchDataArrayb = [[NSMutableArray alloc] initWithObjects:sketchDatab, nil];
   
   NSDictionary *sketchesb = [[NSDictionary alloc] initWithObjectsAndKeys:sketchDataArrayb, @"sketch", nil];
-
+  
   [sketchesArray addObject:sketchesb];
   /************************/
   
@@ -521,18 +529,30 @@
   //NSLog( @" in AddSketchToJson%@", jsonData);
   
   return jsonData;
-
+  
 }
 
 -(void) saveSketch:(Sketch *)aSketch{
+  //just prepopulating the stuff 
   
-  NSDictionary *transData;
+  /*
+  NSMutableArray* _temp = [[NSMutableArray alloc] init];
   
-  NSMutableArray *transDataArray;
+  NSData *dataToSave = [self addSketchToJSON:@"named" withDescription:@"desc" withID:1 withShapeArray:_temp];
   
-  NSMutableArray *strokePoints;
+  [self saveData:dataToSave];
+  */
+  /*
+   NSDictionary *transData;
+   
+   NSMutableArray *transDataArray;
+   
+   NSMutableArray *strokePoints;
+   
+   NSDictionary *shapeData;
+   */
   
-  NSDictionary *shapeData;
+  
   
   NSMutableArray *shapeDataArray;
   
@@ -542,13 +562,13 @@
   
   NSDictionary *sketches;
   
-  NSMutableArray *sketchesArray;
+  //NSMutableArray *sketchesArray;
   
   NSDictionary *sketchesWrapper;
   
   NSError *writeError;
   
-  NSData *jsonData;
+  NSData *jsonData = nil;
   
   
   
@@ -556,84 +576,95 @@
   NSString *theSketchDesc = [aSketch desc];
   
   /*
-  NSString* string = [NSString stringWithFormat:@"Llama has %d thingies and is named %@", 1, @"Bob"];
-  
-  NSString* intStr = [NSString stringWithFormat:@"%d", 1];
-  */
+   NSString* string = [NSString stringWithFormat:@"Llama has %d thingies and is named %@", 1, @"Bob"];
+   
+   NSString* intStr = [NSString stringWithFormat:@"%d", 1];
+   */
   
   //[aSketch  sID]
-   
+  
   NSNumber *theSID = [NSNumber numberWithInteger:[aSketch sID]];
   
   NSNumber *theNumOfPages = [NSNumber numberWithInteger:[aSketch totalPages]];
   
+  shapeDataArray = [[NSMutableArray alloc] init];
+  
   for (Shape *allTheShapes in [aSketch shapesArray]) {
-    
-    //int theShapeType = [allTheShapes ]
-    
-    NSMutableDictionary* theTransDict = [allTheShapes transformations];
-    
-    NSArray* keys = [theTransDict allKeys];
-    
-    //transData = [NSDictionary dictionaryWithObjectsAndKeys:tX, @"xPos", tY, @"yPos", tPageNum, @"pageNum", tIsKeyFrame, @"isKeyFrame", nil];
-    transDataArray = [[NSMutableArray alloc] init];
-    
-    for (int i = 0; i < [keys count]; i++) {
-      NSNumber* key = [keys objectAtIndex:i];
-      Transformation* transValue = [theTransDict objectForKey:key];
-      
-      transData = [NSDictionary dictionaryWithObjectsAndKeys: transValue, key, nil];
-      
-    }
-    
-    [transDataArray addObject:transData];
+    /*
+     //int theShapeType = [allTheShapes ]
+     
+     NSMutableDictionary* theTransDict = [allTheShapes transformations];
+     
+     NSArray* keys = [theTransDict allKeys];
+     
+     //transData = [NSDictionary dictionaryWithObjectsAndKeys:tX, @"xPos", tY, @"yPos", tPageNum, @"pageNum", tIsKeyFrame, @"isKeyFrame", nil];
+     transDataArray = [[NSMutableArray alloc] init];
+     
+     for (int i = 0; i < [keys count]; i++) {
+     NSNumber* key = [keys objectAtIndex:i];
+     Transformation* transValue = [theTransDict objectForKey:key];
+     
+     transData = [NSDictionary dictionaryWithObjectsAndKeys: transValue, key, nil];
+     
+     }
+     
+     [transDataArray addObject:transData];
+     
+     */
     
     //if rect or oval
+    //rectangle/oval specific attributes include shapeWidth, shapeHeight, X1, and Y1
     if([allTheShapes shapeType] == 0 || [allTheShapes shapeType] == 1){
       
+      //shapeData = [allTheShapes getJSONData];
+      
+      [shapeDataArray addObject:[allTheShapes getJSONData]];
+      
     }
-    //
+    //if line
+    //rectangle specific attributes include X1, Y1, X2, and Y2
     else if([allTheShapes shapeType] == 2){
-        
+      [shapeDataArray addObject:[allTheShapes getJSONData]];
     }
     //if brush
+    //brush specific attributes include strokePoints
     else{
-      
+      [shapeDataArray addObject:[allTheShapes getJSONData]];
     }
     //strokePoints = [allTheShapes str];
     
   }
   
-  
-  NSMutableArray *points = [NSMutableArray array];
-  for (NSInteger i = 0; i < 4; i++)
-    [points addObject:[NSNumber numberWithInteger:i]];
-  
-  NSMutableArray *colorVals = [NSMutableArray array];
-  for (NSInteger i = 0; i < 3; i++)
-    [colorVals addObject:[NSNumber numberWithFloat:((i+1.0f)/5.0f)]];
-  
-  NSNumber *totPages = [NSNumber numberWithInt:10];
-  
-  NSNumber *x1 = [NSNumber numberWithInt:100];
-  NSNumber *y1 = [NSNumber numberWithInt:110];
-  NSNumber *x2 = [NSNumber numberWithInt:20];
-  NSNumber *y2 = [NSNumber numberWithInt:21];
-  
-  NSNumber *tX = [NSNumber numberWithInt:40];
-  NSNumber *tY = [NSNumber numberWithInt:41];
-  NSNumber *tPageNum = [NSNumber numberWithInt:1];
-  NSString *tIsKeyFrame = @"YES";
-  
-  NSNumber *sPage = [NSNumber numberWithInt:0];
-  NSNumber *ePage = [NSNumber numberWithInt:2];
-  
-  NSNumber *sWidth = [NSNumber numberWithInt:5];
-  
-  NSNumber *shapeWidth = [NSNumber numberWithInt:50];
-  NSNumber *shapeHeight = [NSNumber numberWithInt:50];
-  
-  
+  /*****
+   NSMutableArray *points = [NSMutableArray array];
+   for (NSInteger i = 0; i < 4; i++)
+   [points addObject:[NSNumber numberWithInteger:i]];
+   
+   NSMutableArray *colorVals = [NSMutableArray array];
+   for (NSInteger i = 0; i < 3; i++)
+   [colorVals addObject:[NSNumber numberWithFloat:((i+1.0f)/5.0f)]];
+   
+   NSNumber *totPages = [NSNumber numberWithInt:10];
+   
+   NSNumber *x1 = [NSNumber numberWithInt:100];
+   NSNumber *y1 = [NSNumber numberWithInt:110];
+   NSNumber *x2 = [NSNumber numberWithInt:20];
+   NSNumber *y2 = [NSNumber numberWithInt:21];
+   
+   NSNumber *tX = [NSNumber numberWithInt:40];
+   NSNumber *tY = [NSNumber numberWithInt:41];
+   NSNumber *tPageNum = [NSNumber numberWithInt:1];
+   NSString *tIsKeyFrame = @"YES";
+   
+   NSNumber *sPage = [NSNumber numberWithInt:0];
+   NSNumber *ePage = [NSNumber numberWithInt:2];
+   
+   NSNumber *sWidth = [NSNumber numberWithInt:5];
+   
+   NSNumber *shapeWidth = [NSNumber numberWithInt:50];
+   NSNumber *shapeHeight = [NSNumber numberWithInt:50];
+   
+   ****/
   
   
   
@@ -643,31 +674,52 @@
   //transDataArray = [[NSMutableArray alloc] initWithObjects:transData, nil];
   
   /*
-  strokePoints = [NSMutableArray array];
-  for (NSInteger i = 0; i < 2; i++)
-    [strokePoints addObject:[NSNumber numberWithInteger:i]];
+   strokePoints = [NSMutableArray array];
+   for (NSInteger i = 0; i < 2; i++)
+   [strokePoints addObject:[NSNumber numberWithInteger:i]];
+   
+   shapeData = [NSDictionary dictionaryWithObjectsAndKeys:@"0", @"shapeType", points, @"points", x1, @"x1", y1, @"y1", x2, @"x2", y2, @"y2", colorVals, @"color", @"YES", @"isShapeFilled", transDataArray, @"trans", sPage, @"startingPage", ePage, @"endingPage", sWidth, @"strokeWidth", shapeWidth, @"shapeWidth", shapeHeight, @"shapeHeight", strokePoints, @"strokePoints", nil];
+   
+   shapeDataArray = [[NSMutableArray alloc] initWithObjects:shapeData, nil];
+   
+   sketchData = [NSDictionary dictionaryWithObjectsAndKeys:@"sketch A", @"name", @"thisNewDesc", @"desc", @"1", @"id", shapeDataArray, @"shapesData", totPages, @"totalNumOfPages", nil];
+   
+   sketchDataArray = [[NSMutableArray alloc] initWithObjects:sketchData, nil];
+   
+   sketches = [[NSDictionary alloc] initWithObjectsAndKeys:sketchDataArray, @"sketch", nil];
+   
+   sketchesArray = [[NSMutableArray alloc] initWithObjects:sketches, nil];
+   
+   sketchesWrapper = [[NSDictionary alloc] initWithObjectsAndKeys:sketchesArray, @"sketches", nil];
+   
+   writeError = nil;
+   jsonData = [NSJSONSerialization dataWithJSONObject:sketchesWrapper options:NSJSONWritingPrettyPrinted error:&writeError];
+   
+   */
   
-  shapeData = [NSDictionary dictionaryWithObjectsAndKeys:@"0", @"shapeType", points, @"points", x1, @"x1", y1, @"y1", x2, @"x2", y2, @"y2", colorVals, @"color", @"YES", @"isShapeFilled", transDataArray, @"trans", sPage, @"startingPage", ePage, @"endingPage", sWidth, @"strokeWidth", shapeWidth, @"shapeWidth", shapeHeight, @"shapeHeight", strokePoints, @"strokePoints", nil];
+  //shapeDataArray = [[NSMutableArray alloc] initWithObjects:shapeData, nil];
   
-  shapeDataArray = [[NSMutableArray alloc] initWithObjects:shapeData, nil];
-  
-  sketchData = [NSDictionary dictionaryWithObjectsAndKeys:@"sketch A", @"name", @"thisNewDesc", @"desc", @"1", @"id", shapeDataArray, @"shapesData", totPages, @"totalNumOfPages", nil];
+  sketchData = [NSDictionary dictionaryWithObjectsAndKeys:theSketchName, @"name", theSketchDesc, @"desc", theSID, @"id", shapeDataArray, @"shapesData", theNumOfPages, @"totalNumOfPages", nil];
   
   sketchDataArray = [[NSMutableArray alloc] initWithObjects:sketchData, nil];
   
   sketches = [[NSDictionary alloc] initWithObjectsAndKeys:sketchDataArray, @"sketch", nil];
   
-  sketchesArray = [[NSMutableArray alloc] initWithObjects:sketches, nil];
+  //sketchesArray = [[NSMutableArray alloc] initWithObjects:sketches, nil];
   
-  sketchesWrapper = [[NSDictionary alloc] initWithObjectsAndKeys:sketchesArray, @"sketches", nil];
+  [allSketches addObject:sketches];
+  
+  sketchesWrapper = [[NSDictionary alloc] initWithObjectsAndKeys:allSketches, @"sketches", nil];
+  
+  NSLog(@"allSketches is %@", allSketches);
   
   writeError = nil;
   jsonData = [NSJSONSerialization dataWithJSONObject:sketchesWrapper options:NSJSONWritingPrettyPrinted error:&writeError];
   
-  */
   
-  
-  //[self saveData: jsonData];
+  [self saveData: jsonData];
 }
+
+
 
 @end

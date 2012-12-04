@@ -139,4 +139,67 @@
   return [NSString stringWithFormat:@"Line"];
 }
 
+- (NSDictionary*) getJSONData{
+  
+  NSDictionary *transData = [[NSDictionary alloc]init];
+  
+  NSMutableArray *transDataArray;
+  
+  NSMutableDictionary* theTransDict = [self transformations];
+  
+  NSArray* keys = [theTransDict allKeys];
+  
+  transDataArray = [[NSMutableArray alloc] init];
+  
+  for (int i = 0; i < [keys count]; i++) {
+    NSNumber* key = [keys objectAtIndex:i];
+    Transformation* transValue = [theTransDict objectForKey:key];
+    
+    NSNumber* xNum = [NSNumber numberWithInt:[transValue newX]];
+    NSNumber* yNum = [NSNumber numberWithInt:[transValue newY]];
+    NSNumber* pageNum = [NSNumber numberWithInt:[transValue pageNum]];
+    
+    transData = [NSDictionary dictionaryWithObjectsAndKeys: xNum, @"xPos", yNum, @"yPos", pageNum, @"pageNum", nil];
+    
+  }
+  
+  [transDataArray addObject:transData];
+  
+  NSDictionary* transDatab = [NSDictionary dictionaryWithObjectsAndKeys:@"2", @"xPos", @"4", @"yPos", @"0", @"pageNum", @"NO", @"isKeyFrame", nil];
+  NSMutableArray* transDataArrayb = [[NSMutableArray alloc] initWithObjects:transDatab, nil];
+  
+  NSNumber *x1 = [NSNumber numberWithInt:x];
+  NSNumber *y1 = [NSNumber numberWithInt:y];
+  
+  NSNumber *x2 = [NSNumber numberWithInt:x2];
+  NSNumber *y2 = [NSNumber numberWithInt:y2];
+   
+  
+  float r = [rgbColor getR];
+  float g = [rgbColor getG];
+  float b = [rgbColor getB];
+  
+  NSMutableArray* tColor = [[NSMutableArray alloc] initWithObjects:[NSNumber numberWithFloat:r], [NSNumber numberWithFloat:g], [NSNumber numberWithFloat:b], nil];
+  
+  NSString *iFilled;
+  
+  if(isFilled == 0){
+    iFilled = @"NO";
+  }
+  else{
+    iFilled = @"YES";
+  }
+  
+  NSNumber *sPage = [NSNumber numberWithInt:_startPage];
+  NSNumber *ePage = [NSNumber numberWithInt:_stopPage];
+  
+  NSNumber *sWidth = [NSNumber numberWithInt:strokeWidth];
+  
+  NSDictionary* shapeData = [NSDictionary dictionaryWithObjectsAndKeys:@"2", @"shapeType", x1, @"x1", y1, @"y1", x2, @"x2", y2, @"y2", tColor, @"color", iFilled, @"isShapeFilled", transDataArray, @"trans", sPage, @"startingPage", ePage, @"endingPage", sWidth, @"strokeWidth", nil];
+  
+  
+  return shapeData;
+  
+}
+
 @end

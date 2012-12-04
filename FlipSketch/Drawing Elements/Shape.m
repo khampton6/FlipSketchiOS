@@ -201,4 +201,8 @@
   return transformations;
 }
 
+- (NSDictionary*) getJSONData{
+  return nil;
+}
+
 @end

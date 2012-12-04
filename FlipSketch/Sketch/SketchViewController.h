@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Shape.h"
+#import "FileIO.h"
 
 @class SketchView;
 @class RGBColor;
@@ -76,4 +77,7 @@
 @property BOOL selectMode;
 
 @property (strong, nonatomic) Timeline* timeline;
+
+@property (strong, nonatomic) FileIO* fIO;
+@property (strong, nonatomic) Sketch* currSketch;
 @end

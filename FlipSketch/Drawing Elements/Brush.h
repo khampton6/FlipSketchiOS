@@ -18,6 +18,6 @@
 
 - (id)initWithStrokePoints:(NSMutableArray *) sPoints withColor: (RGBColor*) shapeColor withStrokeWidth:(int) strokeWid withStartingPage:(int) sPage withEndingPage:(int) ePage withTransArray:(NSMutableDictionary *) tArray withShapeType:(int) shapeType;
 
-
+- (NSDictionary*) getJSONData;
 
 @end
