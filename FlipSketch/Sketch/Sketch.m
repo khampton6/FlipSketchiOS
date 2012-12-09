@@ -17,12 +17,12 @@
   self = [super init];
   
   if(self){
-    [aName retain];
+    //[aName retain];
     _sketchName = aName;
-    [aDesc retain];
+    //[aDesc retain];
     desc = aDesc;
     sID = aSID;
-    [aDesc retain];
+    //[aDesc retain];
     shapesArray = [[NSMutableArray alloc] init];
     totalPages = theTotPages;
   }
@@ -50,7 +50,7 @@
 -(void) addShapeToArray:(Shape *) aShape{
   //NSLog(@"addingToArray");
   //NSLog(@" shapeArrSize is %d", shapesArray.count);
-  [aShape retain];
+  //[aShape retain];
   [shapesArray addObject:aShape];
   //NSLog(@" shapeArrSize is %d", shapesArray.count);
 }

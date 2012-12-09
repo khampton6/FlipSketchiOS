@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad
 {
-  [_fIO retain];
+  //[_fIO retain];
   _fIO = [[FileIO alloc] init];
   
   

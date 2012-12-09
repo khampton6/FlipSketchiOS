@@ -71,9 +71,9 @@
   UITapGestureRecognizer* addTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(addPageImage:)];
   [addPageView addGestureRecognizer:addTapGesture];
   
-  [tapGesture release];
-  [drag release];
-  [addTapGesture release];
+  //[tapGesture release];
+  //[drag release];
+  //[addTapGesture release];
   
   [sketchView setShapes:startShapes];
   int pages = [loadedSketch totalPages];
@@ -424,7 +424,7 @@
 }
 
 -(void) loadSketch:(Sketch*) newSketch {
-  [loadedSketch retain];
+  //[loadedSketch retain];
   loadedSketch = newSketch;
 }
 

@@ -10,6 +10,7 @@
 #import "FlipSketchIO.h"
 #import "FlipSketchPreviewView.h"
 #import "Sketch.h"
+#import "ViewController.h"
 
 @implementation SketchListView
 

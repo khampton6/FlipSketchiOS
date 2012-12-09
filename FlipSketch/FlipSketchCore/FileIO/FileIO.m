@@ -69,7 +69,7 @@
     return [self processDataForLoading:prevSavedJSON];
   }
   
-  [filemgr release];
+  //[filemgr release];
 }
 
 - (void)saveData:(NSData *) data
@@ -178,9 +178,9 @@
     */
     //allSketches = [[allSketches alloc] initWithObject:[[Sketch alloc] initWithName:theName withDesc:theDesc withSID:theId]];
     
-    [allSketches retain];
+    //[allSketches retain];
     [allSketches addObject:[[Sketch alloc] initWithName:theName withDesc:theDesc withSID:theId withTotalPages:theTotalPages]];
-    [[allSketches objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] retain];
+    //[[allSketches objectAtIndex:[(NSMutableArray*)sketches indexOfObject:theSketches]] retain];
     
     //NSLog(@"the size of allSketches is %d", [allSketches count]);
     
