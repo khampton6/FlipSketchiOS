@@ -388,9 +388,11 @@
 
 -(IBAction) play: (id) sender {
   
-  if([tView numLines] == 0) {
+  if([tView numLines] == 0 || currPage >= [tView numLines]-1) {
     return;
   }
+
+  returnPage = currPage;
   
   if(playing && playTimer != nil) {
     [playTimer invalidate];
@@ -399,8 +401,7 @@
     playing = NO;
     return;
   }
-  
-  returnPage = currPage;
+
   playTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(incrementFrame:) userInfo:nil repeats:YES];
   [playButton setTitle:@"Stop" forState:UIControlStateNormal];
   playing = YES;
@@ -409,18 +410,17 @@
 -(void) incrementFrame: (NSTimer*) timer {
   NSLog(@"Increment Frame");
   
-  NSLog(@"Going to page: %d", currPage + 1 );
-  [self goToPage: currPage+1];
-  
-  
-  
   //If curr page is on last.
-  if(currPage == [tView numLines] - 1) {
+  if(currPage == [tView numLines]-1) {
     [timer invalidate];
     [playButton setTitle:@"Play" forState:UIControlStateNormal];
     [self goToPage:returnPage];
     playing = NO;
+    return;
   }
+  
+  NSLog(@"Going to page: %d", currPage + 1 );
+  [self goToPage: currPage+1];
 }
 
 -(void) loadSketch:(Sketch*) newSketch {
