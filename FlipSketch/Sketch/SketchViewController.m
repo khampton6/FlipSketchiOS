@@ -212,7 +212,7 @@
   
   
   if([destination isKindOfClass: [ViewController class]]) {
-    //Tell it to save here.
+    //Tell it to save here; this is for backing out of the sketch view.
     //[fIO saveSketch:_currSketch];
     [fIO saveSketch:loadedSketch];
     

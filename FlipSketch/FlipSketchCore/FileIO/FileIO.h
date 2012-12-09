@@ -15,6 +15,7 @@
 @property (retain, nonatomic) NSData *jsonData;
 @property (retain, nonatomic) NSMutableArray *allSketches;
 @property (retain, nonatomic) NSDictionary *allJsons;
+@property int currSID;
 
 - (NSMutableArray *)loadData;
 - (void)saveData:(NSData*)data;

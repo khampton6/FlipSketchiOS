@@ -32,7 +32,7 @@
   
   //use below to nullify the sketches array
   //[_fIO saveSketch:nil];
-  //[_fIO clearData];
+  [_fIO clearData];
   
   flipSketches = [_fIO loadData];
 

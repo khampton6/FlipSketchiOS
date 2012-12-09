@@ -22,6 +22,7 @@
     x = xPos;
     y = yPos;
     rgbColor = shapeColor;
+    [rgbColor retain];
     isFilled = filled;
     strokeWidth = strokeWid;
     
