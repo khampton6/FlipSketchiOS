@@ -125,6 +125,9 @@
   
   NSArray* keys = [theTransDict allKeys];
   
+  NSNumber *x1 = [NSNumber numberWithInt:x];
+  NSNumber *y1 = [NSNumber numberWithInt:y];
+  
   transDataArray = [[NSMutableArray alloc] init];
   
   for (int i = 0; i < [keys count]; i++) {
@@ -137,10 +140,16 @@
     
     transData = [NSDictionary dictionaryWithObjectsAndKeys: xNum, @"xPos", yNum, @"yPos", pageNum, @"pageNum", nil];
     [transDataArray addObject:transData];
+    
+    //if any transformations have occurred, then the initial x and y values need to be corrected
+    if(i==0){
+      x1 = xNum;
+      y1 = yNum;
+    }
+    
   }
   
-  NSNumber *x1 = [NSNumber numberWithInt:x];
-  NSNumber *y1 = [NSNumber numberWithInt:y];
+  
   /*
    NSNumber *x2 = [NSNumber numberWithInt:20];
    NSNumber *y2 = [NSNumber numberWithInt:21];

@@ -151,6 +151,12 @@
   
   transDataArray = [[NSMutableArray alloc] init];
   
+  NSNumber *xPos1 = [NSNumber numberWithInt:x];
+  NSNumber *yPos1 = [NSNumber numberWithInt:y];
+  
+  NSNumber *xPos2 = [NSNumber numberWithInt:x2];
+  NSNumber *yPos2 = [NSNumber numberWithInt:y2];
+  
   for (int i = 0; i < [keys count]; i++) {
     NSNumber* key = [keys objectAtIndex:i];
     Transformation* transValue = [theTransDict objectForKey:key];
@@ -162,13 +168,14 @@
     transData = [NSDictionary dictionaryWithObjectsAndKeys: xNum, @"xPos", yNum, @"yPos", pageNum, @"pageNum", nil];
     
     [transDataArray addObject:transData];
+    
+    //if any transformations have occurred, then the initial x and y values need to be corrected
+    if(i==0){
+      xPos1 = xNum;
+      yPos1 = yNum;
+    }
+    
   }
-  
-  
-  
-  NSNumber *x1 = [NSNumber numberWithInt:x];
-  NSNumber *y1 = [NSNumber numberWithInt:y];
-   
   
   float r = [rgbColor getR];
   float g = [rgbColor getG];
@@ -190,7 +197,9 @@
   
   NSNumber *sWidth = [NSNumber numberWithInt:strokeWidth];
   
-  NSDictionary* shapeData = [NSDictionary dictionaryWithObjectsAndKeys:@"2", @"shapeType", x1, @"x1", y1, @"y1", x2, @"x2", y2, @"y2", tColor, @"color", iFilled, @"isShapeFilled", transDataArray, @"trans", sPage, @"startingPage", ePage, @"endingPage", sWidth, @"strokeWidth", nil];
+  //NSLog(@" all stuff is ")
+  
+  NSDictionary* shapeData = [NSDictionary dictionaryWithObjectsAndKeys:@"2", @"shapeType", xPos1, @"x1", yPos1, @"y1", xPos2, @"x2", yPos2, @"y2", tColor, @"color", iFilled, @"isShapeFilled", transDataArray, @"trans", sPage, @"startingPage", ePage, @"endingPage", sWidth, @"strokeWidth", nil];
   
   
   return shapeData;
