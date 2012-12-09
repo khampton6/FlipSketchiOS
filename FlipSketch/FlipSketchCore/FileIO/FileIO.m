@@ -648,10 +648,12 @@
   //[allSketches addObject:[[Sketch alloc] initWithName:theSketchName withDesc:theSketchDesc withSID:0 withTotalPages:5]];
   
   //NSLog(@"theExtractedValue %@", [self extractSavedJsonData]);
+  /***
   if([self extractSavedJsonData:-1] != NULL){
     
     sketchToBeSaved = [self extractSavedJsonData: [theSID intValue]];
   }
+   ***/
   
   [sketchToBeSaved addObject:theSketch];
   
