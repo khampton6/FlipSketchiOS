@@ -29,6 +29,7 @@
     
     _startPage = 0;
     _endPage = -1;
+    //_stopPage = -1;
     
     transformations = [[NSMutableDictionary alloc] init];
   }
@@ -56,8 +57,9 @@
     
     _startPage = sPage;
     _endPage = ePage;
+    //_stopPage = ePage;
     
-    transformations = [[NSMutableDictionary alloc] init];
+    transformations = tArray;
     [self setStartPage:0];
   }
   

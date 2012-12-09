@@ -14,6 +14,7 @@
 @property (retain, nonatomic) NSError *writeError;
 @property (retain, nonatomic) NSData *jsonData;
 @property (retain, nonatomic) NSMutableArray *allSketches;
+@property (retain, nonatomic) NSDictionary *allJsons;
 
 - (NSMutableArray *)loadData;
 - (void)saveData:(NSData*)data;
@@ -24,6 +25,8 @@
 - (NSData*)addSketchToJSON:(NSString *)name withDescription: (NSString*)desc withID: (int)theID withShapeArray: (NSMutableArray*)shapesArr;
 
 - (void)saveSketch:(Sketch*) aSketch;
+
+- (void)clearData;
 //-create
 
 @end

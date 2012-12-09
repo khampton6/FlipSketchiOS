@@ -65,7 +65,7 @@
   [super drawRect:rect];
   
   CGContextRef context = UIGraphicsGetCurrentContext();
-  NSLog(@"Num shapes: %d", [shapes count]);
+  //NSLog(@"Num shapes: %d", [shapes count]);
   for(int i = 0; i < [shapes count]; i++) {
     Shape* storedShape = [shapes objectAtIndex:i];
   

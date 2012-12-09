@@ -19,6 +19,8 @@
   _newX = x;
   _newY = y;
   
+  [self print];
+  
   return self;
 }
 
@@ -30,11 +32,13 @@
   _newY = y;
   _isKeyFrame = kFrame;
   
+  
+  
   return self;
 }
 
 -(void) print {
-  NSLog(@"Page #: %d, X: %d Y: %d", _pageNum, _newX, _newY);
+  NSLog(@"Trans Stuff: Page #: %d, X: %d Y: %d", _pageNum, _newX, _newY);
 }
 
 + (NSArray*) translateBetweenTransformations: (Transformation*) prev andTransformation:(Transformation* ) current withList:(NSMutableArray*) array {

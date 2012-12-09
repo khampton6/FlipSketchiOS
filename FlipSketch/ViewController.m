@@ -32,6 +32,7 @@
   
   //use below to nullify the sketches array
   //[_fIO saveSketch:nil];
+  //[_fIO clearData];
   
   flipSketches = [_fIO loadData];
 
@@ -61,14 +62,18 @@
   [svc setFIO:_fIO];
   
   if(selectedSketch) {
+    
     NSLog(@"Selected Sketch is there!");
     NSArray* shapes = [selectedSketch shapesArray];
     [svc setShapes:shapes];
     [svc loadSketch:selectedSketch];
+    /*
     Shape* shape = [shapes objectAtIndex:0];
     [shape setXPos:200];
     [shape setYPos:200];
+    */
     NSLog(@"Number shapes: %d", [shapes count]);
+     
   }
 }
 

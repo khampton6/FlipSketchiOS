@@ -33,7 +33,7 @@ typedef enum {
   int strokeWidth;
   
   int _startPage;
-  int _stopPage;
+  int _endPage;
   
   BOOL selected;
 }

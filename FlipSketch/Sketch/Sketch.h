@@ -16,7 +16,7 @@
 @property (retain, nonatomic) NSString *desc;
 @property int sID;
 @property int totalPages;
-@property (strong, nonatomic) NSMutableArray *shapesArray;
+@property (retain, nonatomic) NSMutableArray *shapesArray;
 
 -(void) setSketchName:(NSString*) sName;
 -(NSString*) sketchName;

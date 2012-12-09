@@ -173,9 +173,10 @@
     
     transData = [NSDictionary dictionaryWithObjectsAndKeys: xNum, @"xPos", yNum, @"yPos", pageNum, @"pageNum", nil];
     
+    [transDataArray addObject:transData];
   }
   
-  [transDataArray addObject:transData];
+  
   
   NSDictionary* transDatab = [NSDictionary dictionaryWithObjectsAndKeys:@"2", @"xPos", @"4", @"yPos", @"0", @"pageNum", @"NO", @"isKeyFrame", nil];
   NSMutableArray* transDataArrayb = [[NSMutableArray alloc] initWithObjects:transDatab, nil];
@@ -200,7 +201,7 @@
   }
   
   NSNumber *sPage = [NSNumber numberWithInt:_startPage];
-  NSNumber *ePage = [NSNumber numberWithInt:_stopPage];
+  NSNumber *ePage = [NSNumber numberWithInt:_endPage];
   
   NSNumber *sWidth = [NSNumber numberWithInt:strokeWidth];
   
