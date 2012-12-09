@@ -434,4 +434,8 @@
   [sketchView setNeedsDisplay];
 }
 
+-(IBAction)goToSelectState:(id)sender {
+  selectMode = YES;
+}
+
 @end

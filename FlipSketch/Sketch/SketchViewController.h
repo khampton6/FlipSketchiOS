@@ -57,6 +57,7 @@
 
 -(IBAction)switchFilled:(id)sender;
 -(IBAction)deleteSelectedShape:(id)sender;
+-(IBAction)goToSelectState:(id)sender;
 
 -(IBAction) play: (id) sender;
 -(void) incrementFrame: (NSTimer*) timer;
