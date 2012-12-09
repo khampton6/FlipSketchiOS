@@ -420,23 +420,25 @@
                                 <color key="backgroundColor" red="0.2588235438" green="0.51372551919999998" blue="0.70980393890000004" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstItem="ljr-VM-tAe" firstAttribute="centerY" secondItem="Rxe-OQ-d61" secondAttribute="centerY" type="default" id="0dF-Y1-gHp"/>
+                                    <constraint firstItem="GRY-sn-o36" firstAttribute="top" secondItem="939-32-SSM" secondAttribute="top" type="default" id="61v-5y-MGN"/>
                                     <constraint firstItem="GRY-sn-o36" firstAttribute="leading" secondItem="939-32-SSM" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="6W9-Xi-mOR"/>
                                     <constraint firstAttribute="trailing" secondItem="39C-AD-Dbh" secondAttribute="trailing" constant="10" id="7cP-oC-xM6"/>
-                                    <constraint firstItem="wNV-Ad-u0i" firstAttribute="centerY" secondItem="39C-AD-Dbh" secondAttribute="centerY" type="default" id="Ep9-zy-SEh"/>
+                                    <constraint firstItem="dT6-Ov-H0v" firstAttribute="baseline" secondItem="939-32-SSM" secondAttribute="baseline" type="default" id="AUz-lg-uGx"/>
+                                    <constraint firstItem="dT6-Ov-H0v" firstAttribute="baseline" secondItem="Awa-QZ-kqn" secondAttribute="baseline" type="default" id="ERY-ux-b5s"/>
                                     <constraint firstItem="ljr-VM-tAe" firstAttribute="bottom" secondItem="GRY-sn-o36" secondAttribute="bottom" type="default" id="FkH-Gd-dXD"/>
                                     <constraint firstItem="39C-AD-Dbh" firstAttribute="bottom" secondItem="ljr-VM-tAe" secondAttribute="bottom" type="default" id="M55-ds-E6a"/>
+                                    <constraint firstItem="HTX-2s-hBh" firstAttribute="centerY" secondItem="vOL-MF-WSA" secondAttribute="centerY" type="default" id="O0j-ri-bfa"/>
                                     <constraint firstItem="HTX-2s-hBh" firstAttribute="baseline" secondItem="Awa-QZ-kqn" secondAttribute="baseline" type="default" id="OED-CB-mdA"/>
-                                    <constraint firstItem="HTX-2s-hBh" firstAttribute="centerY" secondItem="dT6-Ov-H0v" secondAttribute="centerY" type="default" id="OZu-3Y-dbk"/>
                                     <constraint firstItem="Awa-QZ-kqn" firstAttribute="leading" secondItem="X8B-eo-rHQ" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="QCL-8l-148"/>
+                                    <constraint firstItem="dT6-Ov-H0v" firstAttribute="top" secondItem="939-32-SSM" secondAttribute="top" type="default" id="QOB-j3-gea"/>
                                     <constraint firstItem="939-32-SSM" firstAttribute="bottom" secondItem="GRY-sn-o36" secondAttribute="bottom" type="default" id="Sy4-g1-JL1"/>
                                     <constraint firstAttribute="trailing" secondItem="ljr-VM-tAe" secondAttribute="trailing" constant="174" id="TYw-st-OQW"/>
                                     <constraint firstItem="vOL-MF-WSA" firstAttribute="leading" secondItem="X8B-eo-rHQ" secondAttribute="leading" constant="97" id="Uyt-RM-1jq"/>
                                     <constraint firstItem="ljr-VM-tAe" firstAttribute="baseline" secondItem="39C-AD-Dbh" secondAttribute="baseline" type="default" id="Wla-2k-I4f"/>
-                                    <constraint firstItem="dT6-Ov-H0v" firstAttribute="top" secondItem="X8B-eo-rHQ" secondAttribute="top" constant="2" id="bwi-hZ-KCh"/>
+                                    <constraint firstItem="939-32-SSM" firstAttribute="bottom" secondItem="dT6-Ov-H0v" secondAttribute="bottom" type="default" id="YJr-hQ-5Oc"/>
+                                    <constraint firstItem="Awa-QZ-kqn" firstAttribute="top" secondItem="X8B-eo-rHQ" secondAttribute="top" constant="2" id="ZHR-pU-7t6"/>
                                     <constraint firstItem="HTX-2s-hBh" firstAttribute="leading" secondItem="X8B-eo-rHQ" secondAttribute="leading" constant="209" id="dhw-QB-rDS"/>
                                     <constraint firstItem="Rxe-OQ-d61" firstAttribute="top" secondItem="HqK-72-gpm" secondAttribute="top" type="default" id="eaX-Qr-21P"/>
-                                    <constraint firstItem="hlM-dT-HFA" firstAttribute="baseline" secondItem="HTX-2s-hBh" secondAttribute="baseline" type="default" id="hJm-jM-NbL"/>
-                                    <constraint firstItem="dT6-Ov-H0v" firstAttribute="bottom" secondItem="vOL-MF-WSA" secondAttribute="bottom" type="default" id="iMf-uz-KnT"/>
                                     <constraint firstItem="ljr-VM-tAe" firstAttribute="leading" secondItem="Rxe-OQ-d61" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="jGU-rU-eaX"/>
                                     <constraint firstItem="GRY-sn-o36" firstAttribute="baseline" secondItem="hlM-dT-HFA" secondAttribute="baseline" type="default" id="jvq-nl-Is0"/>
                                     <constraint firstItem="939-32-SSM" firstAttribute="baseline" secondItem="GRY-sn-o36" secondAttribute="baseline" type="default" id="kHC-dT-aOQ"/>
@@ -446,10 +448,11 @@
                                     <constraint firstAttribute="trailing" secondItem="vOL-MF-WSA" secondAttribute="trailing" constant="827" id="lsD-f0-8Tf"/>
                                     <constraint firstItem="39C-AD-Dbh" firstAttribute="top" secondItem="ljr-VM-tAe" secondAttribute="top" type="default" id="m5q-Nj-Y9q"/>
                                     <constraint firstItem="HqK-72-gpm" firstAttribute="leading" secondItem="X8B-eo-rHQ" secondAttribute="leading" constant="304" id="ocV-YP-7lk"/>
+                                    <constraint firstItem="dT6-Ov-H0v" firstAttribute="top" secondItem="Awa-QZ-kqn" secondAttribute="top" type="default" id="qMl-rs-0Td"/>
+                                    <constraint firstItem="dT6-Ov-H0v" firstAttribute="bottom" secondItem="Awa-QZ-kqn" secondAttribute="bottom" type="default" id="sgg-rf-gmK"/>
                                     <constraint firstItem="ljr-VM-tAe" firstAttribute="top" secondItem="GRY-sn-o36" secondAttribute="top" type="default" id="uFQ-So-boi"/>
                                     <constraint firstItem="wNV-Ad-u0i" firstAttribute="baseline" secondItem="hlM-dT-HFA" secondAttribute="baseline" type="default" id="uhI-f7-u7S"/>
                                     <constraint firstItem="ljr-VM-tAe" firstAttribute="baseline" secondItem="GRY-sn-o36" secondAttribute="baseline" type="default" id="vJy-gg-vIu"/>
-                                    <constraint firstItem="939-32-SSM" firstAttribute="bottom" secondItem="Awa-QZ-kqn" secondAttribute="bottom" type="default" id="vmj-js-bcG"/>
                                     <constraint firstItem="HTX-2s-hBh" firstAttribute="centerY" secondItem="X8B-eo-rHQ" secondAttribute="centerY" type="default" id="wCo-mJ-y0B"/>
                                     <constraint firstAttribute="trailing" secondItem="wNV-Ad-u0i" secondAttribute="trailing" constant="58" id="wjC-6I-3jb"/>
                                     <constraint firstItem="939-32-SSM" firstAttribute="leading" secondItem="X8B-eo-rHQ" secondAttribute="leading" constant="495" id="wlM-Tl-Fo5"/>
@@ -481,6 +484,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="UxX-XP-8rr" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="9jy-Zq-034"/>
+                            <constraint firstAttribute="bottom" secondItem="X8B-eo-rHQ" secondAttribute="bottom" constant="700" id="AhI-H1-q26"/>
                             <constraint firstItem="X8B-eo-rHQ" firstAttribute="trailing" secondItem="WAb-rG-5DD" secondAttribute="trailing" type="default" id="Asg-el-z1Q"/>
                             <constraint firstItem="X8B-eo-rHQ" firstAttribute="top" secondItem="WAb-rG-5DD" secondAttribute="top" type="default" id="F0M-Eq-fqf"/>
                             <constraint firstItem="UxX-XP-8rr" firstAttribute="leading" secondItem="WAb-rG-5DD" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="LIw-vx-1YM"/>
@@ -514,82 +518,6 @@
     <resources>
         <image name="Plus_sign.jpg" width="368" height="304"/>
     </resources>
-    <classes>
-        <class className="ColorChooserViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ColorChooserViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="bSliderChanged:"/>
-                <relationship kind="action" name="gSliderChanged:"/>
-                <relationship kind="action" name="rSliderChanged:"/>
-                <relationship kind="outlet" name="bLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="bSlider" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="gLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="gSlider" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="rLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="rSlider" candidateClass="UISlider"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="PreviewPlayer" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PreviewPlayer.h"/>
-        </class>
-        <class className="PreviewView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PreviewView.h"/>
-        </class>
-        <class className="ShapeSelectViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShapeSelectViewController.h"/>
-        </class>
-        <class className="Sketch" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/Sketch.h"/>
-        </class>
-        <class className="SketchListView" superclassName="UIScrollView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SketchListView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="parentController" candidateClass="ViewController"/>
-            </relationships>
-        </class>
-        <class className="SketchView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SketchView.h"/>
-        </class>
-        <class className="SketchViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SketchViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addPageImage:" candidateClass="UITapGestureRecognizer"/>
-                <relationship kind="action" name="deleteSelectedShape:"/>
-                <relationship kind="action" name="goToSelectState:"/>
-                <relationship kind="action" name="play:"/>
-                <relationship kind="action" name="switchFilled:"/>
-                <relationship kind="action" name="timelinePan:" candidateClass="UIPanGestureRecognizer"/>
-                <relationship kind="action" name="timelineTap:" candidateClass="UITapGestureRecognizer"/>
-                <relationship kind="action" name="updateStrokeWidth:"/>
-                <relationship kind="outlet" name="addPageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="filledSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="pageLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="previewView" candidateClass="PreviewView"/>
-                <relationship kind="outlet" name="sketchView" candidateClass="SketchView"/>
-                <relationship kind="outlet" name="strokeWidthLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tView" candidateClass="TimeLineView"/>
-                <relationship kind="outlet" name="tViewPanel" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="TimeLineView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeLineView.h"/>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="pagesLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="player" candidateClass="PreviewPlayer"/>
-                <relationship kind="outlet" name="previewTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="selectedSketch" candidateClass="Sketch"/>
-                <relationship kind="outlet" name="sketchList" candidateClass="SketchListView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
