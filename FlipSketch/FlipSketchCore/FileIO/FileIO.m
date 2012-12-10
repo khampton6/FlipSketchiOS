@@ -648,12 +648,13 @@
   //[allSketches addObject:[[Sketch alloc] initWithName:theSketchName withDesc:theSketchDesc withSID:0 withTotalPages:5]];
   
   //NSLog(@"theExtractedValue %@", [self extractSavedJsonData]);
-  /***
+  /*
   if([self extractSavedJsonData:-1] != NULL){
     
     sketchToBeSaved = [self extractSavedJsonData: [theSID intValue]];
   }
-   ***/
+   */
+  
   
   [sketchToBeSaved addObject:theSketch];
   
@@ -707,11 +708,15 @@
     
     NSError* error;
     
-    NSMutableDictionary *prevSavedJSON = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    NSDictionary *unMutePrevSavedJSON = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    
+    NSMutableDictionary* prevSavedJSON = [unMutePrevSavedJSON mutableCopy];
+    
+    NSLog(@"theMutablePrevSaved %@", prevSavedJSON );
     
     //return [self processDataForLoading:prevSavedJSON];
     
-    everySketch = [prevSavedJSON valueForKey:@"sketches"];
+    //everySketch = [prevSavedJSON valueForKey:@"sketches"];
     
     NSMutableArray *sketches = [prevSavedJSON valueForKey:@"sketches"];
     
@@ -724,12 +729,14 @@
         
         NSMutableData* toBeRem = [[[prevSavedJSON objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:aSketch]] objectForKey:@"sketch"];
         
-        //[prevSavedJSON removeObjectForKey:(NSMutableData*)toBeRem];
+        [prevSavedJSON removeObjectForKey:(NSMutableData*)toBeRem];
         
-        [prevSavedJSON removeObjectForKey:@"sketches"];
+        //[prevSavedJSON removeObjectForKey:@"sketches"];
         
       }
     }
+    
+    everySketch = [prevSavedJSON valueForKey:@"sketches"];
     
     //NSLog(@"everySketch is %@", everySketch);
     
@@ -738,5 +745,6 @@
   //[filemgr release];
   
   return [everySketch mutableCopy];
+  
 }
 @end

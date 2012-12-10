@@ -189,7 +189,13 @@
 }
 
 -(Shape*) getSelectedShape:(CGPoint) touchPoint {
+  
+  
+  
   NSArray* shapes = [sketchView getShapes];
+  
+  NSLog(@"numOfShapes is %d", [shapes count]);
+  NSLog(@"touchPos is %f %f", touchPoint.x, touchPoint.y);
   
   for(int i = 0; i < [shapes count]; i++) {
     Shape* tempShape = [shapes objectAtIndex:i];

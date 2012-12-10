@@ -33,6 +33,7 @@
     //_stopPage = -1;
     
     transformations = [[NSMutableDictionary alloc] init];
+    [self setStartPage:0];
   }
   return self;
 }

@@ -73,7 +73,7 @@
     [shape setYPos:200];
     */
     NSLog(@"Number shapes: %d", [shapes count]);
-     
+  
   }
 }
 

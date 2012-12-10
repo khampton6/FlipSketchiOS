@@ -88,7 +88,26 @@
   
   CGPoint pt = [super pointOnPage:pageNum];
   
-  return ((point.x >= pt.x) && (point.x <= pt.x+width) && (point.y >= pt.y) && (point.y <= pt.y+height));
+  float boundingBoxX = pt.x;
+  float boundingBoxY = pt.y;
+  
+  float boundingBoxW = width;
+  float boundingBoxH = height;
+  
+  if(width < 0){
+    boundingBoxX = pt.x + width;
+    boundingBoxW = abs(width);
+  }
+  
+  if(height < 0){
+    boundingBoxY = pt.y + height;
+    boundingBoxH = abs(height);
+  }
+  
+  bool withinBounds = ((point.x >= boundingBoxX) && (point.x <= boundingBoxX + boundingBoxW) &&
+                       (point.y >= boundingBoxY) && (point.y <= boundingBoxY + boundingBoxH));
+  
+  return withinBounds;
 }
 
 - (void)drawWithContext:(CGContextRef)context onPage:(int) page {
