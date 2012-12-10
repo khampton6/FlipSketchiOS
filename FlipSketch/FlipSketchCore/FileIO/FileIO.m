@@ -648,12 +648,14 @@
   //[allSketches addObject:[[Sketch alloc] initWithName:theSketchName withDesc:theSketchDesc withSID:0 withTotalPages:5]];
   
   //NSLog(@"theExtractedValue %@", [self extractSavedJsonData]);
-  /*
+  
+  //just tests to make sure that this isn't the first sketch the user is creating.
   if([self extractSavedJsonData:-1] != NULL){
     
     sketchToBeSaved = [self extractSavedJsonData: [theSID intValue]];
   }
-   */
+  
+  NSLog(@"theSketchesDictIs %@", sketchToBeSaved);
   
   
   [sketchToBeSaved addObject:theSketch];
@@ -675,7 +677,7 @@
 -(NSMutableArray*) extractSavedJsonData: (int)idToIgnore{
   //NSMutableArray* retJsonData = [[NSMutableArray alloc]init];
   
-  NSMutableArray *everySketch;
+  NSMutableArray *resultingSketches;
   
   NSLog(@"inGettingJsonForSavings");
   
@@ -712,7 +714,7 @@
     
     NSMutableDictionary* prevSavedJSON = [unMutePrevSavedJSON mutableCopy];
     
-    NSLog(@"theMutablePrevSaved %@", prevSavedJSON );
+    //NSLog(@"theMutablePrevSaved %@", prevSavedJSON );
     
     //return [self processDataForLoading:prevSavedJSON];
     
@@ -722,21 +724,72 @@
     
     for (NSString *aSketch in sketches) {
       
+      
+      
       int theId = [[[[[[prevSavedJSON objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:aSketch]] objectForKey:@"sketch"] objectAtIndex: 0] objectForKey:@"id"] intValue];
       
+      
+      
+      //if the id is the same, ignore it.
       if(theId == idToIgnore){
-        NSLog(@"!!!!!!!");
+        //NSLog(@"!!!!!!!");
+        
+        
+        //NSMutableDictionary* innerJSON = [[prevSavedJSON objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:aSketch]];
+        
+        
         
         NSMutableData* toBeRem = [[[prevSavedJSON objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:aSketch]] objectForKey:@"sketch"];
         
-        [prevSavedJSON removeObjectForKey:(NSMutableData*)toBeRem];
+        //NSMutableDictionary* toBeReturned =
+        
+        //[prevSavedJSON removeObjectForKey:(NSMutableData*)toBeRem];
         
         //[prevSavedJSON removeObjectForKey:@"sketches"];
         
+        NSMutableDictionary* tempS = [[prevSavedJSON objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:aSketch]];
+        
+        //NSLog(@"theThingToBeRemovedIs %@", [[[prevSavedJSON objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:aSketch]] objectForKey:@"sketch"]);
+        
+        //[prevSavedJSON removeObjectForKey:[[[prevSavedJSON objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:aSketch]] objectForKey:@"sketch"]];
+        
+        //[prevSavedJSON removeObjectForKey:tempS];
+        
+        //[prevSavedJSON removeObjectForKey: [tempS objectForKey: "@sketch"]];
+        
+        //[prevSavedJSON removeObjectForKey:<#(id)#>]
+        
+        //[innerJSON removeObjectForKey:@"sketch"];
+        
+        ////[prevSavedJSON removeObjectForKey:[prevSavedJSON [innerJSON objectForKey:@"sketch"]]];
+        
+        NSMutableDictionary* innerJSON = [[prevSavedJSON objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:aSketch]];
+        
+        NSLog(@"!!!!!!!the test stuff %@", [[[prevSavedJSON objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:aSketch]] objectForKey:@"sketch"]);
+        
+        [resultingSketches addObject:innerJSON];
+        
+      }
+      
+      //actually add them to the object that will be returned.
+      else{
+        //NSLog(@"???????the test stuff &@", [[[prevSavedJSON objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:aSketch]] objectForKey:@"sketch"]);
+        
+        NSLog(@"???????the test stuff %@", [[prevSavedJSON objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:aSketch]]);
+        
+        NSMutableDictionary* innerJSON = [[prevSavedJSON objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:aSketch]];
+        
+        [resultingSketches addObject:[[prevSavedJSON objectForKey:@"sketches"] objectAtIndex:[(NSMutableArray*)sketches indexOfObject:aSketch]]];
+        
+        NSLog(@"resultingSketches before is %@", resultingSketches);
       }
     }
     
-    everySketch = [prevSavedJSON valueForKey:@"sketches"];
+    NSLog(@"resultingSketches is %@", resultingSketches);
+    
+    NSLog(@"prevSavedJsonSketches is %@", prevSavedJSON);
+    
+    resultingSketches = [prevSavedJSON valueForKey:@"sketches"];
     
     //NSLog(@"everySketch is %@", everySketch);
     
@@ -744,7 +797,7 @@
   
   //[filemgr release];
   
-  return [everySketch mutableCopy];
+  return [resultingSketches mutableCopy];
   
 }
 @end
