@@ -300,7 +300,9 @@
 
 -(IBAction)addPageImage:(UITapGestureRecognizer *)recognizer {
   [timeline addPage];
-  [loadedSketch setTotalPages:([loadedSketch totalPages]+1)];
+  
+  [loadedSketch setTotalPages:[[timeline pages] count]-1];
+  
   [(TimeLineView *)tView setNumLines:[[timeline pages] count]];
   [tView setNeedsDisplay];
 }
