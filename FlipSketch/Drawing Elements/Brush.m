@@ -97,6 +97,8 @@
 
 -(BOOL) pointTouchesShape:(CGPoint) point atPage:(int) pageNum {
 
+  return NO;
+  
   CGPoint prevPt = [[strokePoints objectAtIndex:0] CGPointValue];
   
   for(int i = 1; i < [strokePoints count]; i++) {
